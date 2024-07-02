@@ -1,5 +1,8 @@
 package chess;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * A chessboard that can hold and rearrange chess pieces.
  * <p>
@@ -7,37 +10,41 @@ package chess;
  * signature of the existing methods.
  */
 public class ChessBoard {
+    private final Map<ChessPosition, ChessPiece> board;
 
     public ChessBoard() {
-        
+        board = new HashMap<>();
     }
 
-    /**
-     * Adds a chess piece to the chessboard
-     *
-     * @param position where to add the piece to
-     * @param piece    the piece to add
-     */
     public void addPiece(ChessPosition position, ChessPiece piece) {
-        throw new RuntimeException("Not implemented");
+        board.put(position, piece);
     }
 
-    /**
-     * Gets a chess piece on the chessboard
-     *
-     * @param position The position to get the piece from
-     * @return Either the piece at the position, or null if no piece is at that
-     * position
-     */
     public ChessPiece getPiece(ChessPosition position) {
-        throw new RuntimeException("Not implemented");
+        return board.get(position);
     }
 
-    /**
-     * Sets the board to the default starting board
-     * (How the game of chess normally starts)
-     */
     public void resetBoard() {
-        throw new RuntimeException("Not implemented");
+        // Implement the logic to reset the board to the standard starting position
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ChessBoard that = (ChessBoard) o;
+        return board.equals(that.board);
+    }
+
+    @Override
+    public int hashCode() {
+        return board.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "ChessBoard{" +
+                "board=" + board +
+                '}';
     }
 }
