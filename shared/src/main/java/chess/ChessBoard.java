@@ -25,7 +25,26 @@ public class ChessBoard {
     }
 
     public void resetBoard() {
-        // Implement the logic to reset the board to the standard starting position
+        board.clear();
+        // Add pawns
+        for (int col = 1; col <= 8; col++) {
+            board.put(new ChessPosition(2, col), new ChessPiece(ChessGame.TeamColor.WHITE, ChessPiece.PieceType.PAWN));
+            board.put(new ChessPosition(7, col), new ChessPiece(ChessGame.TeamColor.BLACK, ChessPiece.PieceType.PAWN));
+        }
+        // Add other pieces
+        setPieceRow(1, ChessGame.TeamColor.WHITE);
+        setPieceRow(8, ChessGame.TeamColor.BLACK);
+    }
+
+    private void setPieceRow(int row, ChessGame.TeamColor color) {
+        board.put(new ChessPosition(row, 1), new ChessPiece(color, ChessPiece.PieceType.ROOK));
+        board.put(new ChessPosition(row, 2), new ChessPiece(color, ChessPiece.PieceType.KNIGHT));
+        board.put(new ChessPosition(row, 3), new ChessPiece(color, ChessPiece.PieceType.BISHOP));
+        board.put(new ChessPosition(row, 4), new ChessPiece(color, ChessPiece.PieceType.QUEEN));
+        board.put(new ChessPosition(row, 5), new ChessPiece(color, ChessPiece.PieceType.KING));
+        board.put(new ChessPosition(row, 6), new ChessPiece(color, ChessPiece.PieceType.BISHOP));
+        board.put(new ChessPosition(row, 7), new ChessPiece(color, ChessPiece.PieceType.KNIGHT));
+        board.put(new ChessPosition(row, 8), new ChessPiece(color, ChessPiece.PieceType.ROOK));
     }
 
     @Override
@@ -48,3 +67,4 @@ public class ChessBoard {
                 '}';
     }
 }
+
