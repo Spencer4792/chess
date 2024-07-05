@@ -1,13 +1,4 @@
 
-b
-java:S1172?"ERemove these unused method parameters "board", "myPosition", "moves".(ñŠ£8‚Ûûş‡2
-g
-java:S1172C"ERemove these unused method parameters "board", "myPosition", "moves".(¥ÔÈ½ùÿÿÿÿ8ƒÛûş‡2
-g
-java:S1172G"ERemove these unused method parameters "board", "myPosition", "moves".(‹Ö½ãûÿÿÿÿ8„Ûûş‡2
-b
-java:S1172K"ERemove these unused method parameters "board", "myPosition", "moves".(»Õà¨8…Ûûş‡2
-g
-java:S1172O"ERemove these unused method parameters "board", "myPosition", "moves".(™Ä¤‘şÿÿÿÿ8†Ûûş‡2
-b
-java:S1172S"ERemove these unused method parameters "board", "myPosition", "moves".(ìığŠ8‡Ûûş‡2
+{	java:S135†"YReduce the total number of break and continue statements in this loop to use at most one.(îÔ¶³şÿÿÿÿ8ˆ”Ô‚ˆ2
+N
+java:S1172˜"+Remove this unused method parameter "from".(æêÍÁøÿÿÿÿ8¶”Ô‚ˆ2
