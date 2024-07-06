@@ -1,6 +1,7 @@
 package chess;
 
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 /**
  * For a class that can manage a chess game, making moves on a board
@@ -37,22 +38,37 @@ public class ChessGame {
         if (piece == null || piece.getTeamColor() != currentTurn) {
             return null;
         }
-        return piece.pieceMoves(board, startPosition);
+        return piece.pieceMoves(board, startPosition).stream()
+                .filter(move -> {
+                    try {
+                        ChessGame testGame = this.clone();
+                        testGame.makeMove(move);
+                        return !testGame.isInCheck(currentTurn);
+                    } catch (InvalidMoveException e) {
+                        return false;
+                    }
+                }).collect(Collectors.toList());
     }
 
     public void makeMove(ChessMove move) throws InvalidMoveException {
         ChessPiece piece = board.getPiece(move.getStartPosition());
-        if (piece == null || piece.getTeamColor() != currentTurn || !piece.pieceMoves(board, move.getStartPosition()).contains(move)) {
+        if (piece == null || piece.getTeamColor() != currentTurn || !validMoves(move.getStartPosition()).contains(move)) {
             throw new InvalidMoveException("Invalid move");
         }
         board.addPiece(move.getEndPosition(), piece);
         board.addPiece(move.getStartPosition(), null);
+        if (move.getPromotionPiece() != null && piece.getPieceType() == ChessPiece.PieceType.PAWN) {
+            board.addPiece(move.getEndPosition(), new ChessPiece(currentTurn, move.getPromotionPiece()));
+        }
         currentTurn = (currentTurn == TeamColor.WHITE) ? TeamColor.BLACK : TeamColor.WHITE;
     }
 
     public boolean isInCheck(TeamColor teamColor) {
-        // Implement check logic
-        return false;
+        ChessPosition kingPosition = findKing(teamColor);
+        return board.getPieces().stream()
+                .filter(piece -> piece.getTeamColor() != teamColor)
+                .flatMap(piece -> piece.pieceMoves(board, board.getPosition(piece)).stream())
+                .anyMatch(move -> move.getEndPosition().equals(kingPosition));
     }
 
     public boolean isInCheckmate(TeamColor teamColor) {
