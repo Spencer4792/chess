@@ -105,28 +105,49 @@ public class ChessPiece {
 
     private void addPawnMoves(ChessBoard board, ChessPosition myPosition, Collection<ChessMove> moves) {
         int direction = (pieceColor == ChessGame.TeamColor.WHITE) ? 1 : -1;
+        int promotionRow = (pieceColor == ChessGame.TeamColor.WHITE) ? 8 : 1;
+
+        // Move forward one step
         ChessPosition oneStep = new ChessPosition(myPosition.getRow() + direction, myPosition.getColumn());
         if (isValidPosition(oneStep) && board.getPiece(oneStep) == null) {
-            moves.add(new ChessMove(myPosition, oneStep, null));
-            if ((pieceColor == ChessGame.TeamColor.WHITE && myPosition.getRow() == 2) ||
-                    (pieceColor == ChessGame.TeamColor.BLACK && myPosition.getRow() == 7)) {
-                ChessPosition twoSteps = new ChessPosition(myPosition.getRow() + 2 * direction, myPosition.getColumn());
-                if (board.getPiece(twoSteps) == null) {
-                    moves.add(new ChessMove(myPosition, twoSteps, null));
-                }
+            if (oneStep.getRow() == promotionRow) {
+                addPromotionMoves(myPosition, oneStep, moves);
+            } else {
+                moves.add(new ChessMove(myPosition, oneStep, null));
             }
         }
-        // Diagonal captures
+
+        // Move forward two steps from starting position
+        if ((pieceColor == ChessGame.TeamColor.WHITE && myPosition.getRow() == 2) ||
+            (pieceColor == ChessGame.TeamColor.BLACK && myPosition.getRow() == 7)) {
+            ChessPosition twoSteps = new ChessPosition(myPosition.getRow() + 2 * direction, myPosition.getColumn());
+            if (board.getPiece(oneStep) == null && board.getPiece(twoSteps) == null) {
+                moves.add(new ChessMove(myPosition, twoSteps, null));
+            }
+        }
+
+        // Capture diagonally
         int[][] captures = {
                 {direction, 1}, {direction, -1}
         };
         for (int[] capture : captures) {
             ChessPosition capturePos = new ChessPosition(myPosition.getRow() + capture[0], myPosition.getColumn() + capture[1]);
             if (isValidPosition(capturePos) && board.getPiece(capturePos) != null &&
-                    board.getPiece(capturePos).getTeamColor() != pieceColor) {
-                moves.add(new ChessMove(myPosition, capturePos, null));
+                board.getPiece(capturePos).getTeamColor() != pieceColor) {
+                if (capturePos.getRow() == promotionRow) {
+                    addPromotionMoves(myPosition, capturePos, moves);
+                } else {
+                    moves.add(new ChessMove(myPosition, capturePos, null));
+                }
             }
         }
+    }
+
+    private void addPromotionMoves(ChessPosition start, ChessPosition end, Collection<ChessMove> moves) {
+        moves.add(new ChessMove(start, end, PieceType.QUEEN));
+        moves.add(new ChessMove(start, end, PieceType.ROOK));
+        moves.add(new ChessMove(start, end, PieceType.BISHOP));
+        moves.add(new ChessMove(start, end, PieceType.KNIGHT));
     }
 
     private void addMovesInDirections(ChessBoard board, ChessPosition myPosition, Collection<ChessMove> moves, int[][] directions, int maxSteps) {
@@ -146,7 +167,7 @@ public class ChessPiece {
 
     private boolean isValidPosition(ChessPosition position) {
         return position.getRow() >= 1 && position.getRow() <= 8 &&
-                position.getColumn() >= 1 && position.getColumn() <= 8;
+               position.getColumn() >= 1 && position.getColumn() <= 8;
     }
 
     private boolean canMoveTo(ChessBoard board, ChessPosition from, ChessPosition to) {
