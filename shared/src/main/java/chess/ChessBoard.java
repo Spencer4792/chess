@@ -2,6 +2,7 @@ package chess;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * A chessboard that can hold and rearrange chess pieces.
@@ -47,6 +48,18 @@ public class ChessBoard {
         board.put(new ChessPosition(row, 8), new ChessPiece(color, ChessPiece.PieceType.ROOK));
     }
 
+    public Set<ChessPiece> getPieces() {
+        return Set.copyOf(board.values());
+    }
+
+    public ChessPosition getPosition(ChessPiece piece) {
+        return board.entrySet().stream()
+                .filter(entry -> entry.getValue().equals(piece))
+                .map(Map.Entry::getKey)
+                .findFirst()
+                .orElse(null);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -76,4 +89,3 @@ public class ChessBoard {
         return clonedBoard;
     }
 }
-
