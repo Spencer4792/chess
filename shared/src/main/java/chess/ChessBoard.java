@@ -66,5 +66,14 @@ public class ChessBoard {
                 "board=" + board +
                 '}';
     }
+
+    @Override
+    protected ChessBoard clone() {
+        ChessBoard clonedBoard = new ChessBoard();
+        for (Map.Entry<ChessPosition, ChessPiece> entry : this.board.entrySet()) {
+            clonedBoard.addPiece(entry.getKey(), entry.getValue());
+        }
+        return clonedBoard;
+    }
 }
 
