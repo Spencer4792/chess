@@ -88,8 +88,18 @@ public class ChessGame {
     }
 
     public boolean isInStalemate(TeamColor teamColor) {
-        // Implement stalemate logic
-        return false;
+        return !isInCheck(teamColor) && board.getPieces().stream()
+                .filter(piece -> piece.getTeamColor() == teamColor)
+                .flatMap(piece -> validMoves(board.getPosition(piece)).stream())
+                .noneMatch(move -> {
+                    try {
+                        ChessGame testGame = this.clone();
+                        testGame.makeMove(move);
+                        return !testGame.isInCheck(teamColor);
+                    } catch (InvalidMoveException e) {
+                        return false;
+                    }
+                });
     }
 
     public void setBoard(ChessBoard board) {
