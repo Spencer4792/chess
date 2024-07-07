@@ -109,4 +109,20 @@ public class ChessGame {
     public ChessBoard getBoard() {
         return board;
     }
+
+    private ChessPosition findKing(TeamColor teamColor) {
+        return board.getPieces().stream()
+                .filter(piece -> piece.getTeamColor() == teamColor && piece.getPieceType() == ChessPiece.PieceType.KING)
+                .map(board::getPosition)
+                .findFirst()
+                .orElseThrow(() -> new IllegalStateException("No king found for team " + teamColor));
+    }
+
+    @Override
+    protected ChessGame clone() {
+        ChessGame clonedGame = new ChessGame();
+        clonedGame.board = this.board.clone();
+        clonedGame.currentTurn = this.currentTurn;
+        return clonedGame;
+    }
 }
