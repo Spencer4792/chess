@@ -56,6 +56,17 @@ public class ChessGame {
         if (piece == null || piece.getTeamColor() != currentTurn || !validMoves(move.getStartPosition()).contains(move)) {
             throw new InvalidMoveException("Invalid move");
         }
+
+        if (piece.getPieceType() == ChessPiece.PieceType.KING && Math.abs(move.getStartPosition().getColumn() - move.getEndPosition().getColumn()) == 2) {
+            performCastling(move);
+        } else {
+            board.addPiece(move.getEndPosition(), piece);
+            board.addPiece(move.getStartPosition(), null);
+            if (move.getPromotionPiece() != null && piece.getPieceType() == ChessPiece.PieceType.PAWN) {
+                board.addPiece(move.getEndPosition(), new ChessPiece(currentTurn, move.getPromotionPiece()));
+            }
+        }
+
         board.addPiece(move.getEndPosition(), piece);
         board.addPiece(move.getStartPosition(), null);
         if (move.getPromotionPiece() != null && piece.getPieceType() == ChessPiece.PieceType.PAWN) {
