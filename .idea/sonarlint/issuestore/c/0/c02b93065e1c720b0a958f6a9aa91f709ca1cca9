@@ -1,0 +1,13 @@
+
+H
+java:S11685"+Return an empty collection instead of null.(¥¹ï8ÿÆÃŸŠ2
+—
+java:S6204@"zReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()' and ensure that the list is unmodified.(œçÖß8ÿÆÃŸŠ2
+t
+java:S3776C"RRefactor this method to reduce its Cognitive Complexity from 27 to the 15 allowed.(¥ïÊûÿÿÿÿ8…ÇÃŸŠ2
+c
+java:S1126{"AReplace this if-then-else statement by a single return statement.(¹ö·Öüÿÿÿÿ8‘ÇÃŸŠ2
+v
+java:S2975õ"SRemove this "clone" implementation; use a copy constructor or copy factory instead.(¡„Ÿîÿÿÿÿÿ8³ÇÃŸŠ2
+k
+java:S1182õ"HUse super.clone() to create and seed the cloned instance to be returned.(¡„Ÿîÿÿÿÿÿ8´ÇÃŸŠ2

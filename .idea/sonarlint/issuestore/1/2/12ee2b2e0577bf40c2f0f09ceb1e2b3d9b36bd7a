@@ -1,0 +1,11 @@
+
+H
+java:S11685"+Return an empty collection instead of null.(¥¹ï8¡„ÌŸŠ2
+—
+java:S6204@"zReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()' and ensure that the list is unmodified.(œçÖß8¢„ÌŸŠ2
+v
+java:S2975"SRemove this "clone" implementation; use a copy constructor or copy factory instead.(¡„Ÿîÿÿÿÿÿ8Ø„ÌŸŠ2
+k
+java:S1182"HUse super.clone() to create and seed the cloned instance to be returned.(¡„Ÿîÿÿÿÿÿ8Ù„ÌŸŠ2
+l
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒJ$a6516ece-1631-4d60-bba4-01891b9126a8
