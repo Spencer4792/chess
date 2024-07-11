@@ -119,7 +119,7 @@ public class ChessPiece {
 
         // Move forward two steps from starting position
         if ((pieceColor == ChessGame.TeamColor.WHITE && myPosition.getRow() == 2) ||
-            (pieceColor == ChessGame.TeamColor.BLACK && myPosition.getRow() == 7)) {
+                (pieceColor == ChessGame.TeamColor.BLACK && myPosition.getRow() == 7)) {
             ChessPosition twoSteps = new ChessPosition(myPosition.getRow() + 2 * direction, myPosition.getColumn());
             if (board.getPiece(oneStep) == null && board.getPiece(twoSteps) == null) {
                 moves.add(new ChessMove(myPosition, twoSteps, null));
@@ -133,7 +133,7 @@ public class ChessPiece {
         for (int[] capture : captures) {
             ChessPosition capturePos = new ChessPosition(myPosition.getRow() + capture[0], myPosition.getColumn() + capture[1]);
             if (isValidPosition(capturePos) && board.getPiece(capturePos) != null &&
-                board.getPiece(capturePos).getTeamColor() != pieceColor) {
+                    board.getPiece(capturePos).getTeamColor() != pieceColor) {
                 if (capturePos.getRow() == promotionRow) {
                     addPromotionMoves(myPosition, capturePos, moves);
                 } else {
@@ -141,6 +141,8 @@ public class ChessPiece {
                 }
             }
         }
+
+        // En Passant logic will be added later
     }
 
     private void addPromotionMoves(ChessPosition start, ChessPosition end, Collection<ChessMove> moves) {

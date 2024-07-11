@@ -1,7 +1,5 @@
 
-p
-java:S3776§"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(Ïí®©8·‘ÐžŠ2
-v
-java:S2975ö"SRemove this "clone" implementation; use a copy constructor or copy factory instead.(¡„Ÿîÿÿÿÿÿ8Æ‘ÐžŠ2
-k
-java:S1182ö"HUse super.clone() to create and seed the cloned instance to be returned.(¡„Ÿîÿÿÿÿÿ8È‘ÐžŠ2
+u
+java:S2975z"SRemove this "clone" implementation; use a copy constructor or copy factory instead.(¡„Ÿîÿÿÿÿÿ8Æ‘ÐžŠ2
+j
+java:S1182z"HUse super.clone() to create and seed the cloned instance to be returned.(¡„Ÿîÿÿÿÿÿ8È‘ÐžŠ2
