@@ -78,14 +78,14 @@ public class ChessPiece {
                 {1, 0}, {-1, 0}, {0, 1}, {0, -1},
                 {1, 1}, {-1, -1}, {1, -1}, {-1, 1}
         };
-        addMovesInDirections(board, myPosition, moves, directions, 8);
+        addMovesInDirections(board, myPosition, moves, directions);
     }
 
     private void addBishopMoves(ChessBoard board, ChessPosition myPosition, Collection<ChessMove> moves) {
         int[][] directions = {
                 {1, 1}, {-1, -1}, {1, -1}, {-1, 1}
         };
-        addMovesInDirections(board, myPosition, moves, directions, 8);
+        addMovesInDirections(board, myPosition, moves, directions);
     }
 
     private void addKnightMoves(ChessBoard board, ChessPosition myPosition, Collection<ChessMove> moves) {
@@ -105,7 +105,7 @@ public class ChessPiece {
         int[][] directions = {
                 {1, 0}, {-1, 0}, {0, 1}, {0, -1}
         };
-        addMovesInDirections(board, myPosition, moves, directions, 8);
+        addMovesInDirections(board, myPosition, moves, directions);
     }
 
     private void addPawnMoves(ChessBoard board, ChessPosition myPosition, Collection<ChessMove> moves) {
@@ -155,9 +155,9 @@ public class ChessPiece {
         moves.add(new ChessMove(start, end, PieceType.KNIGHT));
     }
 
-    private void addMovesInDirections(ChessBoard board, ChessPosition myPosition, Collection<ChessMove> moves, int[][] directions, int maxSteps) {
+    private void addMovesInDirections(ChessBoard board, ChessPosition myPosition, Collection<ChessMove> moves, int[][] directions) {
         for (int[] direction : directions) {
-            for (int step = 1; step <= maxSteps; step++) {
+            for (int step=1; step <= 8; step++) {
                 ChessPosition newPos = new ChessPosition(myPosition.getRow() + step * direction[0], myPosition.getCol() + step * direction[1]);
                 if (!isValidPosition(newPos) || !canMoveTo(board, myPosition, newPos)) {
                     break;
