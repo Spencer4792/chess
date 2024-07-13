@@ -1,7 +1,5 @@
 
-M
-java:S11725"0Remove this unused method parameter "teamColor".(„İÊ8¢œ…ˆ2
-M
-java:S1172:"0Remove this unused method parameter "teamColor".(ÅÍ†õ8£œ…ˆ2
-R
-java:S1172?"0Remove this unused method parameter "teamColor".(ç¸Ûíûÿÿÿÿ8¤œ…ˆ2
+u
+java:S2975z"SRemove this "clone" implementation; use a copy constructor or copy factory instead.(¡„Ÿîÿÿÿÿÿ8Æ‘ĞŠ2
+j
+java:S1182z"HUse super.clone() to create and seed the cloned instance to be returned.(¡„Ÿîÿÿÿÿÿ8È‘ĞŠ2

@@ -4,12 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * A chessboard that can hold and rearrange chess pieces.
- * <p>
- * Note: You can add to this class, but you may not alter
- * signature of the existing methods.
- */
 public class ChessBoard {
     private final Map<ChessPosition, ChessPiece> board;
 
@@ -18,7 +12,11 @@ public class ChessBoard {
     }
 
     public void addPiece(ChessPosition position, ChessPiece piece) {
-        board.put(position, piece);
+        if (piece == null) {
+            board.remove(position);
+        } else {
+            board.put(position, piece);
+        }
     }
 
     public ChessPiece getPiece(ChessPosition position) {
@@ -58,6 +56,10 @@ public class ChessBoard {
                 .map(Map.Entry::getKey)
                 .findFirst()
                 .orElse(null);
+    }
+
+    public Map<ChessPosition, ChessPiece> getBoard() {
+        return board;
     }
 
     @Override

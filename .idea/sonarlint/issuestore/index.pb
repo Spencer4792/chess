@@ -9,3 +9,9 @@ Y
 )shared/src/main/java/chess/ChessMove.java,c/5/c52f67c55315a844e23611bb848b35269aaedb66
 Z
 *shared/src/main/java/chess/ChessPiece.java,c/0/c02b93065e1c720b0a958f6a9aa91f709ca1cca9
+j
+:shared/src/test/java/passoff/chess/game/MakeMoveTests.java,9/1/9175234a3f303bad2cdae147fbe2e704f0f9016d
+i
+9shared/src/test/java/passoff/chess/game/FullGameTest.java,3/0/304a628b79462cebf64407482375f8e693e3f5cc
+l
+<shared/src/test/java/passoff/chess/game/GameStatusTests.java,3/d/3d8e6e324b6bb763d5d4a1a3f28e088c47790aa0

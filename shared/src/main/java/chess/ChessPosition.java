@@ -1,11 +1,5 @@
 package chess;
 
-/**
- * Represents a single square position on a chess board
- * <p>
- * Note: You can add to this class, but you may not alter
- * signature of the existing methods.
- */
 public class ChessPosition {
     private final int row;
     private final int col;
@@ -19,21 +13,26 @@ public class ChessPosition {
         return row;
     }
 
-    public int getColumn() {
+    public int getCol() {
         return col;
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ChessPosition that = (ChessPosition) o;
-        return row == that.row && col == that.col;
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+
+        ChessPosition that = (ChessPosition) obj;
+
+        if (row != that.row) return false;
+        return col == that.col;
     }
 
     @Override
     public int hashCode() {
-        return 31 * row + col;
+        int result = row;
+        result = 31 * result + col;
+        return result;
     }
 
     @Override
