@@ -97,16 +97,16 @@ public class ChessGame {
     public boolean isInCheck(ChessBoard board, TeamColor teamColor) {
         ChessPosition kingPosition = findKingPosition(board, teamColor);
         if (kingPosition == null) {
-            System.out.println("King not found for team: " + teamColor);
             return false;
         }
 
-        for (ChessPiece piece : board.getPieces()) {
-            if (piece.getTeamColor() != teamColor) {
-                Collection<ChessMove> moves = piece.pieceMoves(board, board.getPosition(piece));
+        TeamColor oppositeColor = (teamColor == TeamColor.WHITE) ? TeamColor.BLACK : TeamColor.WHITE;
+        for (Map.Entry<ChessPosition, ChessPiece> entry : board.getBoard().entrySet()) {
+            ChessPiece piece = entry.getValue();
+            if (piece != null && piece.getTeamColor() == oppositeColor) {
+                Collection<ChessMove> moves = piece.pieceMoves(board, entry.getKey());
                 for (ChessMove move : moves) {
                     if (move.getEndPosition().equals(kingPosition)) {
-                        System.out.println("Check detected by " + piece.getPieceType() + " at " + board.getPosition(piece) + " to " + kingPosition);
                         return true;
                     }
                 }
@@ -117,29 +117,32 @@ public class ChessGame {
     }
 
     public boolean isInCheckmate(TeamColor teamColor) {
-        if (!isInCheck(board, teamColor)) {
+        if (!isInCheck(teamColor)) {
             return false; // Cannot be in checkmate if not in check.
         }
 
-        for (ChessPiece piece : board.getPieces()) {
-            if (piece.getTeamColor() == teamColor) {
-                ChessPosition piecePosition = board.getPosition(piece);
-                Collection<ChessMove> possibleMoves = piece.pieceMoves(board, piecePosition);
-
-                for (ChessMove move : possibleMoves) {
+        for (ChessPosition position : board.getBoard().keySet()) {
+            ChessPiece piece = board.getPiece(position);
+            if (piece != null && piece.getTeamColor() == teamColor) {
+                Collection<ChessMove> validMoves = validMoves(position);
+                for (ChessMove move : validMoves) {
                     ChessBoard clonedBoard = board.clone();
-                    executeMove(clonedBoard, move, piece);
+                    ChessPiece movedPiece = clonedBoard.getPiece(move.getStartPosition());
+                    clonedBoard.addPiece(move.getEndPosition(), movedPiece);
+                    clonedBoard.addPiece(move.getStartPosition(), null);
+
+                    if (move.getPromotionPiece() != null) {
+                        clonedBoard.addPiece(move.getEndPosition(), new ChessPiece(teamColor, move.getPromotionPiece()));
+                    }
 
                     if (!isInCheck(clonedBoard, teamColor)) {
-                        System.out.println("Escaping move found: " + move + " by " + piece.getPieceType());
-                        return false; // A valid move found that does not result in check
+                        return false; // Found a legal move that escapes check
                     }
                 }
             }
         }
 
-        System.out.println("No valid moves available; " + teamColor + " is in checkmate.");
-        return true;
+        return true; // No legal moves found to escape check
     }
 
     private void executeMove(ChessBoard board, ChessMove move, ChessPiece piece) {
