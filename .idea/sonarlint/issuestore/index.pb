@@ -15,3 +15,5 @@ i
 9shared/src/test/java/passoff/chess/game/FullGameTest.java,3/0/304a628b79462cebf64407482375f8e693e3f5cc
 l
 <shared/src/test/java/passoff/chess/game/GameStatusTests.java,3/d/3d8e6e324b6bb763d5d4a1a3f28e088c47790aa0
+]
+-shared/src/main/java/chess/ChessPosition.java,3/b/3b013a24b64d343e15bac32b29d3d69c6c135d82
