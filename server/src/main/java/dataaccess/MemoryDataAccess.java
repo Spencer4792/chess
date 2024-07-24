@@ -1,13 +1,7 @@
 package dataaccess;
 
-import model.UserData;
-import model.GameData;
-import model.AuthData;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import model.*;
+import java.util.*;
 
 public class MemoryDataAccess implements DataAccess {
   private final Map<String, UserData> users = new HashMap<>();
@@ -24,7 +18,7 @@ public class MemoryDataAccess implements DataAccess {
   @Override
   public void addUser(UserData user) throws DataAccessException {
     if (users.containsKey(user.username())) {
-      throw new DataAccessException("User already exists");
+      throw new DataAccessException("Username already exists");
     }
     users.put(user.username(), user);
   }
@@ -37,7 +31,7 @@ public class MemoryDataAccess implements DataAccess {
   @Override
   public void addGame(GameData game) throws DataAccessException {
     if (games.containsKey(game.gameID())) {
-      throw new DataAccessException("Game already exists");
+      throw new DataAccessException("Game ID already exists");
     }
     games.put(game.gameID(), game);
   }
@@ -48,23 +42,20 @@ public class MemoryDataAccess implements DataAccess {
   }
 
   @Override
-  public List<GameData> listGames() {
+  public List<GameData> listGames() throws DataAccessException {
     return new ArrayList<>(games.values());
   }
 
   @Override
   public void updateGame(GameData game) throws DataAccessException {
     if (!games.containsKey(game.gameID())) {
-      throw new DataAccessException("Game does not exist");
+      throw new DataAccessException("Game not found");
     }
     games.put(game.gameID(), game);
   }
 
   @Override
   public void addAuth(AuthData auth) throws DataAccessException {
-    if (auths.containsKey(auth.authToken())) {
-      throw new DataAccessException("Auth token already exists");
-    }
     auths.put(auth.authToken(), auth);
   }
 
@@ -75,9 +66,6 @@ public class MemoryDataAccess implements DataAccess {
 
   @Override
   public void deleteAuth(String authToken) throws DataAccessException {
-    if (!auths.containsKey(authToken)) {
-      throw new DataAccessException("Auth token does not exist");
-    }
     auths.remove(authToken);
   }
 }

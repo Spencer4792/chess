@@ -14,8 +14,15 @@ public class ClearApplicationHandler extends BaseHandler {
   @Override
   public Object handle(Request req, Response res) throws Exception {
     setResponseHeaders(res);
-    clearService.clearApplication();
-    res.status(200);
-    return "{}";
+    try {
+      clearService.clearApplication();
+      res.status(200);
+      return "{}";
+    } catch (Exception e) {
+      res.status(500);
+      return serialize(new ErrorResult(e.getMessage()));
+    }
   }
+
+  private record ErrorResult(String message) {}
 }

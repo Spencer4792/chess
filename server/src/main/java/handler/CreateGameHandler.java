@@ -16,11 +16,17 @@ public class CreateGameHandler extends BaseHandler {
     setResponseHeaders(res);
     String authToken = req.headers("Authorization");
     var createGameRequest = deserialize(req.body(), CreateGameRequest.class);
-    int gameID = gameService.createGame(authToken, createGameRequest.gameName());
-    res.status(200);
-    return serialize(new CreateGameResult(gameID));
+    try {
+      int gameID = gameService.createGame(authToken, createGameRequest.gameName);
+      res.status(200);
+      return serialize(new CreateGameResult(gameID));
+    } catch (Exception e) {
+      res.status(401);
+      return serialize(new ErrorResult(e.getMessage()));
+    }
   }
 
   private record CreateGameRequest(String gameName) {}
   private record CreateGameResult(int gameID) {}
+  private record ErrorResult(String message) {}
 }

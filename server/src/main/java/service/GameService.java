@@ -1,11 +1,8 @@
 package service;
 
 import chess.ChessGame;
-import dataaccess.DataAccess;
-import dataaccess.DataAccessException;
-import model.GameData;
-import model.AuthData;
-
+import dataaccess.*;
+import model.*;
 import java.util.List;
 import java.util.UUID;
 
@@ -58,6 +55,9 @@ public class GameService {
         throw new DataAccessException("Error: already taken");
       }
       game = new GameData(game.gameID(), game.whiteUsername(), username, game.gameName(), game.game());
+    } else {
+      // Join as observer
+      return;
     }
 
     dataAccess.updateGame(game);

@@ -17,10 +17,16 @@ public class JoinGameHandler extends BaseHandler {
     setResponseHeaders(res);
     String authToken = req.headers("Authorization");
     var joinGameRequest = deserialize(req.body(), JoinGameRequest.class);
-    gameService.joinGame(authToken, joinGameRequest.gameID(), joinGameRequest.playerColor());
-    res.status(200);
-    return "{}";
+    try {
+      gameService.joinGame(authToken, joinGameRequest.gameID, joinGameRequest.playerColor);
+      res.status(200);
+      return "{}";
+    } catch (Exception e) {
+      res.status(403);
+      return serialize(new ErrorResult(e.getMessage()));
+    }
   }
 
   private record JoinGameRequest(int gameID, ChessGame.TeamColor playerColor) {}
+  private record ErrorResult(String message) {}
 }

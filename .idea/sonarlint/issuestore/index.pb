@@ -17,3 +17,13 @@ l
 <shared/src/test/java/passoff/chess/game/GameStatusTests.java,3/d/3d8e6e324b6bb763d5d4a1a3f28e088c47790aa0
 ]
 -shared/src/main/java/chess/ChessPosition.java,3/b/3b013a24b64d343e15bac32b29d3d69c6c135d82
+_
+/shared/src/main/java/dataAccess/DataAccess.java,f/7/f782b350bd66b2657b80e5992e8e4e13322d0409
+e
+5shared/src/main/java/dataAccess/MemoryDataAccess.java,6/9/69a692aeb04b7408d89086021233b6aa5cb5b1a2
+]
+-shared/src/main/java/service/UserService.java,e/0/e0bd021e767758cfd27c74cf21aec30ce218a6ce
+]
+-shared/src/main/java/service/GameService.java,1/1/11cf8cc46e0d21e2a0d2825499d4a264584f7c54
+^
+.shared/src/main/java/service/ClearService.java,0/e/0efc70786429178c46fada7edd8bdcff71444ee3

@@ -15,8 +15,15 @@ public class LogoutHandler extends BaseHandler {
   public Object handle(Request req, Response res) throws Exception {
     setResponseHeaders(res);
     String authToken = req.headers("Authorization");
-    userService.logout(authToken);
-    res.status(200);
-    return "{}";
+    try {
+      userService.logout(authToken);
+      res.status(200);
+      return "{}";
+    } catch (Exception e) {
+      res.status(401);
+      return serialize(new ErrorResult(e.getMessage()));
+    }
   }
+
+  private record ErrorResult(String message) {}
 }

@@ -1,10 +1,7 @@
 package service;
 
-import dataaccess.DataAccess;
-import dataaccess.DataAccessException;
-import model.UserData;
-import model.AuthData;
-
+import dataaccess.*;
+import model.*;
 import java.util.UUID;
 
 public class UserService {

@@ -1,9 +1,6 @@
 package dataaccess;
 
-import model.UserData;
-import model.GameData;
-import model.AuthData;
-
+import model.*;
 import java.util.List;
 
 public interface DataAccess {
