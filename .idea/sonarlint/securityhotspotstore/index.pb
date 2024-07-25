@@ -58,3 +58,5 @@ _
 /server/src/main/java/dataaccess/DataAccess.java,4/6/46679c9d48a64697e8b298d85e3dc124b7b6d025
 ^
 .server/src/main/java/service/ClearService.java,0/c/0ce0fac66f556cfc363803137dc55e441cb2efcb
+X
+(shared/src/main/java/model/GameData.java,5/5/5576294e62ca35aee743ff8a314bab938effe594

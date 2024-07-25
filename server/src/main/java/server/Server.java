@@ -52,12 +52,6 @@ public class Server {
         return Spark.port();
     }
 
-    private void exceptionHandler(Exception e, Request req, Response res) {
-        res.type("application/json");
-        res.status(500);
-        res.body(new Gson().toJson(new ErrorResponse(e.getMessage())));
-    }
-
     public void stop() {
         Spark.stop();
         Spark.awaitStop();

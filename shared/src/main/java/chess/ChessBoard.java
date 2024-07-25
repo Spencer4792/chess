@@ -19,6 +19,7 @@ public class ChessBoard {
         }
     }
 
+    //This allows collection of board piece locations when resetting the chess board
     public ChessPiece getPiece(ChessPosition position) {
         return board.get(position);
     }
@@ -44,18 +45,6 @@ public class ChessBoard {
         board.put(new ChessPosition(row, 6), new ChessPiece(color, ChessPiece.PieceType.BISHOP));
         board.put(new ChessPosition(row, 7), new ChessPiece(color, ChessPiece.PieceType.KNIGHT));
         board.put(new ChessPosition(row, 8), new ChessPiece(color, ChessPiece.PieceType.ROOK));
-    }
-
-    public Set<ChessPiece> getPieces() {
-        return Set.copyOf(board.values());
-    }
-
-    public ChessPosition getPosition(ChessPiece piece) {
-        return board.entrySet().stream()
-                .filter(entry -> entry.getValue().equals(piece))
-                .map(Map.Entry::getKey)
-                .findFirst()
-                .orElse(null);
     }
 
     public Map<ChessPosition, ChessPiece> getBoard() {

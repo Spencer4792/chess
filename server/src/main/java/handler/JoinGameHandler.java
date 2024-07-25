@@ -20,7 +20,9 @@ public class JoinGameHandler extends BaseHandler {
     String authToken = req.headers("Authorization");
 
     try {
-      if (joinRequest.playerColor() == null && joinRequest.playerColor() != ChessGame.TeamColor.WHITE && joinRequest.playerColor() != ChessGame.TeamColor.BLACK) {
+      if (joinRequest.playerColor() == null ||
+              (joinRequest.playerColor() != ChessGame.TeamColor.WHITE &&
+                      joinRequest.playerColor() != ChessGame.TeamColor.BLACK)) {
         res.status(400);
         return serialize(new ErrorResult("Error: bad request"));
       }

@@ -1,9 +1,9 @@
 
 
-java:S1192#"FDefine a constant instead of duplicating this literal "/game" 3 times.(¦ëÕJ$6f9c0480-dd2f-477c-884d-cd2615f1c5f1
-}
-java:S11447"5Remove this unused private "exceptionHandler" method.(’‰Éíûÿÿÿÿ8ÚÜú½2J$25fd8976-7d8a-43e2-9a83-5e2f1b6d7645
-r
-java:S11727"*Remove this unused method parameter "req".(’‰Éíûÿÿÿÿ8õÜú½2J$6cf1dc95-b997-4647-a3d5-ce00406e4e45
+java:S1192#"FDefine a constant instead of duplicating this literal "/game" 3 times.(¦ëÕJ$dc86795e-d9b1-471c-93ac-6fea3b1a8425
+N
+java:S3985<"1Remove this unused private "ErrorResponse" class.(’›È£8Åºëß2
+N
+java:S1128"1Remove this unused import 'com.google.gson.Gson'.(–§8Åºëß2
 g
-java:S1068C"+Remove this unused "message" private field.(Úæê»J$cacebf76-51c8-4443-9ea0-75884e5c7b33
+java:S1068="+Remove this unused "message" private field.(Úæê»J$2517e719-dca3-4f74-b81f-2a8727b25f3e
