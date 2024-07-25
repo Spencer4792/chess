@@ -31,3 +31,5 @@ i
 9server/src/main/java/handler/ClearApplicationHandler.java,8/b/8bd4766fe7756ca4ed183f122465700cdc8cc685
 a
 1server/src/main/java/handler/RegisterHandler.java,0/8/087c56b1a00b79938119af1f6dc7d02c4a6a9771
+i
+9server/src/test/java/passoff/server/StandardAPITests.java,9/4/94f243c94f4488610888d7e06be7837a9ed55c4d
