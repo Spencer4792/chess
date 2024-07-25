@@ -60,3 +60,7 @@ _
 .server/src/main/java/service/ClearService.java,0/c/0ce0fac66f556cfc363803137dc55e441cb2efcb
 X
 (shared/src/main/java/model/GameData.java,5/5/5576294e62ca35aee743ff8a314bab938effe594
+a
+1server/src/test/java/service/UserServiceTest.java,f/8/f83e2b8b7a9719d4425a9cc2599f40c240264d67
+a
+1server/src/test/java/service/GameServiceTest.java,6/b/6bb1bc73f20888998a68a0cdc9965b0afd70a2d3
