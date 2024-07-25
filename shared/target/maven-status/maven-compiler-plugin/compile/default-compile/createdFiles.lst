@@ -1,0 +1,11 @@
+chess/ChessPiece.class
+chess/InvalidMoveException.class
+chess/ChessPiece$PieceType.class
+model/GameData.class
+model/UserData.class
+chess/ChessBoard.class
+chess/ChessGame$TeamColor.class
+chess/ChessPosition.class
+chess/ChessGame.class
+chess/ChessMove.class
+model/AuthData.class

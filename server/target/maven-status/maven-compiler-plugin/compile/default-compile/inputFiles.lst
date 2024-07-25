@@ -1,0 +1,16 @@
+/Users/spencerhales/Desktop/cs240/chess/server/src/main/java/dataaccess/MemoryDataAccess.java
+/Users/spencerhales/Desktop/cs240/chess/server/src/main/java/service/ClearService.java
+/Users/spencerhales/Desktop/cs240/chess/server/src/main/java/handler/JoinGameHandler.java
+/Users/spencerhales/Desktop/cs240/chess/server/src/main/java/handler/RegisterHandler.java
+/Users/spencerhales/Desktop/cs240/chess/server/src/main/java/dataaccess/DataAccess.java
+/Users/spencerhales/Desktop/cs240/chess/server/src/main/java/server/Server.java
+/Users/spencerhales/Desktop/cs240/chess/server/src/main/java/handler/ListGamesHandler.java
+/Users/spencerhales/Desktop/cs240/chess/server/src/main/java/service/UserService.java
+/Users/spencerhales/Desktop/cs240/chess/server/src/main/java/handler/BaseHandler.java
+/Users/spencerhales/Desktop/cs240/chess/server/src/main/java/handler/LoginHandler.java
+/Users/spencerhales/Desktop/cs240/chess/server/src/main/java/dataaccess/DataAccessException.java
+/Users/spencerhales/Desktop/cs240/chess/server/src/main/java/handler/CreateGameHandler.java
+/Users/spencerhales/Desktop/cs240/chess/server/src/main/java/service/GameService.java
+/Users/spencerhales/Desktop/cs240/chess/server/src/main/java/handler/LogoutHandler.java
+/Users/spencerhales/Desktop/cs240/chess/server/src/main/java/handler/ClearApplicationHandler.java
+/Users/spencerhales/Desktop/cs240/chess/server/src/main/java/Main.java

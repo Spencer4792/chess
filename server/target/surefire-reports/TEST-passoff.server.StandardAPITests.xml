@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="passoff.server.StandardAPITests" time="0.714" tests="21" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="21"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/Users/spencerhales/Desktop/cs240/chess/server/target/test-classes:/Users/spencerhales/Desktop/cs240/chess/server/target/classes:/Users/spencerhales/Desktop/cs240/chess/shared/target/shared.jar:/Users/spencerhales/Desktop/cs240/chess/shared/target/shared-tests.jar:/Users/spencerhales/.m2/repository/mysql/mysql-connector-java/8.0.30/mysql-connector-java-8.0.30.jar:/Users/spencerhales/.m2/repository/com/google/protobuf/protobuf-java/3.19.4/protobuf-java-3.19.4.jar:/Users/spencerhales/.m2/repository/org/slf4j/slf4j-simple/1.7.36/slf4j-simple-1.7.36.jar:/Users/spencerhales/.m2/repository/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar:/Users/spencerhales/.m2/repository/com/sparkjava/spark-core/2.9.3/spark-core-2.9.3.jar:/Users/spencerhales/.m2/repository/org/eclipse/jetty/jetty-server/9.4.31.v20200723/jetty-server-9.4.31.v20200723.jar:/Users/spencerhales/.m2/repository/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar:/Users/spencerhales/.m2/repository/org/eclipse/jetty/jetty-http/9.4.31.v20200723/jetty-http-9.4.31.v20200723.jar:/Users/spencerhales/.m2/repository/org/eclipse/jetty/jetty-util/9.4.31.v20200723/jetty-util-9.4.31.v20200723.jar:/Users/spencerhales/.m2/repository/org/eclipse/jetty/jetty-io/9.4.31.v20200723/jetty-io-9.4.31.v20200723.jar:/Users/spencerhales/.m2/repository/org/eclipse/jetty/jetty-webapp/9.4.31.v20200723/jetty-webapp-9.4.31.v20200723.jar:/Users/spencerhales/.m2/repository/org/eclipse/jetty/jetty-xml/9.4.31.v20200723/jetty-xml-9.4.31.v20200723.jar:/Users/spencerhales/.m2/repository/org/eclipse/jetty/jetty-servlet/9.4.31.v20200723/jetty-servlet-9.4.31.v20200723.jar:/Users/spencerhales/.m2/repository/org/eclipse/jetty/jetty-security/9.4.31.v20200723/jetty-security-9.4.31.v20200723.jar:/Users/spencerhales/.m2/repository/org/eclipse/jetty/websocket/websocket-server/9.4.31.v20200723/websocket-server-9.4.31.v20200723.jar:/Users/spencerhales/.m2/repository/org/eclipse/jetty/websocket/websocket-common/9.4.31.v20200723/websocket-common-9.4.31.v20200723.jar:/Users/spencerhales/.m2/repository/org/eclipse/jetty/websocket/websocket-client/9.4.31.v20200723/websocket-client-9.4.31.v20200723.jar:/Users/spencerhales/.m2/repository/org/eclipse/jetty/jetty-client/9.4.31.v20200723/jetty-client-9.4.31.v20200723.jar:/Users/spencerhales/.m2/repository/org/eclipse/jetty/websocket/websocket-servlet/9.4.31.v20200723/websocket-servlet-9.4.31.v20200723.jar:/Users/spencerhales/.m2/repository/org/eclipse/jetty/websocket/websocket-api/9.4.31.v20200723/websocket-api-9.4.31.v20200723.jar:/Users/spencerhales/.m2/repository/org/mindrot/jbcrypt/0.4/jbcrypt-0.4.jar:/Users/spencerhales/.m2/repository/org/glassfish/tyrus/bundles/tyrus-standalone-client/1.15/tyrus-standalone-client-1.15.jar:/Users/spencerhales/Desktop/cs240/chess/server/lib/passoff-dependencies.jar:/Users/spencerhales/.m2/repository/com/google/code/gson/gson/2.10.1/gson-2.10.1.jar:/Users/spencerhales/.m2/repository/org/junit/jupiter/junit-jupiter/5.9.2/junit-jupiter-5.9.2.jar:/Users/spencerhales/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.2/junit-jupiter-api-5.9.2.jar:/Users/spencerhales/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/spencerhales/.m2/repository/org/junit/platform/junit-platform-commons/1.9.2/junit-platform-commons-1.9.2.jar:/Users/spencerhales/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/spencerhales/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.9.2/junit-jupiter-params-5.9.2.jar:/Users/spencerhales/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.9.2/junit-jupiter-engine-5.9.2.jar:/Users/spencerhales/.m2/repository/org/junit/platform/junit-platform-engine/1.9.2/junit-platform-engine-1.9.2.jar:"/>
+    <property name="java.vm.vendor" value="Homebrew"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://github.com/Homebrew/homebrew-core/issues"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="java.vm.specification.version" value="21"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.boot.library.path" value="/usr/local/Cellar/openjdk/21.0.2/libexec/openjdk.jdk/Contents/Home/lib"/>
+    <property name="sun.java.command" value="/Users/spencerhales/Desktop/cs240/chess/server/target/surefire/surefirebooter-20240724205655761_6.jar /Users/spencerhales/Desktop/cs240/chess/server/target/surefire 2024-07-24T20-56-51_917-jvmRun1 surefire-20240724205655761_4tmp surefire_1-20240724205655761_5tmp"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/Users/spencerhales/Desktop/cs240/chess/server/target/test-classes:/Users/spencerhales/Desktop/cs240/chess/server/target/classes:/Users/spencerhales/Desktop/cs240/chess/shared/target/shared.jar:/Users/spencerhales/Desktop/cs240/chess/shared/target/shared-tests.jar:/Users/spencerhales/.m2/repository/mysql/mysql-connector-java/8.0.30/mysql-connector-java-8.0.30.jar:/Users/spencerhales/.m2/repository/com/google/protobuf/protobuf-java/3.19.4/protobuf-java-3.19.4.jar:/Users/spencerhales/.m2/repository/org/slf4j/slf4j-simple/1.7.36/slf4j-simple-1.7.36.jar:/Users/spencerhales/.m2/repository/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar:/Users/spencerhales/.m2/repository/com/sparkjava/spark-core/2.9.3/spark-core-2.9.3.jar:/Users/spencerhales/.m2/repository/org/eclipse/jetty/jetty-server/9.4.31.v20200723/jetty-server-9.4.31.v20200723.jar:/Users/spencerhales/.m2/repository/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar:/Users/spencerhales/.m2/repository/org/eclipse/jetty/jetty-http/9.4.31.v20200723/jetty-http-9.4.31.v20200723.jar:/Users/spencerhales/.m2/repository/org/eclipse/jetty/jetty-util/9.4.31.v20200723/jetty-util-9.4.31.v20200723.jar:/Users/spencerhales/.m2/repository/org/eclipse/jetty/jetty-io/9.4.31.v20200723/jetty-io-9.4.31.v20200723.jar:/Users/spencerhales/.m2/repository/org/eclipse/jetty/jetty-webapp/9.4.31.v20200723/jetty-webapp-9.4.31.v20200723.jar:/Users/spencerhales/.m2/repository/org/eclipse/jetty/jetty-xml/9.4.31.v20200723/jetty-xml-9.4.31.v20200723.jar:/Users/spencerhales/.m2/repository/org/eclipse/jetty/jetty-servlet/9.4.31.v20200723/jetty-servlet-9.4.31.v20200723.jar:/Users/spencerhales/.m2/repository/org/eclipse/jetty/jetty-security/9.4.31.v20200723/jetty-security-9.4.31.v20200723.jar:/Users/spencerhales/.m2/repository/org/eclipse/jetty/websocket/websocket-server/9.4.31.v20200723/websocket-server-9.4.31.v20200723.jar:/Users/spencerhales/.m2/repository/org/eclipse/jetty/websocket/websocket-common/9.4.31.v20200723/websocket-common-9.4.31.v20200723.jar:/Users/spencerhales/.m2/repository/org/eclipse/jetty/websocket/websocket-client/9.4.31.v20200723/websocket-client-9.4.31.v20200723.jar:/Users/spencerhales/.m2/repository/org/eclipse/jetty/jetty-client/9.4.31.v20200723/jetty-client-9.4.31.v20200723.jar:/Users/spencerhales/.m2/repository/org/eclipse/jetty/websocket/websocket-servlet/9.4.31.v20200723/websocket-servlet-9.4.31.v20200723.jar:/Users/spencerhales/.m2/repository/org/eclipse/jetty/websocket/websocket-api/9.4.31.v20200723/websocket-api-9.4.31.v20200723.jar:/Users/spencerhales/.m2/repository/org/mindrot/jbcrypt/0.4/jbcrypt-0.4.jar:/Users/spencerhales/.m2/repository/org/glassfish/tyrus/bundles/tyrus-standalone-client/1.15/tyrus-standalone-client-1.15.jar:/Users/spencerhales/Desktop/cs240/chess/server/lib/passoff-dependencies.jar:/Users/spencerhales/.m2/repository/com/google/code/gson/gson/2.10.1/gson-2.10.1.jar:/Users/spencerhales/.m2/repository/org/junit/jupiter/junit-jupiter/5.9.2/junit-jupiter-5.9.2.jar:/Users/spencerhales/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.2/junit-jupiter-api-5.9.2.jar:/Users/spencerhales/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/spencerhales/.m2/repository/org/junit/platform/junit-platform-commons/1.9.2/junit-platform-commons-1.9.2.jar:/Users/spencerhales/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/spencerhales/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.9.2/junit-jupiter-params-5.9.2.jar:/Users/spencerhales/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.9.2/junit-jupiter-engine-5.9.2.jar:/Users/spencerhales/.m2/repository/org/junit/platform/junit-platform-engine/1.9.2/junit-platform-engine-1.9.2.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/Users/spencerhales"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2024-01-16"/>
+    <property name="java.home" value="/usr/local/Cellar/openjdk/21.0.2/libexec/openjdk.jdk/Contents/Home"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/Users/spencerhales/Desktop/cs240/chess/server"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="apple.awt.application.name" value="ForkedBooter"/>
+    <property name="surefire.real.class.path" value="/Users/spencerhales/Desktop/cs240/chess/server/target/surefire/surefirebooter-20240724205655761_6.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.runtime.version" value="21.0.2"/>
+    <property name="user.name" value="spencerhales"/>
+    <property name="stdout.encoding" value="UTF-8"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="14.5"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Homebrew"/>
+    <property name="localRepository" value="/Users/spencerhales/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/Homebrew/homebrew-core/issues"/>
+    <property name="jetty.git.hash" value="450ba27947e13e66baa8cd1ce7e85a4461cacc1d"/>
+    <property name="java.io.tmpdir" value="/var/folders/m0/pm77cc6964j9nym9807n1zkr0000gn/T/"/>
+    <property name="java.version" value="21.0.2"/>
+    <property name="user.dir" value="/Users/spencerhales/Desktop/cs240/chess/server"/>
+    <property name="os.arch" value="x86_64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/Users/spencerhales/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="UTF-8"/>
+    <property name="java.vendor" value="Homebrew"/>
+    <property name="java.vm.version" value="21.0.2"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.class.version" value="65.0"/>
+  </properties>
+  <testcase name="staticFiles" classname="passoff.server.StandardAPITests" time="0.183">
+    <system-out><![CDATA[Started test HTTP server on 54398
+]]></system-out>
+    <system-err><![CDATA[[main] INFO spark.staticfiles.StaticFilesConfiguration - StaticResourceHandler configured with folder = /web
+[Thread-1] INFO org.eclipse.jetty.util.log - Logging initialized @623ms to org.eclipse.jetty.util.log.Slf4jLog
+[Thread-1] INFO spark.embeddedserver.jetty.EmbeddedJettyServer - == Spark has ignited ...
+[Thread-1] INFO spark.embeddedserver.jetty.EmbeddedJettyServer - >> Listening on 0.0.0.0:54398
+[Thread-1] INFO org.eclipse.jetty.server.Server - jetty-9.4.31.v20200723; built: 2020-07-23T17:57:36.812Z; git: 450ba27947e13e66baa8cd1ce7e85a4461cacc1d; jvm 21.0.2
+[Thread-1] INFO org.eclipse.jetty.server.session - DefaultSessionIdManager workerName=node0
+[Thread-1] INFO org.eclipse.jetty.server.session - No SessionScavenger set, using defaults
+[Thread-1] INFO org.eclipse.jetty.server.session - node0 Scavenging every 600000ms
+[Thread-1] INFO org.eclipse.jetty.server.AbstractConnector - Started ServerConnector@1e63337c{HTTP/1.1, (http/1.1)}{0.0.0.0:54398}
+[Thread-1] INFO org.eclipse.jetty.server.Server - Started @784ms
+]]></system-err>
+  </testcase>
+  <testcase name="successLogin" classname="passoff.server.StandardAPITests" time="0.01"/>
+  <testcase name="loginWrongPassword" classname="passoff.server.StandardAPITests" time="0.012"/>
+  <testcase name="loginInvalidUser" classname="passoff.server.StandardAPITests" time="0.007"/>
+  <testcase name="successRegister" classname="passoff.server.StandardAPITests" time="0.007"/>
+  <testcase name="registerTwice" classname="passoff.server.StandardAPITests" time="0.008"/>
+  <testcase name="failRegister" classname="passoff.server.StandardAPITests" time="0.006"/>
+  <testcase name="successLogout" classname="passoff.server.StandardAPITests" time="0.006"/>
+  <testcase name="failLogout" classname="passoff.server.StandardAPITests" time="0.007"/>
+  <testcase name="goodCreate" classname="passoff.server.StandardAPITests" time="0.011"/>
+  <testcase name="badAuthCreate" classname="passoff.server.StandardAPITests" time="0.008"/>
+  <testcase name="goodJoin" classname="passoff.server.StandardAPITests" time="0.031"/>
+  <testcase name="badColorJoin" classname="passoff.server.StandardAPITests" time="0.007"/>
+  <testcase name="badAuthJoin" classname="passoff.server.StandardAPITests" time="0.008"/>
+  <testcase name="badGameIDJoin" classname="passoff.server.StandardAPITests" time="0.007"/>
+  <testcase name="stealColorJoin" classname="passoff.server.StandardAPITests" time="0.01"/>
+  <testcase name="noGamesList" classname="passoff.server.StandardAPITests" time="0.004"/>
+  <testcase name="gamesList" classname="passoff.server.StandardAPITests" time="0.028"/>
+  <testcase name="uniqueAuthorizationTokens" classname="passoff.server.StandardAPITests" time="0.013"/>
+  <testcase name="clearData" classname="passoff.server.StandardAPITests" time="0.019"/>
+  <testcase name="multipleClear" classname="passoff.server.StandardAPITests" time="0.008"/>
+</testsuite>

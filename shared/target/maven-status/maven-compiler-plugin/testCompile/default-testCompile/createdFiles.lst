@@ -1,0 +1,10 @@
+passoff/chess/TestUtilities.class
+passoff/chess/piece/QueenMoveTests.class
+passoff/chess/ChessBoardTests.class
+passoff/chess/piece/PawnMoveTests.class
+passoff/chess/piece/BishopMoveTests.class
+passoff/chess/ChessMoveTests.class
+passoff/chess/piece/KnightMoveTests.class
+passoff/chess/piece/KingMoveTests.class
+passoff/chess/ChessPositionTests.class
+passoff/chess/piece/RookMoveTests.class

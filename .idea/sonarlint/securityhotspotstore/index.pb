@@ -39,3 +39,5 @@ a
 -server/src/main/java/service/UserService.java,a/8/a8700e81e1eb2180e7427c199a2e2a92de0b6161
 ]
 -server/src/main/java/service/GameService.java,e/e/ee958dc93989023d27c9ff27f8725605e0e3ad3d
+>
+server/pom.xml,0/8/08a8b343eb3d041b4e874e74bf19e4275b4be110
