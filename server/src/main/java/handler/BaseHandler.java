@@ -6,14 +6,14 @@ import spark.Response;
 import spark.Route;
 
 public abstract class BaseHandler implements Route {
-  protected static final Gson gson = new Gson();
+  protected static final Gson GSON = new Gson();
 
   protected String serialize(Object obj) {
-    return gson.toJson(obj);
+    return GSON.toJson(obj);
   }
 
   protected <T> T deserialize(String json, Class<T> classOfT) {
-    return gson.fromJson(json, classOfT);
+    return GSON.fromJson(json, classOfT);
   }
 
   protected void setResponseHeaders(Response res) {
