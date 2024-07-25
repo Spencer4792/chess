@@ -37,7 +37,11 @@ public class Server {
         Spark.put("/game", new JoinGameHandler(gameService));
         Spark.delete("/db", new ClearApplicationHandler(clearService));
 
-        Spark.exception(Exception.class, this::exceptionHandler);
+        Spark.exception(Exception.class, (e, req, res) -> {
+            e.printStackTrace();
+            res.status(500);
+            res.body("Internal Server Error");
+        });
 
         Spark.awaitInitialization();
         return Spark.port();
