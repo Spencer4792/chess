@@ -1,11 +1,5 @@
 package chess;
 
-/**
- * Represents moving a chess piece on a chessboard
- * <p>
- * Note: You can add to this class, but you may not alter
- * signature of the existing methods.
- */
 public class ChessMove {
     private final ChessPosition startPosition;
     private final ChessPosition endPosition;
@@ -31,8 +25,12 @@ public class ChessMove {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         ChessMove chessMove = (ChessMove) o;
         return startPosition.equals(chessMove.startPosition) &&
                 endPosition.equals(chessMove.endPosition) &&

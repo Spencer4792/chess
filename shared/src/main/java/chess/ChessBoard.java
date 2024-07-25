@@ -2,7 +2,6 @@ package chess;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 public class ChessBoard {
     private final Map<ChessPosition, ChessPiece> board;
@@ -19,7 +18,6 @@ public class ChessBoard {
         }
     }
 
-    //This allows collection of board piece locations when resetting the chess board
     public ChessPiece getPiece(ChessPosition position) {
         return board.get(position);
     }
@@ -53,8 +51,12 @@ public class ChessBoard {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         ChessBoard that = (ChessBoard) o;
         return board.equals(that.board);
     }
