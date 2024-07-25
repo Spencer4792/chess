@@ -9,12 +9,6 @@ Y
 )shared/src/main/java/chess/ChessMove.java,c/5/c52f67c55315a844e23611bb848b35269aaedb66
 Z
 *shared/src/main/java/chess/ChessPiece.java,c/0/c02b93065e1c720b0a958f6a9aa91f709ca1cca9
-j
-:shared/src/test/java/passoff/chess/game/MakeMoveTests.java,9/1/9175234a3f303bad2cdae147fbe2e704f0f9016d
-i
-9shared/src/test/java/passoff/chess/game/FullGameTest.java,3/0/304a628b79462cebf64407482375f8e693e3f5cc
-l
-<shared/src/test/java/passoff/chess/game/GameStatusTests.java,3/d/3d8e6e324b6bb763d5d4a1a3f28e088c47790aa0
 ]
 -shared/src/main/java/chess/ChessPosition.java,3/b/3b013a24b64d343e15bac32b29d3d69c6c135d82
 X
@@ -27,3 +21,11 @@ N
 test-dependencies-assembly.xml,2/0/209b043cca95d30e72a9f430305e3470dc6a4af1
 7
 pom.xml,4/4/442292b8a7efeabbe4cc176709b833b1792140ec
+W
+'server/src/main/java/server/Server.java,8/0/8036b8cb9ce2e6760f04e2a3b475b260935bb7b8
+h
+8server/src/main/java/dataaccess/DataAccessException.java,2/e/2ea31417f70d86666411d348ab6c6846566a4c92
+e
+5server/src/main/java/dataaccess/MemoryDataAccess.java,1/7/1751b4bf60a884561e60513671f7d47a99fc24d8
+i
+9server/src/main/java/handler/ClearApplicationHandler.java,8/b/8bd4766fe7756ca4ed183f122465700cdc8cc685
