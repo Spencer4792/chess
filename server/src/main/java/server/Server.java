@@ -37,6 +37,11 @@ public class Server {
         Spark.put("/game", new JoinGameHandler(gameService));
         Spark.delete("/db", new ClearApplicationHandler(clearService));
 
+        Spark.get("/", (req, res) -> {
+            res.redirect("index.html");
+            return null;
+        });
+
         Spark.exception(Exception.class, (e, req, res) -> {
             e.printStackTrace();
             res.status(500);
