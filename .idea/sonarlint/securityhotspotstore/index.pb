@@ -33,3 +33,9 @@ a
 1server/src/main/java/handler/RegisterHandler.java,0/8/087c56b1a00b79938119af1f6dc7d02c4a6a9771
 i
 9server/src/test/java/passoff/server/StandardAPITests.java,9/4/94f243c94f4488610888d7e06be7837a9ed55c4d
+a
+1server/src/main/java/handler/JoinGameHandler.java,8/7/876cdb5895259144ebb30a98c04871edfb42ada1
+]
+-server/src/main/java/service/UserService.java,a/8/a8700e81e1eb2180e7427c199a2e2a92de0b6161
+]
+-server/src/main/java/service/GameService.java,e/e/ee958dc93989023d27c9ff27f8725605e0e3ad3d

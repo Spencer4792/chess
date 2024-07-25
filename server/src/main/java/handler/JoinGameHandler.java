@@ -4,6 +4,7 @@ import chess.ChessGame;
 import service.GameService;
 import spark.Request;
 import spark.Response;
+import dataaccess.DataAccessException;
 
 public class JoinGameHandler extends BaseHandler {
   private final GameService gameService;
@@ -15,15 +16,29 @@ public class JoinGameHandler extends BaseHandler {
   @Override
   public Object handle(Request req, Response res) throws Exception {
     setResponseHeaders(res);
+    var joinRequest = deserialize(req.body(), JoinGameRequest.class);
     String authToken = req.headers("Authorization");
-    var joinGameRequest = deserialize(req.body(), JoinGameRequest.class);
+
     try {
-      gameService.joinGame(authToken, joinGameRequest.gameID, joinGameRequest.playerColor);
+      if (joinRequest.playerColor() == null && joinRequest.playerColor() != ChessGame.TeamColor.WHITE && joinRequest.playerColor() != ChessGame.TeamColor.BLACK) {
+        res.status(400);
+        return serialize(new ErrorResult("Error: bad request"));
+      }
+
+      gameService.joinGame(authToken, joinRequest.gameID(), joinRequest.playerColor());
       res.status(200);
       return "{}";
-    } catch (Exception e) {
-      res.status(403);
-      return serialize(new ErrorResult(e.getMessage()));
+    } catch (DataAccessException e) {
+      if (e.getMessage().contains("unauthorized")) {
+        res.status(401);
+      } else if (e.getMessage().contains("already taken")) {
+        res.status(403);
+      } else if (e.getMessage().contains("bad request")) {
+        res.status(400);
+      } else {
+        res.status(500);
+      }
+      return serialize(new ErrorResult("Error: " + e.getMessage()));
     }
   }
 
