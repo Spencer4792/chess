@@ -1,9 +1,6 @@
 
-
-java:S1192#"FDefine a constant instead of duplicating this literal "/game" 3 times.(¦ëÕJ$dc86795e-d9b1-471c-93ac-6fea3b1a8425
-N
-java:S3985<"1Remove this unused private "ErrorResponse" class.(’›È£8Åºëß2
-N
-java:S1128"1Remove this unused import 'com.google.gson.Gson'.(–§8Åºëß2
-g
-java:S1068="+Remove this unused "message" private field.(Úæê»J$2517e719-dca3-4f74-b81f-2a8727b25f3e
+k
+java:S1192I"NDefine a constant instead of duplicating this literal "Authorization" 4 times.(§¨éú8Î×©×2
+h
+java:S1192""FDefine a constant instead of duplicating this literal "/game" 3 times.(˜Ó€•şÿÿÿÿ8Ï×©×2
+F	java:S106"+Replace this use of System.err by a logger.(ş»¬8ß×©×2
