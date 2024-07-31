@@ -1,0 +1,9 @@
+
+k	java:S106"+Replace this use of System.out by a logger.(íŸƒÿÿÿÿÿJ$9ab30ee6-7428-40ec-88a9-7c2fa3badcd0
+i
+java:S3011",This accessibility update should be removed.(ßÏÅÏJ$fe1026c3-ae14-4faa-b732-ebe0c02ad539
+x
+java:S2696"6Make the enclosing method "static" or remove this set.(İ÷úÿÿÿÿJ$14c6b06d-401e-4680-8cb4-f4100b5b2c04
+e	java:S108 ")Either remove or fill this block of code.(¿ÊáàJ$ce17124e-1d4f-43e8-8c95-2aee1a4cf9cf
+g
+java:S5960<"+Remove this assertion from production code.(´şÅ½J$07ad996c-78e2-43d2-bbe6-a82463d577f3

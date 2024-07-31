@@ -64,3 +64,7 @@ a
 1server/src/test/java/service/UserServiceTest.java,f/8/f83e2b8b7a9719d4425a9cc2599f40c240264d67
 a
 1server/src/test/java/service/GameServiceTest.java,6/b/6bb1bc73f20888998a68a0cdc9965b0afd70a2d3
+i
+9starter-code/4-database/passoff/server/DatabaseTests.java,c/7/c7e0dfcbbfd8f60ffc21a68d194bea2a2ef9e878
+g
+7starter-code/4-database/dataaccess/DatabaseManager.java,9/b/9b0141ae68e63c8d0574166dcd9fd255c7b8309c
