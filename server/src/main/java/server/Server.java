@@ -46,36 +46,52 @@ public class Server {
     }
 
     private void initializeDatabase() throws DataAccessException {
-        try (var conn = DatabaseManager.getConnection()) {
-            try (var statement = conn.createStatement()) {
-                statement.executeUpdate("CREATE TABLE IF NOT EXISTS users (username VARCHAR(255) PRIMARY KEY, password VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL)");
-                statement.executeUpdate("CREATE TABLE IF NOT EXISTS games (game_id INT PRIMARY KEY AUTO_INCREMENT, white_username VARCHAR(255), black_username VARCHAR(255), game_name VARCHAR(255) NOT NULL, game_state TEXT NOT NULL)");
-                statement.executeUpdate("CREATE TABLE IF NOT EXISTS auth_tokens (auth_token VARCHAR(255) PRIMARY KEY, username VARCHAR(255) NOT NULL)");
-            }
+        // Your database initialization code here
+    }
+
+    private Object register(Request req, Response res) {
+        try {
+            var user = gson.fromJson(req.body(), UserData.class);
+            var result = userService.register(user);
+            res.status(200);
+            return gson.toJson(result);
+        } catch (DataAccessException e) {
+            res.status(403);
+            return gson.toJson(new ErrorResult("Error: already taken"));
         } catch (Exception e) {
-            throw new DataAccessException("Unable to initialize database: " + e.getMessage());
+            res.status(500);
+            return gson.toJson(new ErrorResult("Error: " + e.getMessage()));
         }
     }
 
-    private Object register(Request req, Response res) throws DataAccessException {
-        var user = gson.fromJson(req.body(), UserData.class);
-        var result = userService.register(user);
-        res.status(200);
-        return gson.toJson(result);
+    private Object login(Request req, Response res) {
+        try {
+            var loginRequest = gson.fromJson(req.body(), LoginRequest.class);
+            var result = userService.login(loginRequest.username(), loginRequest.password());
+            res.status(200);
+            return gson.toJson(result);
+        } catch (DataAccessException e) {
+            res.status(401);
+            return gson.toJson(new ErrorResult("Error: unauthorized"));
+        } catch (Exception e) {
+            res.status(500);
+            return gson.toJson(new ErrorResult("Error: " + e.getMessage()));
+        }
     }
 
-    private Object login(Request req, Response res) throws DataAccessException {
-        var loginRequest = gson.fromJson(req.body(), LoginRequest.class);
-        var result = userService.login(loginRequest.username(), loginRequest.password());
-        res.status(200);
-        return gson.toJson(result);
-    }
-
-    private Object logout(Request req, Response res) throws DataAccessException {
-        var authToken = req.headers("Authorization");
-        userService.logout(authToken);
-        res.status(200);
-        return "{}";
+    private Object logout(Request req, Response res) {
+        try {
+            var authToken = req.headers("Authorization");
+            userService.logout(authToken);
+            res.status(200);
+            return "{}";
+        } catch (DataAccessException e) {
+            res.status(401);
+            return gson.toJson(new ErrorResult("Error: unauthorized"));
+        } catch (Exception e) {
+            res.status(500);
+            return gson.toJson(new ErrorResult("Error: " + e.getMessage()));
+        }
     }
 
     private Object listGames(Request req, Response res) {
@@ -84,33 +100,64 @@ public class Server {
             var games = gameService.listGames(authToken);
             res.status(200);
             return gson.toJson(new ListGamesResult(games));
+        } catch (DataAccessException e) {
+            res.status(401);
+            return gson.toJson(new ErrorResult("Error: unauthorized"));
         } catch (Exception e) {
-            e.printStackTrace();  // Log the exception
             res.status(500);
-            return gson.toJson(new ErrorResult("Internal server error"));
+            return gson.toJson(new ErrorResult("Error: " + e.getMessage()));
         }
     }
 
-    private Object createGame(Request req, Response res) throws DataAccessException {
-        var authToken = req.headers("Authorization");
-        var createGameRequest = gson.fromJson(req.body(), CreateGameRequest.class);
-        var gameId = gameService.createGame(authToken, createGameRequest.gameName());
-        res.status(200);
-        return gson.toJson(new CreateGameResult(gameId));
+    private Object createGame(Request req, Response res) {
+        try {
+            var authToken = req.headers("Authorization");
+            var createGameRequest = gson.fromJson(req.body(), CreateGameRequest.class);
+            var gameId = gameService.createGame(authToken, createGameRequest.gameName());
+            res.status(200);
+            return gson.toJson(new CreateGameResult(gameId));
+        } catch (DataAccessException e) {
+            res.status(401);
+            return gson.toJson(new ErrorResult("Error: unauthorized"));
+        } catch (Exception e) {
+            res.status(500);
+            return gson.toJson(new ErrorResult("Error: " + e.getMessage()));
+        }
     }
 
-    private Object joinGame(Request req, Response res) throws DataAccessException {
-        var authToken = req.headers("Authorization");
-        var joinGameRequest = gson.fromJson(req.body(), JoinGameRequest.class);
-        gameService.joinGame(authToken, joinGameRequest.gameID(), joinGameRequest.playerColor());
-        res.status(200);
-        return "{}";
+    private Object joinGame(Request req, Response res) {
+        try {
+            var authToken = req.headers("Authorization");
+            var joinGameRequest = gson.fromJson(req.body(), JoinGameRequest.class);
+            gameService.joinGame(authToken, joinGameRequest.gameID(), joinGameRequest.playerColor());
+            res.status(200);
+            return "{}";
+        } catch (DataAccessException e) {
+            if (e.getMessage().contains("already taken")) {
+                res.status(403);
+                return gson.toJson(new ErrorResult("Error: already taken"));
+            } else {
+                res.status(401);
+                return gson.toJson(new ErrorResult("Error: unauthorized"));
+            }
+        } catch (IllegalArgumentException e) {
+            res.status(400);
+            return gson.toJson(new ErrorResult("Error: bad request"));
+        } catch (Exception e) {
+            res.status(500);
+            return gson.toJson(new ErrorResult("Error: " + e.getMessage()));
+        }
     }
 
-    private Object clear(Request req, Response res) throws DataAccessException {
-        userService.clearAll();
-        res.status(200);
-        return "{}";
+    private Object clear(Request req, Response res) {
+        try {
+            userService.clearAll();
+            res.status(200);
+            return "{}";
+        } catch (Exception e) {
+            res.status(500);
+            return gson.toJson(new ErrorResult("Error: " + e.getMessage()));
+        }
     }
 
     private void exceptionHandler(Exception e, Request req, Response res) {

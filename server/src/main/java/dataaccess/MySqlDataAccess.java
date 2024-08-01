@@ -244,22 +244,28 @@ public class MySqlDataAccess implements DataAccess {
       return board;
     }
   }
-
   private static class ChessPositionAdapter implements JsonSerializer<ChessPosition>, JsonDeserializer<ChessPosition> {
     @Override
     public JsonElement serialize(ChessPosition src, Type typeOfSrc, JsonSerializationContext context) {
-      JsonObject jsonObject = new JsonObject();
-      jsonObject.addProperty("row", src.getRow());
-      jsonObject.addProperty("col", src.getCol());
-      return jsonObject;
+      return new JsonPrimitive(src.toString());
     }
 
     @Override
     public ChessPosition deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
-      JsonObject jsonObject = json.getAsJsonObject();
-      int row = jsonObject.get("row").getAsInt();
-      int col = jsonObject.get("col").getAsInt();
-      return new ChessPosition(row, col);
+      String positionString = json.getAsString();
+      if (positionString.startsWith("ChessPosition{")) {
+        // Parse the string representation
+        String[] parts = positionString.substring(14, positionString.length() - 1).split(", ");
+        int row = Integer.parseInt(parts[0].split("=")[1]);
+        int col = Integer.parseInt(parts[1].split("=")[1]);
+        return new ChessPosition(row, col);
+      } else {
+        // If it's a JSON object, parse it as before
+        JsonObject jsonObject = json.getAsJsonObject();
+        int row = jsonObject.get("row").getAsInt();
+        int col = jsonObject.get("col").getAsInt();
+        return new ChessPosition(row, col);
+      }
     }
   }
 
