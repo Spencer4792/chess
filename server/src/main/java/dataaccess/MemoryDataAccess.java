@@ -16,7 +16,7 @@ public class MemoryDataAccess implements DataAccess {
   }
 
   @Override
-  public void addUser(UserData user) throws DataAccessException {
+  public void createUser(UserData user) throws DataAccessException {
     if (users.containsKey(user.username())) {
       throw new DataAccessException("Username already exists");
     }
@@ -29,7 +29,7 @@ public class MemoryDataAccess implements DataAccess {
   }
 
   @Override
-  public void addGame(GameData game) throws DataAccessException {
+  public void createGame(GameData game) throws DataAccessException {
     if (games.containsKey(game.gameID())) {
       throw new DataAccessException("Game ID already exists");
     }
@@ -42,7 +42,7 @@ public class MemoryDataAccess implements DataAccess {
   }
 
   @Override
-  public List<GameData> listGames() throws DataAccessException {
+  public Collection<GameData> listGames() throws DataAccessException {
     return new ArrayList<>(games.values());
   }
 
@@ -55,7 +55,7 @@ public class MemoryDataAccess implements DataAccess {
   }
 
   @Override
-  public void addAuth(AuthData auth) throws DataAccessException {
+  public void createAuth(AuthData auth) throws DataAccessException {
     auths.put(auth.authToken(), auth);
   }
 
