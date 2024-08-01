@@ -3,7 +3,7 @@ package service;
 import chess.ChessGame;
 import dataaccess.*;
 import model.*;
-import java.util.List;
+import java.util.Collection;
 import java.util.UUID;
 
 public class GameService {
@@ -13,7 +13,7 @@ public class GameService {
     this.dataAccess = dataAccess;
   }
 
-  public List<GameData> listGames(String authToken) throws DataAccessException {
+  public Collection<GameData> listGames(String authToken) throws DataAccessException {
     if (dataAccess.getAuth(authToken) == null) {
       throw new DataAccessException("Error: unauthorized");
     }
@@ -29,7 +29,7 @@ public class GameService {
     }
     int gameID = Math.abs(UUID.randomUUID().hashCode());
     GameData newGame = new GameData(gameID, null, null, gameName, new ChessGame());
-    dataAccess.addGame(newGame);
+    dataAccess.createGame(newGame);
     return gameID;
   }
 
