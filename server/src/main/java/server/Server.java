@@ -78,11 +78,17 @@ public class Server {
         return "{}";
     }
 
-    private Object listGames(Request req, Response res) throws DataAccessException {
-        var authToken = req.headers("Authorization");
-        var games = gameService.listGames(authToken);
-        res.status(200);
-        return gson.toJson(new ListGamesResult(games));
+    private Object listGames(Request req, Response res) {
+        try {
+            var authToken = req.headers("Authorization");
+            var games = gameService.listGames(authToken);
+            res.status(200);
+            return gson.toJson(new ListGamesResult(games));
+        } catch (Exception e) {
+            e.printStackTrace();  // Log the exception
+            res.status(500);
+            return gson.toJson(new ErrorResult("Internal server error"));
+        }
     }
 
     private Object createGame(Request req, Response res) throws DataAccessException {

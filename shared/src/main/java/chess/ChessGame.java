@@ -183,4 +183,8 @@ public class ChessGame {
     public ChessMove getLastMove() {
         return lastMove;
     }
+
+    public void setLastMove(ChessMove lastMove) {
+        this.lastMove = lastMove;
+    }
 }
