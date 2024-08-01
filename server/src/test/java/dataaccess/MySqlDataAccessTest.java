@@ -6,6 +6,7 @@ import model.AuthData;
 import chess.ChessGame;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
+import java.util.Collection;
 
 public class MySqlDataAccessTest {
   private static MySqlDataAccess dataAccess;
