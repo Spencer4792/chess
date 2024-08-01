@@ -4,7 +4,7 @@ import service.GameService;
 import spark.Request;
 import spark.Response;
 import model.GameData;
-import java.util.List;
+import java.util.Collection;
 
 public class ListGamesHandler extends BaseHandler {
   private final GameService gameService;
@@ -18,7 +18,7 @@ public class ListGamesHandler extends BaseHandler {
     setResponseHeaders(res);
     String authToken = req.headers("Authorization");
     try {
-      List<GameData> games = gameService.listGames(authToken);
+      Collection<GameData> games = gameService.listGames(authToken);
       res.status(200);
       return serialize(new ListGamesResult(games));
     } catch (Exception e) {
@@ -27,6 +27,6 @@ public class ListGamesHandler extends BaseHandler {
     }
   }
 
-  private record ListGamesResult(List<GameData> games) {}
+  private record ListGamesResult(Collection<GameData> games) {}
   private record ErrorResult(String message) {}
 }

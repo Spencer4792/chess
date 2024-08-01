@@ -4,6 +4,7 @@ import service.UserService;
 import spark.Request;
 import spark.Response;
 import model.AuthData;
+import model.UserData;
 import dataaccess.DataAccessException;
 
 public class RegisterHandler extends BaseHandler {
@@ -24,7 +25,8 @@ public class RegisterHandler extends BaseHandler {
         return serialize(new ErrorResult("Error: bad request"));
       }
 
-      AuthData authData = userService.register(registerRequest.username, registerRequest.password, registerRequest.email);
+      UserData userData = new UserData(registerRequest.username, registerRequest.password, registerRequest.email);
+      AuthData authData = userService.register(userData);
       res.status(200);
       return serialize(new RegisterResult(authData.username(), authData.authToken()));
     } catch (DataAccessException e) {
