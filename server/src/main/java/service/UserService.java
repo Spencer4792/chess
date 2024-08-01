@@ -2,6 +2,7 @@ package service;
 
 import dataaccess.*;
 import model.*;
+import org.mindrot.jbcrypt.BCrypt;
 import java.util.UUID;
 
 public class UserService {
@@ -11,34 +12,37 @@ public class UserService {
     this.dataAccess = dataAccess;
   }
 
-  public AuthData register(String username, String password, String email) throws DataAccessException {
-    if (username == null || username.isEmpty() || password == null || password.isEmpty() || email == null || email.isEmpty()) {
+  public AuthData register(UserData user) throws DataAccessException {
+    if (user.username() == null || user.username().isEmpty() ||
+            user.password() == null || user.password().isEmpty() ||
+            user.email() == null || user.email().isEmpty()) {
       throw new DataAccessException("Error: bad request");
     }
 
-    if (dataAccess.getUser(username) != null) {
+    if (dataAccess.getUser(user.username()) != null) {
       throw new DataAccessException("Error: already taken");
     }
 
-    UserData newUser = new UserData(username, password, email);
-    dataAccess.addUser(newUser);
+    String hashedPassword = BCrypt.hashpw(user.password(), BCrypt.gensalt());
+    UserData newUser = new UserData(user.username(), hashedPassword, user.email());
+    dataAccess.createUser(newUser);
 
     String authToken = UUID.randomUUID().toString();
-    AuthData authData = new AuthData(authToken, username);
-    dataAccess.addAuth(authData);
+    AuthData authData = new AuthData(authToken, user.username());
+    dataAccess.createAuth(authData);
 
     return authData;
   }
 
   public AuthData login(String username, String password) throws DataAccessException {
     UserData user = dataAccess.getUser(username);
-    if (user == null || !user.password().equals(password)) {
+    if (user == null || !BCrypt.checkpw(password, user.password())) {
       throw new DataAccessException("Error: unauthorized");
     }
 
     String authToken = UUID.randomUUID().toString();
     AuthData authData = new AuthData(authToken, username);
-    dataAccess.addAuth(authData);
+    dataAccess.createAuth(authData);
 
     return authData;
   }
@@ -49,5 +53,9 @@ public class UserService {
     }
 
     dataAccess.deleteAuth(authToken);
+  }
+
+  public void clearAll() throws DataAccessException {
+    dataAccess.clear();
   }
 }

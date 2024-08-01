@@ -1,6 +1,6 @@
 
 ‘
-java:S1192I"NDefine a constant instead of duplicating this literal "Authorization" 4 times.(§¨éú8«÷ÚÛ2J$67004b1f-1605-4f26-bca8-0c8e72c1a8ef
+java:S1192I"NDefine a constant instead of duplicating this literal "Authorization" 4 times.(§¨éú8«÷ÚÛ2J$375da653-9d0a-4c40-aeca-7836efc9fab4
 
-java:S1192""FDefine a constant instead of duplicating this literal "/game" 3 times.(˜Ó€•şÿÿÿÿ8«÷ÚÛ2J$52878f46-3360-4163-a6f4-dca4cb2e862f
-l	java:S106"+Replace this use of System.err by a logger.(ş»¬8º÷ÚÛ2J$6dffff60-ee31-4625-8fc2-f47ed113e463
+java:S1192""FDefine a constant instead of duplicating this literal "/game" 3 times.(˜Ó€•şÿÿÿÿ8«÷ÚÛ2J$12e6750b-4ccc-4198-b391-80ce1db8ede9
+l	java:S106"+Replace this use of System.err by a logger.(ş»¬8º÷ÚÛ2J$ff9dc2dd-6353-46e6-b7a5-a1c21756fd8e

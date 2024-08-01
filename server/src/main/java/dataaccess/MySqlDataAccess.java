@@ -5,7 +5,7 @@ import model.GameData;
 import model.AuthData;
 import chess.ChessGame;
 import com.google.gson.Gson;
-import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.*;
 import java.util.ArrayList;
