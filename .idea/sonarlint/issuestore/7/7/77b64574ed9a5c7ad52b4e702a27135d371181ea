@@ -1,9 +1,15 @@
 
-a
-java:S69050"Don't use the query "SELECT *".(øÁK8¨ÉøÕ2J$33f2b95b-147c-4857-a50f-0689103ec3b1
-g
-java:S6905U"Don't use the query "SELECT *".(¾¢µ’úÿÿÿÿ8±ÉøÕ2J$866c9bdb-2d18-46fc-a80f-37135c28e287
-g
-java:S6905n"Don't use the query "SELECT *".(á­“õûÿÿÿÿ8¶ÉøÕ2J$d475aad6-78a0-403e-b2c1-8a761aee96de
-h
-java:S6905 "Don't use the query "SELECT *".(¯…†şÿÿÿÿ8ÁÉøÕ2J$bfe9f242-4e6a-4a19-b9cf-428f1dfca04e
+’
+java:S1192Ä"IDefine a constant instead of duplicating this literal "lastMove" 4 times.(±œ¥Æùÿÿÿÿ8¦Âùı2J$b3e58a08-b01a-4256-816a-d32a4088bf35
+“
+java:S1192£"ODefine a constant instead of duplicating this literal "promotionPiece" 3 times.(¢§ÓÕ8¦Âùı2J$bc7a0443-478c-4cd3-973f-6df404ea1559
+‰
+java:S1192Â"FDefine a constant instead of duplicating this literal "board" 4 times.(§Äà[8¨Âùı2J$b22b996d-1af3-475f-a9e5-4508dc139b78
+b
+java:S69055"Don't use the query "SELECT *".(¨Ã¼8ÄÂùı2J$fb5c8ec2-4b13-4c7d-9bf3-4c0199ad7923
+b
+java:S6905Z"Don't use the query "SELECT *".(•ù˜ò8ÏÂùı2J$be6671c5-7513-43b9-991c-148915e59c71
+A
+java:S6905r"Don't use the query "SELECT *".(å±’Àüÿÿÿÿ8«Ïş2
+b
+java:S6905£"Don't use the query "SELECT *".(Æàï,8áÂùı2J$4d059bbb-149a-45c1-8be3-27de01c718d0

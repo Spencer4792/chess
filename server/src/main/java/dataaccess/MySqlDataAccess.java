@@ -1,11 +1,8 @@
 package dataaccess;
 
-import model.UserData;
-import model.GameData;
-import model.AuthData;
 import chess.*;
 import com.google.gson.*;
-import org.mindrot.jbcrypt.BCrypt;
+import model.*;
 
 import java.lang.reflect.Type;
 import java.sql.*;
@@ -39,15 +36,13 @@ public class MySqlDataAccess implements DataAccess {
 
   @Override
   public void createUser(UserData user) throws DataAccessException {
-    String hashedPassword = BCrypt.hashpw(user.password(), BCrypt.gensalt());
-    try (Connection conn = DatabaseManager.getConnection()) {
-      String sql = "INSERT INTO users (username, password, email) VALUES (?, ?, ?)";
-      try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-        stmt.setString(1, user.username());
-        stmt.setString(2, hashedPassword);
-        stmt.setString(3, user.email());
-        stmt.executeUpdate();
-      }
+    String sql = "INSERT INTO users (username, password, email) VALUES (?, ?, ?)";
+    try (Connection conn = DatabaseManager.getConnection();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+      stmt.setString(1, user.username());
+      stmt.setString(2, user.password());
+      stmt.setString(3, user.email());
+      stmt.executeUpdate();
     } catch (SQLException e) {
       throw new DataAccessException("Error creating user: " + e.getMessage());
     }
@@ -55,13 +50,13 @@ public class MySqlDataAccess implements DataAccess {
 
   @Override
   public UserData getUser(String username) throws DataAccessException {
-    try (Connection conn = DatabaseManager.getConnection()) {
-      try (PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users WHERE username = ?")) {
-        stmt.setString(1, username);
-        try (ResultSet rs = stmt.executeQuery()) {
-          if (rs.next()) {
-            return new UserData(rs.getString("username"), rs.getString("password"), rs.getString("email"));
-          }
+    String sql = "SELECT * FROM users WHERE username = ?";
+    try (Connection conn = DatabaseManager.getConnection();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+      stmt.setString(1, username);
+      try (ResultSet rs = stmt.executeQuery()) {
+        if (rs.next()) {
+          return new UserData(rs.getString("username"), rs.getString("password"), rs.getString("email"));
         }
       }
     } catch (SQLException e) {
@@ -72,17 +67,17 @@ public class MySqlDataAccess implements DataAccess {
 
   @Override
   public void createGame(GameData game) throws DataAccessException {
-    try (Connection conn = DatabaseManager.getConnection()) {
-      try (PreparedStatement stmt = conn.prepareStatement("INSERT INTO games (white_username, black_username, game_name, game_state) VALUES (?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS)) {
-        stmt.setString(1, game.whiteUsername());
-        stmt.setString(2, game.blackUsername());
-        stmt.setString(3, game.gameName());
-        stmt.setString(4, gson.toJson(game.game()));
-        stmt.executeUpdate();
-        try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
-          if (generatedKeys.next()) {
-            game = new GameData(generatedKeys.getInt(1), game.whiteUsername(), game.blackUsername(), game.gameName(), game.game());
-          }
+    String sql = "INSERT INTO games (white_username, black_username, game_name, game_state) VALUES (?, ?, ?, ?)";
+    try (Connection conn = DatabaseManager.getConnection();
+         PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+      stmt.setString(1, game.whiteUsername());
+      stmt.setString(2, game.blackUsername());
+      stmt.setString(3, game.gameName());
+      stmt.setString(4, gson.toJson(game.game()));
+      stmt.executeUpdate();
+      try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
+        if (generatedKeys.next()) {
+          game = new GameData(generatedKeys.getInt(1), game.whiteUsername(), game.blackUsername(), game.gameName(), game.game());
         }
       }
     } catch (SQLException e) {
@@ -91,20 +86,20 @@ public class MySqlDataAccess implements DataAccess {
   }
 
   @Override
-  public GameData getGame(int gameId) throws DataAccessException {
-    try (Connection conn = DatabaseManager.getConnection()) {
-      try (PreparedStatement stmt = conn.prepareStatement("SELECT * FROM games WHERE game_id = ?")) {
-        stmt.setInt(1, gameId);
-        try (ResultSet rs = stmt.executeQuery()) {
-          if (rs.next()) {
-            return new GameData(
-                    rs.getInt("game_id"),
-                    rs.getString("white_username"),
-                    rs.getString("black_username"),
-                    rs.getString("game_name"),
-                    gson.fromJson(rs.getString("game_state"), ChessGame.class)
-            );
-          }
+  public GameData getGame(int gameID) throws DataAccessException {
+    String sql = "SELECT * FROM games WHERE game_id = ?";
+    try (Connection conn = DatabaseManager.getConnection();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+      stmt.setInt(1, gameID);
+      try (ResultSet rs = stmt.executeQuery()) {
+        if (rs.next()) {
+          return new GameData(
+                  rs.getInt("game_id"),
+                  rs.getString("white_username"),
+                  rs.getString("black_username"),
+                  rs.getString("game_name"),
+                  gson.fromJson(rs.getString("game_state"), ChessGame.class)
+          );
         }
       }
     } catch (SQLException e) {
@@ -114,16 +109,37 @@ public class MySqlDataAccess implements DataAccess {
   }
 
   @Override
-  public void updateGame(GameData game) throws DataAccessException {
-    try (Connection conn = DatabaseManager.getConnection()) {
-      try (PreparedStatement stmt = conn.prepareStatement("UPDATE games SET white_username = ?, black_username = ?, game_name = ?, game_state = ? WHERE game_id = ?")) {
-        stmt.setString(1, game.whiteUsername());
-        stmt.setString(2, game.blackUsername());
-        stmt.setString(3, game.gameName());
-        stmt.setString(4, gson.toJson(game.game()));
-        stmt.setInt(5, game.gameID());
-        stmt.executeUpdate();
+  public Collection<GameData> listGames() throws DataAccessException {
+    Collection<GameData> games = new ArrayList<>();
+    String sql = "SELECT * FROM games";
+    try (Connection conn = DatabaseManager.getConnection();
+         PreparedStatement stmt = conn.prepareStatement(sql);
+         ResultSet rs = stmt.executeQuery()) {
+      while (rs.next()) {
+        int gameID = rs.getInt("game_id");
+        String gameName = rs.getString("game_name");
+        String whiteUsername = rs.getString("white_username");
+        String blackUsername = rs.getString("black_username");
+        ChessGame game = gson.fromJson(rs.getString("game_state"), ChessGame.class);
+        games.add(new GameData(gameID, whiteUsername, blackUsername, gameName, game));
       }
+    } catch (SQLException e) {
+      throw new DataAccessException("Error listing games: " + e.getMessage());
+    }
+    return games;
+  }
+
+  @Override
+  public void updateGame(GameData game) throws DataAccessException {
+    String sql = "UPDATE games SET white_username = ?, black_username = ?, game_name = ?, game_state = ? WHERE game_id = ?";
+    try (Connection conn = DatabaseManager.getConnection();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+      stmt.setString(1, game.whiteUsername());
+      stmt.setString(2, game.blackUsername());
+      stmt.setString(3, game.gameName());
+      stmt.setString(4, gson.toJson(game.game()));
+      stmt.setInt(5, game.gameID());
+      stmt.executeUpdate();
     } catch (SQLException e) {
       throw new DataAccessException("Error updating game: " + e.getMessage());
     }
@@ -131,12 +147,12 @@ public class MySqlDataAccess implements DataAccess {
 
   @Override
   public void createAuth(AuthData auth) throws DataAccessException {
-    try (Connection conn = DatabaseManager.getConnection()) {
-      try (PreparedStatement stmt = conn.prepareStatement("INSERT INTO auth_tokens (auth_token, username) VALUES (?, ?)")) {
-        stmt.setString(1, auth.authToken());
-        stmt.setString(2, auth.username());
-        stmt.executeUpdate();
-      }
+    String sql = "INSERT INTO auth_tokens (auth_token, username) VALUES (?, ?)";
+    try (Connection conn = DatabaseManager.getConnection();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+      stmt.setString(1, auth.authToken());
+      stmt.setString(2, auth.username());
+      stmt.executeUpdate();
     } catch (SQLException e) {
       throw new DataAccessException("Error creating auth token: " + e.getMessage());
     }
@@ -144,13 +160,13 @@ public class MySqlDataAccess implements DataAccess {
 
   @Override
   public AuthData getAuth(String authToken) throws DataAccessException {
-    try (Connection conn = DatabaseManager.getConnection()) {
-      try (PreparedStatement stmt = conn.prepareStatement("SELECT * FROM auth_tokens WHERE auth_token = ?")) {
-        stmt.setString(1, authToken);
-        try (ResultSet rs = stmt.executeQuery()) {
-          if (rs.next()) {
-            return new AuthData(rs.getString("auth_token"), rs.getString("username"));
-          }
+    String sql = "SELECT * FROM auth_tokens WHERE auth_token = ?";
+    try (Connection conn = DatabaseManager.getConnection();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+      stmt.setString(1, authToken);
+      try (ResultSet rs = stmt.executeQuery()) {
+        if (rs.next()) {
+          return new AuthData(rs.getString("auth_token"), rs.getString("username"));
         }
       }
     } catch (SQLException e) {
@@ -161,38 +177,14 @@ public class MySqlDataAccess implements DataAccess {
 
   @Override
   public void deleteAuth(String authToken) throws DataAccessException {
-    try (Connection conn = DatabaseManager.getConnection()) {
-      try (PreparedStatement stmt = conn.prepareStatement("DELETE FROM auth_tokens WHERE auth_token = ?")) {
-        stmt.setString(1, authToken);
-        stmt.executeUpdate();
-      }
+    String sql = "DELETE FROM auth_tokens WHERE auth_token = ?";
+    try (Connection conn = DatabaseManager.getConnection();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+      stmt.setString(1, authToken);
+      stmt.executeUpdate();
     } catch (SQLException e) {
       throw new DataAccessException("Error deleting auth token: " + e.getMessage());
     }
-  }
-
-  @Override
-  public Collection<GameData> listGames() throws DataAccessException {
-    Collection<GameData> games = new ArrayList<>();
-    try (Connection conn = DatabaseManager.getConnection()) {
-      try (Statement stmt = conn.createStatement()) {
-        try (ResultSet rs = stmt.executeQuery("SELECT * FROM games")) {
-          while (rs.next()) {
-            ChessGame game = gson.fromJson(rs.getString("game_state"), ChessGame.class);
-            games.add(new GameData(
-                    rs.getInt("game_id"),
-                    rs.getString("white_username"),
-                    rs.getString("black_username"),
-                    rs.getString("game_name"),
-                    game
-            ));
-          }
-        }
-      }
-    } catch (SQLException e) {
-      throw new DataAccessException("Error listing games: " + e.getMessage());
-    }
-    return games;
   }
 
   private static class ChessGameAdapter implements JsonSerializer<ChessGame>, JsonDeserializer<ChessGame> {
@@ -244,6 +236,7 @@ public class MySqlDataAccess implements DataAccess {
       return board;
     }
   }
+
   private static class ChessPositionAdapter implements JsonSerializer<ChessPosition>, JsonDeserializer<ChessPosition> {
     @Override
     public JsonElement serialize(ChessPosition src, Type typeOfSrc, JsonSerializationContext context) {
@@ -260,11 +253,9 @@ public class MySqlDataAccess implements DataAccess {
         int col = Integer.parseInt(parts[1].split("=")[1]);
         return new ChessPosition(row, col);
       } else {
-        // If it's a JSON object, parse it as before
-        JsonObject jsonObject = json.getAsJsonObject();
-        int row = jsonObject.get("row").getAsInt();
-        int col = jsonObject.get("col").getAsInt();
-        return new ChessPosition(row, col);
+        // Parse as "row,col" format
+        String[] parts = positionString.split(",");
+        return new ChessPosition(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]));
       }
     }
   }

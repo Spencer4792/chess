@@ -1,6 +1,16 @@
 
 ‘
-java:S1192I"NDefine a constant instead of duplicating this literal "Authorization" 4 times.(§¨éú8«÷ÚÛ2J$375da653-9d0a-4c40-aeca-7836efc9fab4
+java:S1192`"NDefine a constant instead of duplicating this literal "Authorization" 4 times.(§¨éú8³–ƒş2J$e4991121-bd9d-4055-9b6b-5554ed8f654d
+›
+java:S11929"SDefine a constant instead of duplicating this literal "Error: bad request" 5 times.(ˆÁá¨úÿÿÿÿ8í˜‚ş2J$98b53b75-7378-4909-85c4-7c38db387be9
+o
+java:S1192T"MDefine a constant instead of duplicating this literal "unauthorized" 3 times.(¹ò«¯úÿÿÿÿ8¾ßŠş2
 
-java:S1192""FDefine a constant instead of duplicating this literal "/game" 3 times.(˜Ó€•şÿÿÿÿ8«÷ÚÛ2J$12e6750b-4ccc-4198-b391-80ce1db8ede9
-l	java:S106"+Replace this use of System.err by a logger.(ş»¬8º÷ÚÛ2J$ff9dc2dd-6353-46e6-b7a5-a1c21756fd8e
+java:S1192%"FDefine a constant instead of duplicating this literal "/game" 3 times.(˜Ó€•şÿÿÿÿ8î˜‚ş2J$0611552f-f8c0-4cc3-bbdf-d354baa555f7
+q
+java:S1192V"TDefine a constant instead of duplicating this literal "Error: unauthorized" 9 times.(ªÖº8¿ßŠş2
+
+java:S1192D"HDefine a constant instead of duplicating this literal "Error: " 5 times.(éÈú–øÿÿÿÿ8ï˜‚ş2J$35ef48a0-79a1-4b55-a1c0-ff0d8b0f2fa4
+l	java:S106"+Replace this use of System.err by a logger.(ş»¬8ü˜‚ş2J$51109fe5-5786-42aa-8b74-33c77994bb6a
+¹
+java:S11300"wRemove the declaration of thrown exception 'dataaccess.DataAccessException', as it cannot be thrown from method's body.(„“ˆ48ÿ˜‚ş2J$dea4c734-8f10-4f57-83d9-83ca2b62c729
