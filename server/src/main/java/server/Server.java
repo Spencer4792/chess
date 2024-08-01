@@ -4,6 +4,8 @@ import spark.*;
 import com.google.gson.Gson;
 import dataaccess.*;
 import service.*;
+import model.*;
+import java.util.Collection;
 
 public class Server {
     private final UserService userService;
@@ -22,6 +24,7 @@ public class Server {
         Spark.staticFiles.location("web");
 
         try {
+            DatabaseManager.createDatabase();
             initializeDatabase();
         } catch (DataAccessException e) {
             System.err.println("Failed to initialize database: " + e.getMessage());
@@ -43,7 +46,6 @@ public class Server {
     }
 
     private void initializeDatabase() throws DataAccessException {
-        DatabaseManager.createDatabase();
         try (var conn = DatabaseManager.getConnection()) {
             try (var statement = conn.createStatement()) {
                 statement.executeUpdate("CREATE TABLE IF NOT EXISTS users (username VARCHAR(255) PRIMARY KEY, password VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL)");
