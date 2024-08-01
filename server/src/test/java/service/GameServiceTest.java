@@ -3,6 +3,7 @@ package service;
 import dataaccess.DataAccess;
 import dataaccess.MemoryDataAccess;
 import model.GameData;
+import model.UserData;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,7 +19,8 @@ class GameServiceTest {
     dataAccess = new MemoryDataAccess();
     gameService = new GameService(dataAccess);
     UserService userService = new UserService(dataAccess);
-    authToken = userService.register("testUser", "password", "email@example.com").authToken();
+    UserData userData = new UserData("testUser", "password", "email@example.com");
+    authToken = userService.register(userData).authToken();
   }
 
   @Test

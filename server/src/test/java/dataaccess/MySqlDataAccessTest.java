@@ -55,3 +55,30 @@ public class MySqlDataAccessTest {
   void createAuth_Positive() throws DataAccessException {
     AuthData auth = new AuthData("testToken", "testUser");
     dataAccess.createAuth(auth);
+    AuthData retrievedAuth = dataAccess.getAuth("testToken");
+    assertNotNull(retrievedAuth);
+    assertEquals(auth.authToken(), retrievedAuth.authToken());
+    assertEquals(auth.username(), retrievedAuth.username());
+  }
+
+  @Test
+  void deleteAuth_Positive() throws DataAccessException {
+    AuthData auth = new AuthData("testToken", "testUser");
+    dataAccess.createAuth(auth);
+    dataAccess.deleteAuth("testToken");
+    AuthData retrievedAuth = dataAccess.getAuth("testToken");
+    assertNull(retrievedAuth);
+  }
+
+  @Test
+  void updateGame_Positive() throws DataAccessException {
+    GameData game = new GameData(1, "white", "black", "TestGame", new ChessGame());
+    dataAccess.createGame(game);
+    GameData updatedGame = new GameData(1, "newWhite", "newBlack", "UpdatedGame", new ChessGame());
+    dataAccess.updateGame(updatedGame);
+    GameData retrievedGame = dataAccess.getGame(1);
+    assertEquals(updatedGame.whiteUsername(), retrievedGame.whiteUsername());
+    assertEquals(updatedGame.blackUsername(), retrievedGame.blackUsername());
+    assertEquals(updatedGame.gameName(), retrievedGame.gameName());
+  }
+}
