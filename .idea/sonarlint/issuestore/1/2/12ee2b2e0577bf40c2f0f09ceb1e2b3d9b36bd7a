@@ -1,11 +1,5 @@
 
+L
+java:S1066A"/Merge this if statement with the enclosing one.(Èù8‚‹Ãœ‘2
 H
-java:S11685"+Return an empty collection instead of null.(¥¹ï8„Ô¬Š2
-—
-java:S6204@"zReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()' and ensure that the list is unmodified.(œçÖß8„Ô¬Š2
-œ
-java:S2975"SRemove this "clone" implementation; use a copy constructor or copy factory instead.(¡„Ÿîÿÿÿÿÿ8Ø„ÌŸŠ2J$7213f53f-2a62-4af2-bbcc-fb91fe90c784
-‘
-java:S1182"HUse super.clone() to create and seed the cloned instance to be returned.(¡„Ÿîÿÿÿÿÿ8Ù„ÌŸŠ2J$506b75b8-f83d-4da7-a84b-9d30d4d0d6dd
-M
-java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8èÔ¬Š2
+java:S1168""+Return an empty collection instead of null.(¥¹ï8„Ô¬Š2

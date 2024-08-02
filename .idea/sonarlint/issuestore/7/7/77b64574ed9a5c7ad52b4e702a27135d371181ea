@@ -1,15 +1,15 @@
 
 ’
-java:S1192Ä"IDefine a constant instead of duplicating this literal "lastMove" 4 times.(±œ¥Æùÿÿÿÿ8¦Âùı2J$b3e58a08-b01a-4256-816a-d32a4088bf35
+java:S1192Ø"IDefine a constant instead of duplicating this literal "lastMove" 4 times.(±œ¥Æùÿÿÿÿ8Ûˆğœ‘2J$3aaedba3-0bc3-4385-a68d-24bf6da0cffc
 “
-java:S1192£"ODefine a constant instead of duplicating this literal "promotionPiece" 3 times.(¢§ÓÕ8¦Âùı2J$bc7a0443-478c-4cd3-973f-6df404ea1559
+java:S1192·"ODefine a constant instead of duplicating this literal "promotionPiece" 3 times.(¢§ÓÕ8º€¢‘2J$73f5864a-4272-4db4-9967-da948282adbe
 ‰
-java:S1192Â"FDefine a constant instead of duplicating this literal "board" 4 times.(§Äà[8¨Âùı2J$b22b996d-1af3-475f-a9e5-4508dc139b78
+java:S1192Ö"FDefine a constant instead of duplicating this literal "board" 4 times.(§Äà[8º€¢‘2J$7bd62c02-0b49-4f22-94af-6c2fc184b964
 b
-java:S69055"Don't use the query "SELECT *".(¨Ã¼8ÄÂùı2J$fb5c8ec2-4b13-4c7d-9bf3-4c0199ad7923
+java:S69058"Don't use the query "SELECT *".(¨Ã¼8Ò€¢‘2J$9f4e854a-db0f-4b8a-bd83-ca54186227a4
+m	java:S106Y"+Replace this use of System.out by a logger.(·Õ€ş8¹ûª‘2J$55e58b92-5f96-4c58-bbf6-ddb1778f9730
+m	java:S106r"+Replace this use of System.out by a logger.(ÁâÚ8‡æ¬‘2J$10704a62-1061-48f2-ab35-e12f2fbdfa70
+L	java:S106u"+Replace this use of System.out by a logger.(„¹Šäıÿÿÿÿ8Ë¤¯‘2
+M	java:S106¢"+Replace this use of System.out by a logger.(äõœÖûÿÿÿÿ8Ô¤¯‘2
 b
-java:S6905Z"Don't use the query "SELECT *".(•ù˜ò8ÏÂùı2J$be6671c5-7513-43b9-991c-148915e59c71
-A
-java:S6905r"Don't use the query "SELECT *".(å±’Àüÿÿÿÿ8«Ïş2
-b
-java:S6905£"Don't use the query "SELECT *".(Æàï,8áÂùı2J$4d059bbb-149a-45c1-8be3-27de01c718d0
+java:S6905·"Don't use the query "SELECT *".(Æàï,8í€¢‘2J$11536edc-2127-47c3-8f3b-d6b2c0d27706

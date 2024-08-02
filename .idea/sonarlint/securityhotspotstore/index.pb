@@ -72,3 +72,9 @@ h
 8server/src/test/java/dataaccess/MySqlDataAccessTest.java,7/3/73d2a4292f2ab248e47b578f5ef4872d736ad586
 d
 4server/src/main/java/dataaccess/DatabaseManager.java,f/b/fb7cdb568d97831984b27de21950263d16967a67
+d
+4shared/src/main/java/chess/InvalidMoveException.java,e/3/e39c3486fec5f2b87e64591840622613400adc99
+X
+(shared/src/main/java/model/AuthData.java,f/7/f7739bee04cb37ee6899e6476894792bc648a47e
+f
+6server/src/test/java/passoff/server/DatabaseTests.java,f/e/fe756adf1db32cf19b0ba4465213263dea6b150d

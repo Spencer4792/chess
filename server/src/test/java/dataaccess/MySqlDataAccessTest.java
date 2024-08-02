@@ -72,11 +72,26 @@ public class MySqlDataAccessTest {
 
   @Test
   void updateGame_Positive() throws DataAccessException {
-    GameData game = new GameData(1, "white", "black", "TestGame", new ChessGame());
+    GameData game = new GameData(0, "white", "black", "TestGame", new ChessGame());
     dataAccess.createGame(game);
-    GameData updatedGame = new GameData(1, "newWhite", "newBlack", "UpdatedGame", new ChessGame());
+
+    // Retrieve the game to get the correct ID
+    Collection<GameData> games = dataAccess.listGames();
+    assertFalse(games.isEmpty(), "No games found after creation");
+    GameData createdGame = games.iterator().next();
+
+    System.out.println("Created game: " + createdGame);
+
+    GameData updatedGame = new GameData(createdGame.gameID(), "newWhite", "newBlack", "UpdatedGame", new ChessGame());
     dataAccess.updateGame(updatedGame);
-    GameData retrievedGame = dataAccess.getGame(1);
+
+    System.out.println("Updated game: " + updatedGame);
+
+    GameData retrievedGame = dataAccess.getGame(createdGame.gameID());
+    assertNotNull(retrievedGame, "Retrieved game is null");
+
+    System.out.println("Retrieved game: " + retrievedGame);
+
     assertEquals(updatedGame.whiteUsername(), retrievedGame.whiteUsername());
     assertEquals(updatedGame.blackUsername(), retrievedGame.blackUsername());
     assertEquals(updatedGame.gameName(), retrievedGame.gameName());
