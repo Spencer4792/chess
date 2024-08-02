@@ -70,26 +70,18 @@ public class MySqlDataAccess implements DataAccess {
 
   @Override
   public void createGame(GameData game) throws DataAccessException {
-    String sql = "INSERT INTO games (white_username, black_username, game_name, game_state) VALUES (?, ?, ?, ?)";
+    String sql = "INSERT INTO games (game_id, white_username, black_username, game_name, game_state) VALUES (?, ?, ?, ?, ?)";
     try (Connection conn = DatabaseManager.getConnection();
-         PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-      stmt.setString(1, game.whiteUsername());
-      stmt.setString(2, game.blackUsername());
-      stmt.setString(3, game.gameName());
-      stmt.setString(4, gson.toJson(game.game()));
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+      stmt.setInt(1, game.gameID());
+      stmt.setString(2, game.whiteUsername());
+      stmt.setString(3, game.blackUsername());
+      stmt.setString(4, game.gameName());
+      stmt.setString(5, gson.toJson(game.game()));
       int affectedRows = stmt.executeUpdate();
 
       if (affectedRows == 0) {
         throw new DataAccessException("Creating game failed, no rows affected.");
-      }
-
-      try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
-        if (generatedKeys.next()) {
-          int gameId = generatedKeys.getInt(1);
-          System.out.println("Created game with ID: " + gameId); // Debug print
-        } else {
-          throw new DataAccessException("Creating game failed, no ID obtained.");
-        }
       }
     } catch (SQLException e) {
       throw new DataAccessException("Error creating game: " + e.getMessage());
@@ -104,17 +96,13 @@ public class MySqlDataAccess implements DataAccess {
       stmt.setInt(1, gameID);
       try (ResultSet rs = stmt.executeQuery()) {
         if (rs.next()) {
-          GameData game = new GameData(
+          return new GameData(
                   rs.getInt("game_id"),
                   rs.getString("white_username"),
                   rs.getString("black_username"),
                   rs.getString("game_name"),
                   gson.fromJson(rs.getString("game_state"), ChessGame.class)
           );
-          System.out.println("Retrieved game: " + game); // Debug print
-          return game;
-        } else {
-          System.out.println("No game found with ID: " + gameID); // Debug print
         }
       }
     } catch (SQLException e) {
@@ -159,7 +147,6 @@ public class MySqlDataAccess implements DataAccess {
       if (affectedRows == 0) {
         throw new DataAccessException("Updating game failed, no rows affected.");
       }
-      System.out.println("Updated game with ID: " + game.gameID()); // Debug print
     } catch (SQLException e) {
       throw new DataAccessException("Error updating game: " + e.getMessage());
     }
