@@ -20,7 +20,6 @@ public class Server {
 
     public int run(int desiredPort) {
         Spark.port(desiredPort);
-
         Spark.staticFiles.location("web");
 
         try {
@@ -48,6 +47,15 @@ public class Server {
 
     private void initializeDatabase() throws DataAccessException {
         // Your database initialization code here
+    }
+
+    private String validateAuthToken(Request req, Response res) throws DataAccessException {
+        var authToken = req.headers("Authorization");
+        if (authToken == null || authToken.isEmpty()) {
+            res.status(401);
+            throw new DataAccessException("Error: unauthorized");
+        }
+        return authToken;
     }
 
     private Object register(Request req, Response res) {
@@ -94,11 +102,7 @@ public class Server {
 
     private Object logout(Request req, Response res) {
         try {
-            var authToken = req.headers("Authorization");
-            if (authToken == null || authToken.isEmpty()) {
-                res.status(401);
-                return gson.toJson(new ErrorResult("Error: unauthorized"));
-            }
+            String authToken = validateAuthToken(req, res);
             userService.logout(authToken);
             res.status(200);
             return "{}";
@@ -110,11 +114,7 @@ public class Server {
 
     private Object listGames(Request req, Response res) {
         try {
-            String authToken = req.headers("Authorization");
-            if (authToken == null || authToken.isEmpty()) {
-                res.status(401);
-                return gson.toJson(new ErrorResult("Error: unauthorized"));
-            }
+            String authToken = validateAuthToken(req, res);
             Collection<GameData> games = gameService.listGames(authToken);
             res.status(200);
             return gson.toJson(new ListGamesResult(games));
@@ -131,11 +131,7 @@ public class Server {
 
     private Object createGame(Request req, Response res) {
         try {
-            var authToken = req.headers("Authorization");
-            if (authToken == null || authToken.isEmpty()) {
-                res.status(401);
-                return gson.toJson(new ErrorResult("Error: unauthorized"));
-            }
+            String authToken = validateAuthToken(req, res);
             var createGameRequest = gson.fromJson(req.body(), CreateGameRequest.class);
             if (createGameRequest.gameName() == null || createGameRequest.gameName().isEmpty()) {
                 res.status(400);
@@ -157,11 +153,7 @@ public class Server {
 
     private Object joinGame(Request req, Response res) {
         try {
-            var authToken = req.headers("Authorization");
-            if (authToken == null || authToken.isEmpty()) {
-                res.status(401);
-                return gson.toJson(new ErrorResult("Error: unauthorized"));
-            }
+            String authToken = validateAuthToken(req, res);
             var joinGameRequest = gson.fromJson(req.body(), JoinGameRequest.class);
             if (joinGameRequest.gameID() <= 0 || joinGameRequest.playerColor() == null) {
                 res.status(400);

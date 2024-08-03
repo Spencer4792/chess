@@ -6,6 +6,8 @@ import model.GameData;
 import model.UserData;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Collection;
 
@@ -21,26 +23,36 @@ public class MySqlDataAccessTest {
     dataAccess.clear();
   }
 
-  @Test
-  void createUserPositive() throws DataAccessException {
-    UserData user = new UserData("testUser", "password", "test@example.com");
+  private UserData createTestUser(String username) throws DataAccessException {
+    UserData user = new UserData(username, "password", username + "@example.com");
     dataAccess.createUser(user);
-    UserData retrievedUser = dataAccess.getUser("testUser");
+    return user;
+  }
+
+  private AuthData createTestAuth(String token, String username) throws DataAccessException {
+    AuthData auth = new AuthData(token, username);
+    dataAccess.createAuth(auth);
+    return auth;
+  }
+
+  @ParameterizedTest
+  @ValueSource(strings = {"testUser", "anotherUser"})
+  void createUserPositive(String username) throws DataAccessException {
+    createTestUser(username);
+    UserData retrievedUser = dataAccess.getUser(username);
     assertNotNull(retrievedUser);
-    assertEquals("testUser", retrievedUser.username());
+    assertEquals(username, retrievedUser.username());
   }
 
   @Test
   void createUserNegativeDuplicateUsername() {
-    UserData user = new UserData("testUser", "password", "test@example.com");
-    assertDoesNotThrow(() -> dataAccess.createUser(user));
-    assertThrows(DataAccessException.class, () -> dataAccess.createUser(user));
+    assertDoesNotThrow(() -> createTestUser("testUser"));
+    assertThrows(DataAccessException.class, () -> createTestUser("testUser"));
   }
 
   @Test
   void getUserPositive() throws DataAccessException {
-    UserData user = new UserData("testUser", "password", "test@example.com");
-    dataAccess.createUser(user);
+    createTestUser("testUser");
     UserData retrievedUser = dataAccess.getUser("testUser");
     assertNotNull(retrievedUser);
     assertEquals("testUser", retrievedUser.username());
@@ -83,20 +95,11 @@ public class MySqlDataAccessTest {
     assertEquals(2, games.size());
   }
 
-  @Test
-  void createAuthPositive() throws DataAccessException {
-    AuthData auth = new AuthData("token123", "testUser");
-    dataAccess.createAuth(auth);
-    AuthData retrievedAuth = dataAccess.getAuth("token123");
-    assertNotNull(retrievedAuth);
-    assertEquals("testUser", retrievedAuth.username());
-  }
-
-  @Test
-  void getAuthPositive() throws DataAccessException {
-    AuthData auth = new AuthData("token123", "testUser");
-    dataAccess.createAuth(auth);
-    AuthData retrievedAuth = dataAccess.getAuth("token123");
+  @ParameterizedTest
+  @ValueSource(strings = {"token123", "anotherToken"})
+  void createAuthPositive(String token) throws DataAccessException {
+    createTestAuth(token, "testUser");
+    AuthData retrievedAuth = dataAccess.getAuth(token);
     assertNotNull(retrievedAuth);
     assertEquals("testUser", retrievedAuth.username());
   }
@@ -109,8 +112,7 @@ public class MySqlDataAccessTest {
 
   @Test
   void deleteAuthPositive() throws DataAccessException {
-    AuthData auth = new AuthData("token123", "testUser");
-    dataAccess.createAuth(auth);
+    createTestAuth("token123", "testUser");
     dataAccess.deleteAuth("token123");
     AuthData retrievedAuth = dataAccess.getAuth("token123");
     assertNull(retrievedAuth);
@@ -145,9 +147,9 @@ public class MySqlDataAccessTest {
 
   @Test
   void clearPositive() throws DataAccessException {
-    dataAccess.createUser(new UserData("user1", "password1", "user1@example.com"));
+    createTestUser("user1");
     dataAccess.createGame(new GameData(0, "white", "black", "Game1", new ChessGame()));
-    dataAccess.createAuth(new AuthData("token1", "user1"));
+    createTestAuth("token1", "user1");
 
     dataAccess.clear();
 
@@ -164,10 +166,8 @@ public class MySqlDataAccessTest {
 
   @Test
   void createAuthNegativeDuplicateToken() throws DataAccessException {
-    AuthData auth1 = new AuthData("duplicateToken", "user1");
-    AuthData auth2 = new AuthData("duplicateToken", "user2");
-    dataAccess.createAuth(auth1);
-    assertThrows(DataAccessException.class, () -> dataAccess.createAuth(auth2));
+    createTestAuth("duplicateToken", "user1");
+    assertThrows(DataAccessException.class, () -> createTestAuth("duplicateToken", "user2"));
   }
 
   @Test
@@ -215,11 +215,8 @@ public class MySqlDataAccessTest {
 
   @Test
   void createMultipleUsersPositive() throws DataAccessException {
-    UserData user1 = new UserData("user1", "password1", "user1@example.com");
-    UserData user2 = new UserData("user2", "password2", "user2@example.com");
-
-    assertDoesNotThrow(() -> dataAccess.createUser(user1));
-    assertDoesNotThrow(() -> dataAccess.createUser(user2));
+    createTestUser("user1");
+    createTestUser("user2");
 
     assertNotNull(dataAccess.getUser("user1"));
     assertNotNull(dataAccess.getUser("user2"));
