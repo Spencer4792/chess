@@ -1,5 +1,9 @@
 
-–
-java:S1192"TDefine a constant instead of duplicating this literal "Error: unauthorized" 3 times.(©ªìb8…ª„‘2J$58d98ac3-34d0-45e5-ba61-8ae5e0197bec
-g
-java:S2676"Use the original value instead.(®µÊÿÿÿÿÿ8µ¼„‘2J$f9e5c9de-6a68-426d-ba8f-e560741a3cd6
+u
+java:S1192"SDefine a constant instead of duplicating this literal "Error: bad request" 3 times.(«ˆºµúÿÿÿÿ8ÏéÌ°‘2
+p
+java:S1192"TDefine a constant instead of duplicating this literal "Error: unauthorized" 3 times.(©ªìb8ĞéÌ°‘2
+A
+java:S2676"Use the original value instead.(®µÊÿÿÿÿÿ8ÔéÌ°‘2
+X
+java:S68800"6Replace the chain of if/else with a switch expression.(ºÓøıÿÿÿÿ8×éÌ°‘2

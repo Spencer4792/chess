@@ -25,6 +25,7 @@ public class Server {
 
         try {
             DatabaseManager.createDatabase();
+            DatabaseManager.createTables();
             initializeDatabase();
         } catch (DataAccessException e) {
             System.err.println("Failed to initialize database: " + e.getMessage());
@@ -110,15 +111,21 @@ public class Server {
     private Object listGames(Request req, Response res) {
         try {
             String authToken = req.headers("Authorization");
+            if (authToken == null || authToken.isEmpty()) {
+                res.status(401);
+                return gson.toJson(new ErrorResult("Error: unauthorized"));
+            }
             Collection<GameData> games = gameService.listGames(authToken);
             res.status(200);
             return gson.toJson(new ListGamesResult(games));
         } catch (DataAccessException e) {
-            res.status(401);
-            return gson.toJson(new ErrorResult("Error: unauthorized"));
-        } catch (Exception e) {
-            res.status(500);
-            return gson.toJson(new ErrorResult("Error: " + e.getMessage()));
+            if (e.getMessage().contains("unauthorized")) {
+                res.status(401);
+                return gson.toJson(new ErrorResult("Error: unauthorized"));
+            } else {
+                res.status(500);
+                return gson.toJson(new ErrorResult("Error: " + e.getMessage()));
+            }
         }
     }
 

@@ -39,6 +39,24 @@ public class DatabaseManager {
         }
     }
 
+    public static void createTables() throws DataAccessException {
+        try (Connection conn = getConnection()) {
+            String[] createTableStatements = {
+                    "CREATE TABLE IF NOT EXISTS users (username VARCHAR(255) PRIMARY KEY, password VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL)",
+                    "CREATE TABLE IF NOT EXISTS auth_tokens (auth_token VARCHAR(255) PRIMARY KEY, username VARCHAR(255) NOT NULL)",
+                    "CREATE TABLE IF NOT EXISTS games (game_id INT AUTO_INCREMENT PRIMARY KEY, white_username VARCHAR(255), black_username VARCHAR(255), game_name VARCHAR(255) NOT NULL, game_state TEXT NOT NULL)"
+            };
+
+            for (String statement : createTableStatements) {
+                try (PreparedStatement stmt = conn.prepareStatement(statement)) {
+                    stmt.executeUpdate();
+                }
+            }
+        } catch (SQLException e) {
+            throw new DataAccessException("Error creating tables: " + e.getMessage());
+        }
+    }
+
     public static Connection getConnection() throws DataAccessException {
         try {
             var conn = DriverManager.getConnection(CONNECTION_URL, USER, PASSWORD);

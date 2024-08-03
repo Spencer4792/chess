@@ -24,10 +24,20 @@ public class MySqlDataAccess implements DataAccess {
   @Override
   public void clear() throws DataAccessException {
     try (Connection conn = DatabaseManager.getConnection()) {
-      try (Statement stmt = conn.createStatement()) {
-        stmt.executeUpdate("DELETE FROM auth_tokens");
-        stmt.executeUpdate("DELETE FROM games");
-        stmt.executeUpdate("DELETE FROM users");
+      String[] clearStatements = {
+              "DELETE FROM auth_tokens",
+              "DELETE FROM games",
+              "DELETE FROM users"
+      };
+      for (String statement : clearStatements) {
+        try (PreparedStatement stmt = conn.prepareStatement(statement)) {
+          stmt.executeUpdate();
+        } catch (SQLException e) {
+          // Ignore errors if table doesn't exist
+          if (!e.getMessage().contains("doesn't exist")) {
+            throw e;
+          }
+        }
       }
     } catch (SQLException e) {
       throw new DataAccessException("Error clearing database: " + e.getMessage());
@@ -42,10 +52,7 @@ public class MySqlDataAccess implements DataAccess {
       stmt.setString(1, user.username());
       stmt.setString(2, user.password());
       stmt.setString(3, user.email());
-      int rowsAffected = stmt.executeUpdate();
-      if (rowsAffected == 0) {
-        throw new DataAccessException("Failed to create user, no rows affected.");
-      }
+      stmt.executeUpdate();
     } catch (SQLException e) {
       throw new DataAccessException("Error creating user: " + e.getMessage());
     }
@@ -167,13 +174,13 @@ public class MySqlDataAccess implements DataAccess {
 
   @Override
   public AuthData getAuth(String authToken) throws DataAccessException {
-    String sql = "SELECT * FROM auth_tokens WHERE auth_token = ?";
+    String sql = "SELECT username FROM auth_tokens WHERE auth_token = ?";
     try (Connection conn = DatabaseManager.getConnection();
          PreparedStatement stmt = conn.prepareStatement(sql)) {
       stmt.setString(1, authToken);
       try (ResultSet rs = stmt.executeQuery()) {
         if (rs.next()) {
-          return new AuthData(rs.getString("auth_token"), rs.getString("username"));
+          return new AuthData(authToken, rs.getString("username"));
         }
       }
     } catch (SQLException e) {

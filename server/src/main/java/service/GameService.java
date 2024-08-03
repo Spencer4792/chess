@@ -55,6 +55,8 @@ public class GameService {
         throw new DataAccessException("Error: already taken");
       }
       game = new GameData(game.gameID(), game.whiteUsername(), username, game.gameName(), game.game());
+    } else {
+      throw new DataAccessException("Error: bad request");
     }
 
     dataAccess.updateGame(game);
