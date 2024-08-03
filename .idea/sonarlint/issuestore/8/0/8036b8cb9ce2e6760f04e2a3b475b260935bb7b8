@@ -1,16 +1,16 @@
 
-‘
-java:S1192a"NDefine a constant instead of duplicating this literal "Authorization" 4 times.(§¨éú8Ã›»°‘2J$5cbc1531-259b-4747-ae5e-ee1fba1c9824
-›
-java:S1192:"SDefine a constant instead of duplicating this literal "Error: bad request" 5 times.(ˆÁá¨úÿÿÿÿ8Ä›»°‘2J$2827345c-3766-4cef-8c8a-a0acede5a839
-•
-java:S1192U"MDefine a constant instead of duplicating this literal "unauthorized" 4 times.(¹ò«¯úÿÿÿÿ8Ä›»°‘2J$fdc46972-fbb8-4a6d-9b0d-928c170aea16
-
-java:S1192&"FDefine a constant instead of duplicating this literal "/game" 3 times.(˜Ó€•şÿÿÿÿ8Ä›»°‘2J$f99e91a4-1552-46a3-a424-3522e1d1d00b
-—
-java:S1192W"TDefine a constant instead of duplicating this literal "Error: unauthorized" 9 times.(ªÖº8Ä›»°‘2J$0269e9e3-8714-49f1-ae6f-61eb0ee3cf45
-
-java:S1192E"HDefine a constant instead of duplicating this literal "Error: " 6 times.(éÈú–øÿÿÿÿ8Ä›»°‘2J$9258ca60-097b-4897-ae5f-ffa0cc4c06d0
-l	java:S106"+Replace this use of System.err by a logger.(ş»¬8Î›»°‘2J$cf72e16c-9fdc-4edf-b7c9-653f7b140f4f
-¹
-java:S11301"wRemove the declaration of thrown exception 'dataaccess.DataAccessException', as it cannot be thrown from method's body.(„“ˆ48Ğ›»°‘2J$c6ef10ed-64dc-43e4-93d7-7251996d7652
+k
+java:S1192a"NDefine a constant instead of duplicating this literal "Authorization" 4 times.(§¨éú8À¼—±‘2
+u
+java:S1192:"SDefine a constant instead of duplicating this literal "Error: bad request" 5 times.(ˆÁá¨úÿÿÿÿ8Á¼—±‘2
+o
+java:S1192U"MDefine a constant instead of duplicating this literal "unauthorized" 4 times.(¹ò«¯úÿÿÿÿ8Á¼—±‘2
+h
+java:S1192&"FDefine a constant instead of duplicating this literal "/game" 3 times.(˜Ó€•şÿÿÿÿ8Á¼—±‘2
+q
+java:S1192W"TDefine a constant instead of duplicating this literal "Error: unauthorized" 9 times.(ªÖº8Á¼—±‘2
+j
+java:S1192E"HDefine a constant instead of duplicating this literal "Error: " 6 times.(éÈú–øÿÿÿÿ8Â¼—±‘2
+F	java:S106"+Replace this use of System.err by a logger.(ş»¬8Ë¼—±‘2
+“
+java:S11301"wRemove the declaration of thrown exception 'dataaccess.DataAccessException', as it cannot be thrown from method's body.(„“ˆ48Í¼—±‘2

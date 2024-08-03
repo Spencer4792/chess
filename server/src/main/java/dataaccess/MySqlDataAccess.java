@@ -195,7 +195,10 @@ public class MySqlDataAccess implements DataAccess {
     try (Connection conn = DatabaseManager.getConnection();
          PreparedStatement stmt = conn.prepareStatement(sql)) {
       stmt.setString(1, authToken);
-      stmt.executeUpdate();
+      int rowsAffected = stmt.executeUpdate();
+      if (rowsAffected == 0) {
+        throw new DataAccessException("Error: auth token not found");
+      }
     } catch (SQLException e) {
       throw new DataAccessException("Error deleting auth token: " + e.getMessage());
     }
