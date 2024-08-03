@@ -155,4 +155,48 @@ public class MySqlDataAccessTest {
     assertTrue(dataAccess.listGames().isEmpty());
     assertNull(dataAccess.getAuth("token1"));
   }
+
+  @Test
+  void listGamesNegativeEmptyDatabase() throws DataAccessException {
+    Collection<GameData> games = dataAccess.listGames();
+    assertTrue(games.isEmpty());
+  }
+
+  @Test
+  void createAuthNegativeDuplicateToken() throws DataAccessException {
+    AuthData auth1 = new AuthData("duplicateToken", "user1");
+    AuthData auth2 = new AuthData("duplicateToken", "user2");
+    dataAccess.createAuth(auth1);
+    assertThrows(DataAccessException.class, () -> dataAccess.createAuth(auth2));
+  }
+
+  @Test
+  void createMultipleGamesPositive() throws DataAccessException {
+    GameData game1 = new GameData(0, "white1", "black1", "Test Game 1", new ChessGame());
+    GameData game2 = new GameData(0, "white2", "black2", "Test Game 2", new ChessGame());
+
+    assertDoesNotThrow(() -> dataAccess.createGame(game1));
+    assertDoesNotThrow(() -> dataAccess.createGame(game2));
+
+    Collection<GameData> games = dataAccess.listGames();
+    assertEquals(2, games.size());
+  }
+
+  @Test
+  void createGameWithSameNamePositive() throws DataAccessException {
+    GameData game1 = new GameData(0, "white1", "black1", "Duplicate Name", new ChessGame());
+    GameData game2 = new GameData(0, "white2", "black2", "Duplicate Name", new ChessGame());
+
+    assertDoesNotThrow(() -> dataAccess.createGame(game1));
+    assertDoesNotThrow(() -> dataAccess.createGame(game2));
+
+    Collection<GameData> games = dataAccess.listGames();
+    assertEquals(2, games.size());
+  }
+
+  @Test
+  void createGameNegativeNullGameName() {
+    GameData invalidGame = new GameData(0, "white", "black", null, new ChessGame());
+    assertThrows(DataAccessException.class, () -> dataAccess.createGame(invalidGame));
+  }
 }
