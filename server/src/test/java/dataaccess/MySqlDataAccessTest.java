@@ -199,4 +199,29 @@ public class MySqlDataAccessTest {
     GameData invalidGame = new GameData(0, "white", "black", null, new ChessGame());
     assertThrows(DataAccessException.class, () -> dataAccess.createGame(invalidGame));
   }
+
+  @Test
+  void deleteAuthNegativeNullToken() {
+    assertThrows(DataAccessException.class, () -> dataAccess.deleteAuth(null));
+  }
+
+  @Test
+  void listGamesAfterClear() throws DataAccessException {
+    dataAccess.createGame(new GameData(0, "white", "black", "Game1", new ChessGame()));
+    dataAccess.clear();
+    Collection<GameData> games = dataAccess.listGames();
+    assertTrue(games.isEmpty());
+  }
+
+  @Test
+  void createMultipleUsersPositive() throws DataAccessException {
+    UserData user1 = new UserData("user1", "password1", "user1@example.com");
+    UserData user2 = new UserData("user2", "password2", "user2@example.com");
+
+    assertDoesNotThrow(() -> dataAccess.createUser(user1));
+    assertDoesNotThrow(() -> dataAccess.createUser(user2));
+
+    assertNotNull(dataAccess.getUser("user1"));
+    assertNotNull(dataAccess.getUser("user2"));
+  }
 }
