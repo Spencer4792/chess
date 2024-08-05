@@ -78,3 +78,9 @@ X
 (shared/src/main/java/model/AuthData.java,f/7/f7739bee04cb37ee6899e6476894792bc648a47e
 f
 6server/src/test/java/passoff/server/DatabaseTests.java,f/e/fe756adf1db32cf19b0ba4465213263dea6b150d
+^
+.starter-code/5-pregame/ui/EscapeSequences.java,1/9/19314387f5357a2551b68d9d24e44a1c067870dc
+d
+4starter-code/5-pregame/client/ServerFacadeTests.java,5/3/53eb6be439201375d472c84c31b48d6534b22230
+b
+2client/src/test/java/client/ServerFacadeTests.java,e/6/e6826acb161285e1dab795e5cfe93be0d16ca8b4
