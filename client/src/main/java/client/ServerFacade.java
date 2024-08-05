@@ -52,6 +52,21 @@ public class ServerFacade {
     return Arrays.asList(response.games());
   }
 
+  public void joinGame(String authToken, int gameID, String playerColor) throws Exception {
+    var path = "/game";
+    var request = new JoinGameRequest(playerColor, gameID);
+    makeRequest("PUT", path, request, null, authToken);
+  }
+
+  public void clear() throws Exception {
+    var path = "/db";
+    makeRequest("DELETE", path, null, null);
+  }
+
+  private <T> T makeRequest(String method, String path, Object request, Class<T> responseClass) throws Exception {
+    return makeRequest(method, path, request, responseClass, null);
+  }
+
   private <T> T makeRequest(String method, String path, Object request, Class<T> responseClass, String authToken) throws Exception {
     URI uri = URI.create(serverUrl + path);
     HttpRequest.Builder requestBuilder = HttpRequest.newBuilder(uri);
