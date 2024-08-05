@@ -172,9 +172,19 @@ public class ServerFacade {
 
     @Override
     public ChessPiece deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+      if (json.isJsonNull()) {
+        return null;
+      }
       JsonObject jsonObject = json.getAsJsonObject();
-      ChessGame.TeamColor pieceColor = ChessGame.TeamColor.valueOf(jsonObject.get("pieceColor").getAsString());
-      ChessPiece.PieceType pieceType = ChessPiece.PieceType.valueOf(jsonObject.get("pieceType").getAsString());
+      JsonElement colorElement = jsonObject.get("pieceColor");
+      JsonElement typeElement = jsonObject.get("pieceType");
+
+      if (colorElement == null || typeElement == null) {
+        return null;
+      }
+
+      ChessGame.TeamColor pieceColor = ChessGame.TeamColor.valueOf(colorElement.getAsString());
+      ChessPiece.PieceType pieceType = ChessPiece.PieceType.valueOf(typeElement.getAsString());
       return new ChessPiece(pieceColor, pieceType);
     }
   }
@@ -182,13 +192,23 @@ public class ServerFacade {
   private static class ChessPositionAdapter implements JsonSerializer<ChessPosition>, JsonDeserializer<ChessPosition> {
     @Override
     public JsonElement serialize(ChessPosition src, Type typeOfSrc, JsonSerializationContext context) {
-      return new JsonPrimitive(src.getRow() + "," + src.getCol());
+      return new JsonPrimitive(src.toString());
     }
 
     @Override
     public ChessPosition deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
-      String[] parts = json.getAsString().split(",");
-      return new ChessPosition(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]));
+      String posStr = json.getAsString();
+      if (posStr.startsWith("ChessPosition{")) {
+        // Parse the string representation
+        String[] parts = posStr.substring(14, posStr.length() - 1).split(", ");
+        int row = Integer.parseInt(parts[0].split("=")[1]);
+        int col = Integer.parseInt(parts[1].split("=")[1]);
+        return new ChessPosition(row, col);
+      } else {
+        // Fallback to the old format if needed
+        String[] parts = posStr.split(",");
+        return new ChessPosition(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]));
+      }
     }
   }
 }
