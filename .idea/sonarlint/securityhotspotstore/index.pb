@@ -86,3 +86,5 @@ b
 2client/src/test/java/client/ServerFacadeTests.java,e/6/e6826acb161285e1dab795e5cfe93be0d16ca8b4
 ]
 -client/src/main/java/client/ServerFacade.java,5/b/5bd64cfd26161b763663e9d940febeb7f9d2d1ad
+\
+,client/src/main/java/client/ChessClient.java,8/6/866d4b5035ce26c71a5ec4fdaf5013dc92aa6344
