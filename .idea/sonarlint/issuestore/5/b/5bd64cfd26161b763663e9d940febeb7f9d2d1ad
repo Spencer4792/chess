@@ -1,0 +1,19 @@
+
+ˆ
+java:S22594"FA "NullPointerException" could be thrown; "response" is nullable here.(ë±ÉY8‰–´™’2J$3bc92e5c-9916-4eb0-9b4a-589dd41fba24
+‰
+java:S2259."FA "NullPointerException" could be thrown; "response" is nullable here.(‹öì³8‰–´™’2J$7f2d77dd-dc1d-451d-ae74-d2e83b122e4f
+‡	java:S112K"FDefine and throw a dedicated exception instead of using a generic one.(ú»ÓD8Š–´™’2J$e9413f7d-14c7-465a-80b5-207a154f1e9d
+‡	java:S1127"FDefine and throw a dedicated exception instead of using a generic one.(ùœ£8Š–´™’2J$8e1e52c1-e879-4367-a811-3a8695899272
+‰
+java:S1075"ARefactor your code to get this URI from a customizable parameter.(”É÷ùÿÿÿÿ8“–´™’2J$aec5fd02-0089-44d6-b694-b368bec4e9d0
+ƒ
+java:S1075 "ARefactor your code to get this URI from a customizable parameter.(ÛÌJ8––´™’2J$c8586c36-6a80-4647-8883-a2046d685278
+ƒ
+java:S1075&"ARefactor your code to get this URI from a customizable parameter.(ÛÌJ8˜–´™’2J$2c33a44a-2981-4a22-a850-84761438a4e7
+‰
+java:S1075+"ARefactor your code to get this URI from a customizable parameter.(ê´ã£şÿÿÿÿ8™–´™’2J$e0dbd795-3390-4493-b738-600753501163
+‰
+java:S10752"ARefactor your code to get this URI from a customizable parameter.(ê´ã£şÿÿÿÿ8›–´™’2J$590016f5-374c-4e3b-9f0b-c7d62d62c671
+’
+java:S6218X"POverride equals, hashCode and toString to consider array's content in the method(ÂÅ•X8º–´™’2J$69847144-2e9c-42c8-a427-a5d67093a9a3
