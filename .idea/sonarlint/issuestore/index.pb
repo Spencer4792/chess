@@ -92,3 +92,5 @@ W
 'client/src/main/java/ui/PreLoginUI.java,2/e/2eedaf1f360af900713e3782ea74b5553a51e5b3
 W
 'client/src/main/java/ui/PreloginUI.java,2/a/2aa1488fc9769672bcf0db6561e714003adeabe7
+X
+(client/src/main/java/ui/PostloginUI.java,8/5/8575f3c0e28f7aa5f78b4cd04cdac2d5773691aa
