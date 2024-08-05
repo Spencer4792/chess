@@ -88,3 +88,7 @@ b
 -client/src/main/java/client/ServerFacade.java,5/b/5bd64cfd26161b763663e9d940febeb7f9d2d1ad
 \
 ,client/src/main/java/client/ChessClient.java,8/6/866d4b5035ce26c71a5ec4fdaf5013dc92aa6344
+W
+'client/src/main/java/ui/PreLoginUI.java,2/e/2eedaf1f360af900713e3782ea74b5553a51e5b3
+W
+'client/src/main/java/ui/PreloginUI.java,2/a/2aa1488fc9769672bcf0db6561e714003adeabe7
