@@ -1,6 +1,7 @@
 package ui;
 
 import client.ChessClient;
+import client.ClientException;
 import model.AuthData;
 
 import java.util.Scanner;
@@ -59,7 +60,7 @@ public class PreloginUI {
       client.setAuthToken(authData.authToken());
       System.out.println(SET_TEXT_COLOR_GREEN + "Login successful!" + RESET_TEXT_COLOR);
       client.switchToPostlogin();
-    } catch (Exception e) {
+    } catch (ClientException e) {
       System.out.println(SET_TEXT_COLOR_RED + "Login failed: " + e.getMessage() + RESET_TEXT_COLOR);
     }
   }
@@ -77,7 +78,7 @@ public class PreloginUI {
       client.setAuthToken(authData.authToken());
       System.out.println(SET_TEXT_COLOR_GREEN + "Registration successful!" + RESET_TEXT_COLOR);
       client.switchToPostlogin();
-    } catch (Exception e) {
+    } catch (ClientException e) {
       System.out.println(SET_TEXT_COLOR_RED + "Registration failed: " + e.getMessage() + RESET_TEXT_COLOR);
     }
   }

@@ -3,8 +3,6 @@ package client;
 import ui.PreloginUI;
 import ui.PostloginUI;
 
-import java.util.Scanner;
-
 public class ChessClient {
   private final ServerFacade server;
   private final PreloginUI preloginUI;

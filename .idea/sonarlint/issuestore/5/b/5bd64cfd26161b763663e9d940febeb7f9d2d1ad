@@ -1,27 +1,27 @@
 
+c
+java:S22597"FA "NullPointerException" could be thrown; "response" is nullable here.(‹öì³8šıĞ¥’2
 b
-java:S22594"FA "NullPointerException" could be thrown; "response" is nullable here.(ë±ÉY8Õ÷®›’2
-c
-java:S2259."FA "NullPointerException" could be thrown; "response" is nullable here.(‹öì³8Ö÷®›’2
-a	java:S112Z"FDefine and throw a dedicated exception instead of using a generic one.(ú»ÓD8Ö÷®›’2
-a	java:S112F"FDefine and throw a dedicated exception instead of using a generic one.(ùœ£8Ö÷®›’2
+java:S2259="FA "NullPointerException" could be thrown; "response" is nullable here.(ë±ÉY8›ıĞ¥’2
 h
-java:S1192+"FDefine a constant instead of duplicating this literal "/game" 3 times.(ê´ã£şÿÿÿÿ8×÷®›’2
+java:S11924"FDefine a constant instead of duplicating this literal "/game" 3 times.(ê´ã£şÿÿÿÿ8›ıĞ¥’2
 c
-java:S1075"ARefactor your code to get this URI from a customizable parameter.(”É÷ùÿÿÿÿ8İ÷®›’2
+java:S1192"FDefine a constant instead of duplicating this literal "board" 4 times.(•Í—í8œıĞ¥’2
+c
+java:S1075#"ARefactor your code to get this URI from a customizable parameter.(”É÷ùÿÿÿÿ8©ıĞ¥’2
 ]
-java:S1075 "ARefactor your code to get this URI from a customizable parameter.(ÛÌJ8ß÷®›’2
+java:S1075)"ARefactor your code to get this URI from a customizable parameter.(ÛÌJ8«ıĞ¥’2
 ]
-java:S1075&"ARefactor your code to get this URI from a customizable parameter.(ÛÌJ8à÷®›’2
+java:S1075/"ARefactor your code to get this URI from a customizable parameter.(ÛÌJ8¬ıĞ¥’2
 c
-java:S1075+"ARefactor your code to get this URI from a customizable parameter.(ê´ã£şÿÿÿÿ8á÷®›’2
+java:S10754"ARefactor your code to get this URI from a customizable parameter.(ê´ã£şÿÿÿÿ8®ıĞ¥’2
 c
-java:S10752"ARefactor your code to get this URI from a customizable parameter.(ê´ã£şÿÿÿÿ8ã÷®›’2
+java:S1075;"ARefactor your code to get this URI from a customizable parameter.(ê´ã£şÿÿÿÿ8°ıĞ¥’2
 c
-java:S10758"ARefactor your code to get this URI from a customizable parameter.(ê´ã£şÿÿÿÿ8ä÷®›’2
+java:S1075A"ARefactor your code to get this URI from a customizable parameter.(ê´ã£şÿÿÿÿ8²ıĞ¥’2
 c
-java:S1075>"ARefactor your code to get this URI from a customizable parameter.(¥íËÎÿÿÿÿÿ8å÷®›’2
+java:S1075G"ARefactor your code to get this URI from a customizable parameter.(¥íËÎÿÿÿÿÿ8³ıĞ¥’2
+{
+java:S2142k"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(”ı¾8¹ıĞ¥’2
 l
-java:S6218g"POverride equals, hashCode and toString to consider array's content in the method(ÂÅ•X8ñ÷®›’2
-R
-java:S1128"0Remove this unused import 'java.io.IOException'.(ªº»Úıÿÿÿÿ8ò÷®›’2
+java:S6218t"POverride equals, hashCode and toString to consider array's content in the method(ÂÅ•X8¼ıĞ¥’2

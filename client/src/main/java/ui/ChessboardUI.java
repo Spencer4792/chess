@@ -1,30 +1,37 @@
 package ui;
 
+import chess.ChessGame;
+import chess.ChessPiece;
+import chess.ChessPosition;
+import model.GameState;
+
 import static ui.EscapeSequences.*;
 
 public class ChessboardUI {
 
-  public static void displayChessboard() {
-    displayWhitePerspective();
+  public static void displayChessboard(GameState gameState) {
+    System.out.println("Game: " + gameState.getGameName());
+    System.out.println("White: " + gameState.getWhiteUsername());
+    System.out.println("Black: " + gameState.getBlackUsername());
     System.out.println();
-    displayBlackPerspective();
+
+    displayWhitePerspective(gameState.getGame());
+    System.out.println();
+    displayBlackPerspective(gameState.getGame());
   }
 
-  private static void displayWhitePerspective() {
+  private static void displayWhitePerspective(ChessGame game) {
     System.out.println("White's Perspective:");
-    displayBoard(true);
+    displayBoard(game, true);
   }
 
-  private static void displayBlackPerspective() {
+  private static void displayBlackPerspective(ChessGame game) {
     System.out.println("Black's Perspective:");
-    displayBoard(false);
+    displayBoard(game, false);
   }
 
-  private static void displayBoard(boolean whiteAtBottom) {
+  private static void displayBoard(ChessGame game, boolean whiteAtBottom) {
     String[] letters = {" a ", " b ", " c ", " d ", " e ", " f ", " g ", " h "};
-    String[] pieces = {EMPTY, WHITE_ROOK, WHITE_KNIGHT, WHITE_BISHOP, WHITE_QUEEN, WHITE_KING, WHITE_PAWN,
-            BLACK_ROOK, BLACK_KNIGHT, BLACK_BISHOP, BLACK_QUEEN, BLACK_KING, BLACK_PAWN};
-
     if (!whiteAtBottom) {
       for (int i = 0; i < letters.length / 2; i++) {
         String temp = letters[i];
@@ -45,12 +52,20 @@ public class ChessboardUI {
       System.out.print(displayRow + " ");
 
       for (int col = 0; col < 8; col++) {
+        int actualRow = whiteAtBottom ? 8 - row : row + 1;
+        int actualCol = whiteAtBottom ? col + 1 : 8 - col;
+        ChessPosition position = new ChessPosition(actualRow, actualCol);
+        ChessPiece piece = game.getBoard().getPiece(position);
+
         boolean isLightSquare = (row + col) % 2 == 0;
         String bgColor = isLightSquare ? SET_BG_COLOR_LIGHT_GREY : SET_BG_COLOR_DARK_GREY;
         System.out.print(bgColor);
 
-        // For simplicity, just print empty squares
-        System.out.print(EMPTY);
+        if (piece == null) {
+          System.out.print(EMPTY);
+        } else {
+          System.out.print(getPieceSymbol(piece));
+        }
       }
 
       System.out.print(RESET_BG_COLOR + " " + displayRow);
@@ -63,5 +78,18 @@ public class ChessboardUI {
       System.out.print(letter);
     }
     System.out.println();
+  }
+
+  private static String getPieceSymbol(ChessPiece piece) {
+    String color = (piece.getTeamColor() == ChessGame.TeamColor.WHITE) ? SET_TEXT_COLOR_RED : SET_TEXT_COLOR_BLUE;
+    String symbol = switch (piece.getPieceType()) {
+      case KING -> piece.getTeamColor() == ChessGame.TeamColor.WHITE ? WHITE_KING : BLACK_KING;
+      case QUEEN -> piece.getTeamColor() == ChessGame.TeamColor.WHITE ? WHITE_QUEEN : BLACK_QUEEN;
+      case BISHOP -> piece.getTeamColor() == ChessGame.TeamColor.WHITE ? WHITE_BISHOP : BLACK_BISHOP;
+      case KNIGHT -> piece.getTeamColor() == ChessGame.TeamColor.WHITE ? WHITE_KNIGHT : BLACK_KNIGHT;
+      case ROOK -> piece.getTeamColor() == ChessGame.TeamColor.WHITE ? WHITE_ROOK : BLACK_ROOK;
+      case PAWN -> piece.getTeamColor() == ChessGame.TeamColor.WHITE ? WHITE_PAWN : BLACK_PAWN;
+    };
+    return color + symbol + RESET_TEXT_COLOR;
   }
 }

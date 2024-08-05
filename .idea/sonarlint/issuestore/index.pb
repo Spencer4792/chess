@@ -96,3 +96,9 @@ X
 (client/src/main/java/ui/PostloginUI.java,8/5/8575f3c0e28f7aa5f78b4cd04cdac2d5773691aa
 Y
 )client/src/main/java/ui/ChessboardUI.java,2/1/21074ab2c8379065a96b02962b73e602adbf4547
+`
+0client/src/main/java/client/ClientException.java,4/e/4e4f3693f506affaf41be591a4d05182fec9edc4
+Y
+)client/src/main/java/model/GameState.java,8/e/8eb798ff416d6110d86115a3082b0df4928091fd
+\
+,client/src/main/java/ui/EscapeSequences.java,b/6/b6823e781e53d487887c1ba9760d63892cdd044c

@@ -1,21 +1,25 @@
 
-W
-java:S1118":Add a private constructor to hide the implicit public one.(†³ˆ8¯Úš¤’2
-L	java:S106	"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ8²Úš¤’2
-L	java:S106"+Replace this use of System.out by a logger.(§ÃÆ­ùÿÿÿÿ8´Úš¤’2
-L	java:S106"+Replace this use of System.out by a logger.(”“½ƒşÿÿÿÿ8¶Úš¤’2
-\
-java:S1854":Remove this useless assignment to local variable "pieces".(´›’Íıÿÿÿÿ8»Úš¤’2
-M
-java:S1481"+Remove this unused "pieces" local variable.(´›’Íıÿÿÿÿ8ÁÚš¤’2
-G	java:S106%"+Replace this use of System.out by a logger.(×•œ²8ĞÚš¤’2
-L	java:S106'"+Replace this use of System.out by a logger.(†¥Ÿüÿÿÿÿ8ÑÚš¤’2
-L	java:S106)"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ8ÒÚš¤’2
-L	java:S106-"+Replace this use of System.out by a logger.(ÇØ›·üÿÿÿÿ8ØÚš¤’2
-L	java:S1062"+Replace this use of System.out by a logger.(âÏšÍÿÿÿÿÿ8ÚÚš¤’2
-G	java:S1065"+Replace this use of System.out by a logger.(ÓîÜú8ÛÚš¤’2
-L	java:S1068"+Replace this use of System.out by a logger.(‡®ÂÓüÿÿÿÿ8ÜÚš¤’2
-L	java:S1069"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ8ÜÚš¤’2
-G	java:S106="+Replace this use of System.out by a logger.(×•œ²8İÚš¤’2
-L	java:S106?"+Replace this use of System.out by a logger.(†¥Ÿüÿÿÿÿ8ŞÚš¤’2
-L	java:S106A"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ8ßÚš¤’2
+}
+java:S1118
+":Add a private constructor to hide the implicit public one.(†³ˆ8æèå¤’2J$ced018ab-39c9-4ac1-a515-cc97f32098cd
+G	java:S106"+Replace this use of System.out by a logger.(ÀµÌ‘8ëèú¤’2
+G	java:S106"+Replace this use of System.out by a logger.(Å™÷Ä8ëèú¤’2
+L	java:S106"+Replace this use of System.out by a logger.(šÂâ‘üÿÿÿÿ8ëèú¤’2
+L	java:S106"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ8ìèú¤’2
+L	java:S106"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ8ìèú¤’2
+L	java:S106"+Replace this use of System.out by a logger.(§ÃÆ­ùÿÿÿÿ8îèú¤’2
+L	java:S106"+Replace this use of System.out by a logger.(”“½ƒşÿÿÿÿ8ïèú¤’2
+t
+java:S3776!"RRefactor this method to reduce its Cognitive Complexity from 23 to the 15 allowed.(Úïƒ¬ùÿÿÿÿ8ğèú¤’2
+G	java:S106,"+Replace this use of System.out by a logger.(×•œ²8òèú¤’2
+L	java:S106."+Replace this use of System.out by a logger.(†¥Ÿüÿÿÿÿ8óèú¤’2
+L	java:S1060"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ8óèú¤’2
+L	java:S1064"+Replace this use of System.out by a logger.(ÇØ›·üÿÿÿÿ8ôèú¤’2
+L	java:S106>"+Replace this use of System.out by a logger.(âÏšÍÿÿÿÿÿ8õèú¤’2
+G	java:S106A"+Replace this use of System.out by a logger.(ÓîÜú8õèú¤’2
+L	java:S106C"+Replace this use of System.out by a logger.(Ÿ‡åŸıÿÿÿÿ8öèú¤’2
+L	java:S106G"+Replace this use of System.out by a logger.(‡®ÂÓüÿÿÿÿ8öèú¤’2
+L	java:S106H"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ8öèú¤’2
+G	java:S106L"+Replace this use of System.out by a logger.(×•œ²8öèú¤’2
+L	java:S106N"+Replace this use of System.out by a logger.(†¥Ÿüÿÿÿÿ8÷èú¤’2
+L	java:S106P"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ8÷èú¤’2

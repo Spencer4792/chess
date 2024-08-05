@@ -1,7 +1,9 @@
 package ui;
 
 import client.ChessClient;
+import client.ClientException;
 import model.GameData;
+import model.GameState;
 
 import java.util.Collection;
 import java.util.Scanner;
@@ -57,7 +59,7 @@ public class PostloginUI {
       client.getServer().logout(client.getAuthToken());
       System.out.println(SET_TEXT_COLOR_GREEN + "Logout successful!" + RESET_TEXT_COLOR);
       client.logout();
-    } catch (Exception e) {
+    } catch (ClientException e) {
       System.out.println(SET_TEXT_COLOR_RED + "Logout failed: " + e.getMessage() + RESET_TEXT_COLOR);
     }
   }
@@ -69,7 +71,7 @@ public class PostloginUI {
     try {
       int gameId = client.getServer().createGame(client.getAuthToken(), gameName);
       System.out.println(SET_TEXT_COLOR_GREEN + "Game created successfully! Game ID: " + gameId + RESET_TEXT_COLOR);
-    } catch (Exception e) {
+    } catch (ClientException e) {
       System.out.println(SET_TEXT_COLOR_RED + "Failed to create game: " + e.getMessage() + RESET_TEXT_COLOR);
     }
   }
@@ -85,7 +87,7 @@ public class PostloginUI {
       }
       System.out.println("\nPress Enter to continue...");
       scanner.nextLine();
-    } catch (Exception e) {
+    } catch (ClientException e) {
       System.out.println(SET_TEXT_COLOR_RED + "Failed to list games: " + e.getMessage() + RESET_TEXT_COLOR);
     }
   }
@@ -102,10 +104,12 @@ public class PostloginUI {
       if (gameNumber <= 0 || gameNumber > gamesArray.length) {
         throw new IllegalArgumentException("Invalid game number");
       }
-      int gameId = gamesArray[gameNumber - 1].gameID();
-      client.getServer().joinGame(client.getAuthToken(), gameId, color);
+      GameData selectedGame = gamesArray[gameNumber - 1];
+      client.getServer().joinGame(client.getAuthToken(), selectedGame.gameID(), color);
       System.out.println(SET_TEXT_COLOR_GREEN + "Joined game successfully!" + RESET_TEXT_COLOR);
-      displayChessboard();
+      GameState gameState = new GameState(selectedGame.gameID(), selectedGame.gameName(),
+              selectedGame.whiteUsername(), selectedGame.blackUsername(), selectedGame.game());
+      ChessboardUI.displayChessboard(gameState);
     } catch (Exception e) {
       System.out.println(SET_TEXT_COLOR_RED + "Failed to join game: " + e.getMessage() + RESET_TEXT_COLOR);
     }
@@ -121,20 +125,14 @@ public class PostloginUI {
       if (gameNumber <= 0 || gameNumber > gamesArray.length) {
         throw new IllegalArgumentException("Invalid game number");
       }
-      int gameId = gamesArray[gameNumber - 1].gameID();
-      client.getServer().joinGame(client.getAuthToken(), gameId, null);
+      GameData selectedGame = gamesArray[gameNumber - 1];
+      client.getServer().joinGame(client.getAuthToken(), selectedGame.gameID(), null);
       System.out.println(SET_TEXT_COLOR_GREEN + "Observing game successfully!" + RESET_TEXT_COLOR);
-      displayChessboard();
+      GameState gameState = new GameState(selectedGame.gameID(), selectedGame.gameName(),
+              selectedGame.whiteUsername(), selectedGame.blackUsername(), selectedGame.game());
+      ChessboardUI.displayChessboard(gameState);
     } catch (Exception e) {
       System.out.println(SET_TEXT_COLOR_RED + "Failed to observe game: " + e.getMessage() + RESET_TEXT_COLOR);
     }
-  }
-
-  private void displayChessboard() {
-    System.out.println(ERASE_SCREEN + "Chessboard:");
-    // Display the chessboard (Will continue implementation)
-    ChessboardUI.displayChessboard();
-    System.out.println("\nPress Enter to continue...");
-    scanner.nextLine();
   }
 }
