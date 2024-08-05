@@ -94,3 +94,5 @@ W
 'client/src/main/java/ui/PreloginUI.java,2/a/2aa1488fc9769672bcf0db6561e714003adeabe7
 X
 (client/src/main/java/ui/PostloginUI.java,8/5/8575f3c0e28f7aa5f78b4cd04cdac2d5773691aa
+Y
+)client/src/main/java/ui/ChessboardUI.java,2/1/21074ab2c8379065a96b02962b73e602adbf4547
