@@ -41,7 +41,7 @@ public class ChessboardUI {
     }
 
     // Print column letters
-    System.out.print("   ");
+    System.out.print("    ");
     for (String letter : letters) {
       System.out.print(letter);
     }
@@ -49,7 +49,7 @@ public class ChessboardUI {
 
     for (int row = 0; row < 8; row++) {
       int displayRow = whiteAtBottom ? 8 - row : row + 1;
-      System.out.print(displayRow + " ");
+      System.out.printf("%d | ", displayRow);
 
       for (int col = 0; col < 8; col++) {
         int actualRow = whiteAtBottom ? 8 - row : row + 1;
@@ -68,12 +68,12 @@ public class ChessboardUI {
         }
       }
 
-      System.out.print(RESET_BG_COLOR + " " + displayRow);
+      System.out.print(RESET_BG_COLOR + " | " + displayRow);
       System.out.println();
     }
 
     // Print column letters again
-    System.out.print("   ");
+    System.out.print("    ");
     for (String letter : letters) {
       System.out.print(letter);
     }
@@ -81,7 +81,7 @@ public class ChessboardUI {
   }
 
   private static String getPieceSymbol(ChessPiece piece) {
-    String color = (piece.getTeamColor() == ChessGame.TeamColor.WHITE) ? SET_TEXT_COLOR_RED : SET_TEXT_COLOR_BLUE;
+    String color = (piece.getTeamColor() == ChessGame.TeamColor.WHITE) ? SET_TEXT_COLOR_BLUE : SET_TEXT_COLOR_RED;
     String symbol = switch (piece.getPieceType()) {
       case KING -> piece.getTeamColor() == ChessGame.TeamColor.WHITE ? WHITE_KING : BLACK_KING;
       case QUEEN -> piece.getTeamColor() == ChessGame.TeamColor.WHITE ? WHITE_QUEEN : BLACK_QUEEN;

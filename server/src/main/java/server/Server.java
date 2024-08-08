@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import dataaccess.*;
 import service.*;
 import model.*;
+import chess.*;
 import java.util.Collection;
 
 public class Server {
@@ -38,6 +39,8 @@ public class Server {
         Spark.post("/game", this::createGame);
         Spark.put("/game", this::joinGame);
         Spark.delete("/db", this::clear);
+        Spark.get("/game/:id", this::getGameState);
+        Spark.put("/game/:id/move", this::makeMove);
 
         Spark.exception(DataAccessException.class, this::exceptionHandler);
 
@@ -46,7 +49,6 @@ public class Server {
     }
 
     private void initializeDatabase() throws DataAccessException {
-        // Your database initialization code here
     }
 
     private String validateAuthToken(Request req, Response res) throws DataAccessException {
@@ -179,6 +181,33 @@ public class Server {
         }
     }
 
+    private Object getGameState(Request req, Response res) {
+        String authToken = req.headers("Authorization");
+        int gameId = Integer.parseInt(req.params(":id"));
+        try {
+            GameData gameData = gameService.getGameState(authToken, gameId);
+            res.status(200);
+            return gson.toJson(gameData);
+        } catch (Exception e) {
+            res.status(401);
+            return gson.toJson(new ErrorResult(e.getMessage()));
+        }
+    }
+
+    private Object makeMove(Request req, Response res) {
+        String authToken = req.headers("Authorization");
+        int gameId = Integer.parseInt(req.params(":id"));
+        ChessMove move = gson.fromJson(req.body(), ChessMove.class);
+        try {
+            gameService.makeMove(authToken, gameId, move);
+            res.status(200);
+            return "{}";
+        } catch (DataAccessException e) {
+            res.status(400);
+            return gson.toJson(new ErrorResult(e.getMessage()));
+        }
+    }
+
     private Object clear(Request req, Response res) {
         try {
             userService.clearAll();
@@ -202,7 +231,7 @@ public class Server {
 
     private record LoginRequest(String username, String password) {}
     private record CreateGameRequest(String gameName) {}
-    private record JoinGameRequest(int gameID, chess.ChessGame.TeamColor playerColor) {}
+    private record JoinGameRequest(int gameID, ChessGame.TeamColor playerColor) {}
     private record ListGamesResult(Collection<GameData> games) {}
     private record CreateGameResult(int gameID) {}
     private record ErrorResult(String message) {}

@@ -24,18 +24,30 @@ public class PreloginUI {
       System.out.println("2. Quit");
       System.out.println("3. Login");
       System.out.println("4. Register");
-      System.out.print("Enter your choice: ");
+      System.out.print("Enter your choice (number or command): ");
 
-      String choice = scanner.nextLine().trim();
+      String choice = scanner.nextLine().trim().toLowerCase();
       switch (choice) {
-        case "1" -> displayHelp();
-        case "2" -> {
+        case "1":
+        case "help":
+          displayHelp();
+          break;
+        case "2":
+        case "quit":
           System.out.println("Goodbye!");
           System.exit(0);
-        }
-        case "3" -> login();
-        case "4" -> register();
-        default -> System.out.println(SET_TEXT_COLOR_RED + "Invalid choice. Please try again." + RESET_TEXT_COLOR);
+          break;
+        case "3":
+        case "login":
+          login();
+          break;
+        case "4":
+        case "register":
+          register();
+          break;
+        default:
+          System.out.println(SET_TEXT_COLOR_RED + "Invalid choice. Please try again." + RESET_TEXT_COLOR);
+          break;
       }
     }
   }

@@ -1,6 +1,8 @@
 package service;
 
 import chess.ChessGame;
+import chess.ChessMove;
+import chess.InvalidMoveException;
 import dataaccess.*;
 import model.*;
 import java.util.Collection;
@@ -28,7 +30,8 @@ public class GameService {
       throw new DataAccessException("Error: bad request");
     }
     int gameID = Math.abs(UUID.randomUUID().hashCode());
-    GameData newGame = new GameData(gameID, null, null, gameName, new ChessGame());
+    ChessGame newChessGame = new ChessGame();
+    GameData newGame = new GameData(gameID, null, null, gameName, newChessGame);
     dataAccess.createGame(newGame);
     return gameID;
   }
@@ -60,5 +63,54 @@ public class GameService {
     }
 
     dataAccess.updateGame(game);
+  }
+
+  public void makeMove(String authToken, int gameId, ChessMove move) throws DataAccessException {
+    try {
+      AuthData auth = dataAccess.getAuth(authToken);
+      if (auth == null) {
+        throw new DataAccessException("unauthorized");
+      }
+
+      GameData game = dataAccess.getGame(gameId);
+      if (game == null) {
+        throw new DataAccessException("game not found");
+      }
+
+      ChessGame chessGame = game.game();
+      String currentPlayer = chessGame.getTeamTurn() == ChessGame.TeamColor.WHITE ? game.whiteUsername() : game.blackUsername();
+
+      if (!currentPlayer.equals(auth.username())) {
+        throw new DataAccessException("not your turn");
+      }
+
+      chessGame.makeMove(move);
+
+      GameData updatedGame = new GameData(
+              game.gameID(),
+              game.whiteUsername(),
+              game.blackUsername(),
+              game.gameName(),
+              chessGame
+      );
+
+      dataAccess.updateGame(updatedGame);
+    } catch (InvalidMoveException e) {
+      throw new DataAccessException("invalid move: " + e.getMessage());
+    }
+  }
+
+  public GameData getGameState(String authToken, int gameId) throws DataAccessException {
+    AuthData auth = dataAccess.getAuth(authToken);
+    if (auth == null) {
+      throw new DataAccessException("unauthorized");
+    }
+
+    GameData game = dataAccess.getGame(gameId);
+    if (game == null) {
+      throw new DataAccessException("game not found");
+    }
+
+    return game;
   }
 }

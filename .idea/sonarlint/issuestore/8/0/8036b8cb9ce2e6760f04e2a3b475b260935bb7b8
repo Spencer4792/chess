@@ -1,14 +1,18 @@
 
-–
-java:S11928"TDefine a constant instead of duplicating this literal "Error: unauthorized" 6 times.(©ªìb8èÍ²‘2J$39208673-fe6a-4e59-b77d-38c8fff1213d
-
-java:S1192M"HDefine a constant instead of duplicating this literal "Error: " 6 times.(éÈú–øÿÿÿÿ8èÍ²‘2J$35769513-53b3-4673-b5cd-32a632a7e031
 ›
-java:S1192B"SDefine a constant instead of duplicating this literal "Error: bad request" 5 times.(ˆÁá¨úÿÿÿÿ8èÍ²‘2J$9e6616a5-2c21-47eb-a701-85e98656ecaf
+java:S1192D"SDefine a constant instead of duplicating this literal "Error: bad request" 5 times.(ˆÁá¨úÿÿÿÿ8ÇìÖñ’2J$98ff40c2-0394-401b-869c-97d2e68099d9
 
-java:S1192%"FDefine a constant instead of duplicating this literal "/game" 3 times.(˜Ó€•şÿÿÿÿ8èÍ²‘2J$90d05fec-1fa4-4ab8-b6cb-581dd4f0c86c
+java:S1192&"FDefine a constant instead of duplicating this literal "/game" 3 times.(˜Ó€•şÿÿÿÿ8ìè«ñ’2J$222af717-6a4d-4ff1-b4f1-3f8e9cc67189
+‘
+java:S11927"NDefine a constant instead of duplicating this literal "Authorization" 3 times.(§¨éú8½¸ò’2J$fd5cb95b-3643-4f94-8250-0ed6a60f002c
 •
-java:S1192]"MDefine a constant instead of duplicating this literal "unauthorized" 4 times.(¹ò«¯úÿÿÿÿ8Ö°Ï²‘2J$bdc3bdac-4f85-4b0d-9218-2e8a685b7359
-l	java:S106"+Replace this use of System.err by a logger.(ş»¬8–èÍ²‘2J$25dbbfc4-a509-47b1-8abd-b6d4832bcb8b
+java:S1192_"MDefine a constant instead of duplicating this literal "unauthorized" 4 times.(¹ò«¯úÿÿÿÿ8šÿ¸ñ’2J$2f3d8cd2-26ce-48b8-a5e5-5f166821a27c
+–
+java:S1192:"TDefine a constant instead of duplicating this literal "Error: unauthorized" 6 times.(©ªìb8šÿ¸ñ’2J$8fd2f73c-af19-471e-88a3-39bd0c089012
+
+java:S1192O"HDefine a constant instead of duplicating this literal "Error: " 6 times.(éÈú–øÿÿÿÿ8ÈìÖñ’2J$a9176cff-2a5b-423e-91bf-5e07d3fdbe94
+
+java:S11863"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(„“ˆ48âÑ™“2
+l	java:S106"+Replace this use of System.err by a logger.(ş»¬8ùè«ñ’2J$e4df5734-67f8-4658-a3e9-7421b002d542
 ¹
-java:S11300"wRemove the declaration of thrown exception 'dataaccess.DataAccessException', as it cannot be thrown from method's body.(„“ˆ48˜èÍ²‘2J$b8b09e0e-00f9-48c4-a2e5-4496c8061f4d
+java:S11303"wRemove the declaration of thrown exception 'dataaccess.DataAccessException', as it cannot be thrown from method's body.(„“ˆ48¥ÿ¸ñ’2J$ef22f619-8a7d-4e9f-b1cf-ac1f952ea412

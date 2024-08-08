@@ -1,5 +1,8 @@
 package client;
 
+import model.AuthData;
+import model.GameState;
+import chess.ChessMove;
 import ui.PreloginUI;
 import ui.PostloginUI;
 
@@ -39,6 +42,14 @@ public class ChessClient {
   public void logout() {
     authToken = null;
     preloginUI.display();
+  }
+
+  public void makeMove(int gameId, ChessMove move) throws ClientException {
+    server.makeMove(authToken, gameId, move);
+  }
+
+  public GameState getGameState(int gameId) throws ClientException {
+    return server.getGameState(authToken, gameId);
   }
 
   public static void main(String[] args) {

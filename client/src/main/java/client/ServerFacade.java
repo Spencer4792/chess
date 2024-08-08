@@ -4,6 +4,7 @@ import chess.*;
 import com.google.gson.*;
 import model.AuthData;
 import model.GameData;
+import model.GameState;
 
 import java.lang.reflect.Type;
 import java.net.URI;
@@ -67,6 +68,17 @@ public class ServerFacade {
     makeRequest("PUT", path, request, null, authToken);
   }
 
+  public void makeMove(String authToken, int gameId, ChessMove move) throws ClientException {
+    var path = "/game/" + gameId + "/move";
+    makeRequest("PUT", path, move, null, authToken);
+  }
+
+  public GameState getGameState(String authToken, int gameId) throws ClientException {
+    var path = "/game/" + gameId;
+    GameData gameData = makeRequest("GET", path, null, GameData.class, authToken);
+    return new GameState(gameData.gameID(), gameData.gameName(), gameData.whiteUsername(), gameData.blackUsername(), gameData.game());
+  }
+
   public void clear() throws ClientException {
     var path = "/db";
     makeRequest("DELETE", path, null, null);
@@ -97,15 +109,26 @@ public class ServerFacade {
               HttpResponse.BodyHandlers.ofString());
 
       if (response.statusCode() >= 300) {
-        throw new ClientException("Error: " + response.body());
+        throw new ClientException(extractErrorMessage(response.body()));
       }
 
       if (responseClass != null) {
         return gson.fromJson(response.body(), responseClass);
       }
       return null;
+    } catch (ClientException e) {
+      throw e;
     } catch (Exception e) {
-      throw new ClientException("Error making request: " + e.getMessage(), e);
+      throw new ClientException(e.getMessage());
+    }
+  }
+
+  private String extractErrorMessage(String errorBody) {
+    try {
+      JsonObject jsonObject = JsonParser.parseString(errorBody).getAsJsonObject();
+      return jsonObject.get("message").getAsString().replace("Error: ", "");
+    } catch (Exception e) {
+      return errorBody.replace("Error: ", "");
     }
   }
 

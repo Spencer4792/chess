@@ -28,17 +28,37 @@ public class PostloginUI {
       System.out.println("4. List Games");
       System.out.println("5. Join Game");
       System.out.println("6. Observe Game");
-      System.out.print("Enter your choice: ");
+      System.out.print("Enter your choice (number or command): ");
 
-      String choice = scanner.nextLine().trim();
+      String choice = scanner.nextLine().trim().toLowerCase();
       switch (choice) {
-        case "1" -> displayHelp();
-        case "2" -> logout();
-        case "3" -> createGame();
-        case "4" -> listGames();
-        case "5" -> joinGame();
-        case "6" -> observeGame();
-        default -> System.out.println(SET_TEXT_COLOR_RED + "Invalid choice. Please try again." + RESET_TEXT_COLOR);
+        case "1":
+        case "help":
+          displayHelp();
+          break;
+        case "2":
+        case "logout":
+          logout();
+          return;
+        case "3":
+        case "create game":
+          createGame();
+          break;
+        case "4":
+        case "list games":
+          listGames();
+          break;
+        case "5":
+        case "join game":
+          joinGame();
+          break;
+        case "6":
+        case "observe game":
+          observeGame();
+          break;
+        default:
+          System.out.println(SET_TEXT_COLOR_RED + "Invalid choice. Please try again." + RESET_TEXT_COLOR);
+          break;
       }
     }
   }
@@ -70,7 +90,7 @@ public class PostloginUI {
 
     try {
       int gameId = client.getServer().createGame(client.getAuthToken(), gameName);
-      System.out.println(SET_TEXT_COLOR_GREEN + "Game created successfully! Game ID: " + gameId + RESET_TEXT_COLOR);
+      System.out.println(SET_TEXT_COLOR_GREEN + "Game created successfully!" + RESET_TEXT_COLOR);
     } catch (ClientException e) {
       System.out.println(SET_TEXT_COLOR_RED + "Failed to create game: " + e.getMessage() + RESET_TEXT_COLOR);
     }
@@ -94,7 +114,19 @@ public class PostloginUI {
 
   private void joinGame() {
     System.out.print("Enter game number: ");
-    int gameNumber = Integer.parseInt(scanner.nextLine());
+    String input = scanner.nextLine().trim();
+    if (input.isEmpty()) {
+      System.out.println(SET_TEXT_COLOR_RED + "Invalid input. Please enter a game number." + RESET_TEXT_COLOR);
+      return;
+    }
+    int gameNumber;
+    try {
+      gameNumber = Integer.parseInt(input);
+    } catch (NumberFormatException e) {
+      System.out.println(SET_TEXT_COLOR_RED + "Invalid input. Please enter a valid number." + RESET_TEXT_COLOR);
+      return;
+    }
+
     System.out.print("Enter color (WHITE/BLACK): ");
     String color = scanner.nextLine().toUpperCase();
 
@@ -107,9 +139,7 @@ public class PostloginUI {
       GameData selectedGame = gamesArray[gameNumber - 1];
       client.getServer().joinGame(client.getAuthToken(), selectedGame.gameID(), color);
       System.out.println(SET_TEXT_COLOR_GREEN + "Joined game successfully!" + RESET_TEXT_COLOR);
-      GameState gameState = new GameState(selectedGame.gameID(), selectedGame.gameName(),
-              selectedGame.whiteUsername(), selectedGame.blackUsername(), selectedGame.game());
-      ChessboardUI.displayChessboard(gameState);
+      new GamePlayUI(client, selectedGame.gameID()).start();
     } catch (Exception e) {
       System.out.println(SET_TEXT_COLOR_RED + "Failed to join game: " + e.getMessage() + RESET_TEXT_COLOR);
     }
@@ -128,9 +158,7 @@ public class PostloginUI {
       GameData selectedGame = gamesArray[gameNumber - 1];
       client.getServer().joinGame(client.getAuthToken(), selectedGame.gameID(), null);
       System.out.println(SET_TEXT_COLOR_GREEN + "Observing game successfully!" + RESET_TEXT_COLOR);
-      GameState gameState = new GameState(selectedGame.gameID(), selectedGame.gameName(),
-              selectedGame.whiteUsername(), selectedGame.blackUsername(), selectedGame.game());
-      ChessboardUI.displayChessboard(gameState);
+      new GamePlayUI(client, selectedGame.gameID()).start();
     } catch (Exception e) {
       System.out.println(SET_TEXT_COLOR_RED + "Failed to observe game: " + e.getMessage() + RESET_TEXT_COLOR);
     }

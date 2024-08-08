@@ -1,5 +1,7 @@
 
-r
-java:S1066A"/Merge this if statement with the enclosing one.(Èù8‚‹Ãœ‘2J$0a559a82-187a-4fc0-bfde-60fa27830a77
-n
-java:S1168""+Return an empty collection instead of null.(¥¹ï8„Ô¬Š2J$0e2e2db9-1689-48f0-ad7b-b9e8b10ebf22
+L
+java:S1066s"/Merge this if statement with the enclosing one.(Èù8„²ğ˜“2
+G
+java:S1948"*Make "lastMove" transient or serializable.(Ûø¡ç8‹²ğ˜“2
+H
+java:S1168T"+Return an empty collection instead of null.(¥¹ï8•²ğ˜“2

@@ -1,2 +1,4 @@
 
-L	java:S106"+Replace this use of System.out by a logger.(•ξεγϋÿÿÿÿ8¶π¤’2
+r	java:S106"+Replace this use of System.out by a logger.(•ξεγϋÿÿÿÿ8ΫΡΓρ’2J$816ddab3-057c-410d-979c-a64c3431c31a
+s
+java:S1128"+Remove this unused import 'model.AuthData'.(ξ‡„Γÿÿÿÿÿ8Μ«υο’2J$650b40f0-4f9d-4772-a564-37a3c9148559
