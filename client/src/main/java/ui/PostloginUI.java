@@ -65,6 +65,7 @@ public class PostloginUI {
 
   private void displayHelp() {
     System.out.println(ERASE_SCREEN + SET_TEXT_COLOR_GREEN + "Chess Game Help:" + RESET_TEXT_COLOR);
+    System.out.println("- Use 'Help' to bring up an explanation of available options");
     System.out.println("- Use 'Create Game' to start a new game");
     System.out.println("- Use 'List Games' to see available games");
     System.out.println("- Use 'Join Game' to participate in a game");

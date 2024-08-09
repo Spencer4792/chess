@@ -54,6 +54,7 @@ public class PreloginUI {
 
   private void displayHelp() {
     System.out.println(ERASE_SCREEN + SET_TEXT_COLOR_GREEN + "Chess Game Help:" + RESET_TEXT_COLOR);
+    System.out.println("- Use 'Help' to bring up an explanation of available options");
     System.out.println("- Use 'Login' to access your account");
     System.out.println("- Use 'Register' to create a new account");
     System.out.println("- Use 'Quit' to exit the program");
