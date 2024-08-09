@@ -4,6 +4,7 @@ import client.ChessClient;
 import client.ClientException;
 import model.GameData;
 import model.GameState;
+import chess.ChessGame;
 
 import java.util.Collection;
 import java.util.Scanner;
@@ -31,34 +32,38 @@ public class PostloginUI {
       System.out.print("Enter your choice (number or command): ");
 
       String choice = scanner.nextLine().trim().toLowerCase();
-      switch (choice) {
-        case "1":
-        case "help":
-          displayHelp();
-          break;
-        case "2":
-        case "logout":
-          logout();
-          return;
-        case "3":
-        case "create game":
-          createGame();
-          break;
-        case "4":
-        case "list games":
-          listGames();
-          break;
-        case "5":
-        case "join game":
-          joinGame();
-          break;
-        case "6":
-        case "observe game":
-          observeGame();
-          break;
-        default:
-          System.out.println(SET_TEXT_COLOR_RED + "Invalid choice. Please try again." + RESET_TEXT_COLOR);
-          break;
+      try {
+        switch (choice) {
+          case "1":
+          case "help":
+            displayHelp();
+            break;
+          case "2":
+          case "logout":
+            logout();
+            return;
+          case "3":
+          case "create game":
+            createGame();
+            break;
+          case "4":
+          case "list games":
+            listGames();
+            break;
+          case "5":
+          case "join game":
+            joinGame();
+            break;
+          case "6":
+          case "observe game":
+            observeGame();
+            break;
+          default:
+            System.out.println(SET_TEXT_COLOR_RED + "Invalid choice. Please try again." + RESET_TEXT_COLOR);
+            break;
+        }
+      } catch (Exception e) {
+        System.out.println(SET_TEXT_COLOR_RED + "An error occurred: " + e.getMessage() + RESET_TEXT_COLOR);
       }
     }
   }
@@ -148,18 +153,30 @@ public class PostloginUI {
 
   private void observeGame() {
     System.out.print("Enter game number: ");
-    int gameNumber = Integer.parseInt(scanner.nextLine());
-
+    String input = scanner.nextLine().trim();
     try {
+      int gameNumber = Integer.parseInt(input);
       Collection<GameData> games = client.getServer().listGames(client.getAuthToken());
       GameData[] gamesArray = games.toArray(new GameData[0]);
       if (gameNumber <= 0 || gameNumber > gamesArray.length) {
-        throw new IllegalArgumentException("Invalid game number");
+        System.out.println(SET_TEXT_COLOR_RED + "Invalid game number. Please try again." + RESET_TEXT_COLOR);
+        return;
       }
       GameData selectedGame = gamesArray[gameNumber - 1];
-      client.getServer().joinGame(client.getAuthToken(), selectedGame.gameID(), null);
-      System.out.println(SET_TEXT_COLOR_GREEN + "Observing game successfully!" + RESET_TEXT_COLOR);
-      new GamePlayUI(client, selectedGame.gameID()).start();
+      System.out.println(SET_TEXT_COLOR_GREEN + "Observing game: " + selectedGame.gameName() + RESET_TEXT_COLOR);
+
+      // Create a dummy ChessGame for display purposes
+      ChessGame dummyGame = new ChessGame();
+      dummyGame.getBoard().resetBoard();
+
+      // Display the board
+      ChessboardUI.displayChessboard(new GameState(selectedGame.gameID(), selectedGame.gameName(),
+              selectedGame.whiteUsername(), selectedGame.blackUsername(), dummyGame));
+
+      System.out.println("Press Enter to return to the menu...");
+      scanner.nextLine();
+    } catch (NumberFormatException e) {
+      System.out.println(SET_TEXT_COLOR_RED + "Invalid input. Please enter a valid number." + RESET_TEXT_COLOR);
     } catch (Exception e) {
       System.out.println(SET_TEXT_COLOR_RED + "Failed to observe game: " + e.getMessage() + RESET_TEXT_COLOR);
     }
