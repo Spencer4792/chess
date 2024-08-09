@@ -100,3 +100,5 @@ Y
 ,client/src/main/java/ui/EscapeSequences.java,b/6/b6823e781e53d487887c1ba9760d63892cdd044c
 W
 'client/src/main/java/ui/GamePlayUI.java,8/1/815a8834562dd853366f434dbb332c95565f362e
+b
+2shared/src/main/java/shared/ChessTypeAdapters.java,3/6/36363728d7237766bd0d2f70baa92b6368d66b54

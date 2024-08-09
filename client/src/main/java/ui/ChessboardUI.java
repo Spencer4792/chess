@@ -61,11 +61,7 @@ public class ChessboardUI {
         String bgColor = isLightSquare ? SET_BG_COLOR_LIGHT_GREY : SET_BG_COLOR_DARK_GREY;
         System.out.print(bgColor);
 
-        if (piece == null) {
-          System.out.print(EMPTY);
-        } else {
-          System.out.print(getPieceSymbol(piece));
-        }
+        System.out.print(getPieceSymbol(piece));
       }
 
       System.out.print(RESET_BG_COLOR + " | " + displayRow);
@@ -81,6 +77,9 @@ public class ChessboardUI {
   }
 
   private static String getPieceSymbol(ChessPiece piece) {
+    if (piece == null) {
+      return EMPTY;
+    }
     String color = (piece.getTeamColor() == ChessGame.TeamColor.WHITE) ? SET_TEXT_COLOR_BLUE : SET_TEXT_COLOR_RED;
     String symbol = switch (piece.getPieceType()) {
       case KING -> piece.getTeamColor() == ChessGame.TeamColor.WHITE ? WHITE_KING : BLACK_KING;

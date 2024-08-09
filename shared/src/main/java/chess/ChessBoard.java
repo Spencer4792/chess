@@ -49,7 +49,7 @@ public class ChessBoard implements Serializable {
     }
 
     public Map<ChessPosition, ChessPiece> getBoard() {
-        return board;
+        return this.board;
     }
 
     @Override

@@ -1,7 +1,7 @@
 
-L
-java:S1066s"/Merge this if statement with the enclosing one.(Èù8„²ğ˜“2
-G
-java:S1948"*Make "lastMove" transient or serializable.(Ûø¡ç8‹²ğ˜“2
-H
-java:S1168T"+Return an empty collection instead of null.(¥¹ï8•²ğ˜“2
+r
+java:S1066s"/Merge this if statement with the enclosing one.(Èù8„²ğ˜“2J$b4c29365-19e0-4eb8-b971-4ae67eb68e96
+m
+java:S1948"*Make "lastMove" transient or serializable.(Ûø¡ç8‹²ğ˜“2J$d98b4270-b836-44cf-9c33-14f9d7736ef4
+n
+java:S1168T"+Return an empty collection instead of null.(¥¹ï8•²ğ˜“2J$3b1ca963-379a-4bd8-998f-5d1862f05b27

@@ -1,29 +1,29 @@
 
-c
-java:S22598"FA "NullPointerException" could be thrown; "response" is nullable here.(‹öì³8Š¤³ó’2
-b
-java:S2259>"FA "NullPointerException" could be thrown; "response" is nullable here.(ë±ÉY8‰¤³ó’2
-b
-java:S2259O"FA "NullPointerException" could be thrown; "gameData" is nullable here.(ß»78‰¤³ó’2
-h
-java:S11925"FDefine a constant instead of duplicating this literal "/game" 3 times.(ê´ã£şÿÿÿÿ8¤³ó’2
+
+java:S2259C"FA "NullPointerException" could be thrown; "response" is nullable here.(ì¼êéüÿÿÿÿ8ÚŠ®Ç“2J$58b2521e-7b32-47fb-882e-3eeb1edcaf74
+
+java:S2259R"FA "NullPointerException" could be thrown; "gameData" is nullable here.(ñáóÀüÿÿÿÿ8ÚŠ®Ç“2J$8a3b6f7c-43bf-4e49-8cea-c68f6190d0e5
+ˆ
+java:S22597"FA "NullPointerException" could be thrown; "response" is nullable here.(ë±ÉY8™®ŠÇ“2J$808cf669-5af4-4ac8-a0ba-d250d854815a
+
+java:S11925"FDefine a constant instead of duplicating this literal "/game" 3 times.(ê´ã£şÿÿÿÿ8ŞŠ®Ç“2J$c772bfac-1089-4ea7-bda4-a8c6957c1d91
 Š
-java:S1192–"FDefine a constant instead of duplicating this literal "board" 4 times.(•Í—í8¿ÕŸò’2J$ca70c9a2-47ca-4025-9401-d18824ff3891
-c
-java:S1075$"ARefactor your code to get this URI from a customizable parameter.(”É÷ùÿÿÿÿ8˜¤³ó’2
-]
-java:S1075*"ARefactor your code to get this URI from a customizable parameter.(ÛÌJ8™¤³ó’2
-]
-java:S10750"ARefactor your code to get this URI from a customizable parameter.(ÛÌJ8œ¤³ó’2
-c
-java:S10755"ARefactor your code to get this URI from a customizable parameter.(ê´ã£şÿÿÿÿ8¤³ó’2
-c
-java:S1075<"ARefactor your code to get this URI from a customizable parameter.(ê´ã£şÿÿÿÿ8¤³ó’2
-c
-java:S1075B"ARefactor your code to get this URI from a customizable parameter.(ê´ã£şÿÿÿÿ8Ÿ¤³ó’2
-c
-java:S1075S"ARefactor your code to get this URI from a customizable parameter.(¥íËÎÿÿÿÿÿ8£¤³ó’2
-{
-java:S2142y"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(”ı¾8¦¤³ó’2
+java:S1192"FDefine a constant instead of duplicating this literal "board" 4 times.(•Í—í8œ®ŠÇ“2J$67033173-daaf-41db-8341-87aa9f5a23e1
+‰
+java:S1075$"ARefactor your code to get this URI from a customizable parameter.(”É÷ùÿÿÿÿ8¤®ŠÇ“2J$cf5c79e2-f43c-44a7-8a5c-cc7dcc85e196
+ƒ
+java:S1075*"ARefactor your code to get this URI from a customizable parameter.(ÛÌJ8¥®ŠÇ“2J$0fb00dd5-4dd1-4468-93a6-e99392a68a71
+ƒ
+java:S10750"ARefactor your code to get this URI from a customizable parameter.(ÛÌJ8¥®ŠÇ“2J$d127610a-fd1d-456e-9cb1-57628a4ccf28
+‰
+java:S10755"ARefactor your code to get this URI from a customizable parameter.(ê´ã£şÿÿÿÿ8§®ŠÇ“2J$47d32fa3-4e5d-4181-87e3-8b21c453fd85
+‰
+java:S1075?"ARefactor your code to get this URI from a customizable parameter.(ê´ã£şÿÿÿÿ8íŠ®Ç“2J$8d3e5a1f-a18f-4881-bead-40d40ac8707a
+‰
+java:S1075H"ARefactor your code to get this URI from a customizable parameter.(ê´ã£şÿÿÿÿ8îŠ®Ç“2J$b31bda65-6b50-4ee8-a113-abe38949efba
+‰
+java:S1075Z"ARefactor your code to get this URI from a customizable parameter.(¥íËÎÿÿÿÿÿ8ª®ŠÇ“2J$5ca5deea-5b38-45bd-938b-7f96a2a6d312
+¢
+java:S2142€"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(”ı¾8­®ŠÇ“2J$51aa7b84-0728-43e5-bcd0-0d9f2ede5928
 “
-java:S6218‹"POverride equals, hashCode and toString to consider array's content in the method(ÂÅ•X8ÓÕŸò’2J$1424c55e-9360-4334-b70f-93c3118eb462
+java:S6218’"POverride equals, hashCode and toString to consider array's content in the method(ÂÅ•X8²®ŠÇ“2J$9174c704-4705-4ecd-9f7d-7096d8c0ada0

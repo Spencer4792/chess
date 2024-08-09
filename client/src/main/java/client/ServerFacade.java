@@ -49,34 +49,41 @@ public class ServerFacade {
     makeRequest("DELETE", path, null, null, authToken);
   }
 
-  public int createGame(String authToken, String gameName) throws ClientException {
-    var path = "/game";
-    var request = new CreateGameRequest(gameName);
-    var response = makeRequest("POST", path, request, CreateGameResponse.class, authToken);
-    return response.gameID();
-  }
-
   public Collection<GameData> listGames(String authToken) throws ClientException {
     var path = "/game";
     var response = makeRequest("GET", path, null, ListGamesResponse.class, authToken);
     return Arrays.asList(response.games());
   }
 
+  public void makeMove(String authToken, int gameId, ChessMove move) throws ClientException {
+    var path = "/game/" + gameId + "/move";
+    makeRequest("PUT", path, move, null, authToken);
+  }
+  public int createGame(String authToken, String gameName) throws ClientException {
+    var path = "/game";
+    var request = new CreateGameRequest(gameName);
+    var response = makeRequest("POST", path, request, CreateGameResponse.class, authToken);
+    // After creating the game, fetch its state to ensure it's properly initialized
+    getGameState(authToken, response.gameID());
+    return response.gameID();
+  }
+
   public void joinGame(String authToken, int gameID, String playerColor) throws ClientException {
     var path = "/game";
     var request = new JoinGameRequest(playerColor, gameID);
     makeRequest("PUT", path, request, null, authToken);
-  }
-
-  public void makeMove(String authToken, int gameId, ChessMove move) throws ClientException {
-    var path = "/game/" + gameId + "/move";
-    makeRequest("PUT", path, move, null, authToken);
+    // After joining the game, fetch its state to ensure it's properly initialized
+    getGameState(authToken, gameID);
   }
 
   public GameState getGameState(String authToken, int gameId) throws ClientException {
     var path = "/game/" + gameId;
     GameData gameData = makeRequest("GET", path, null, GameData.class, authToken);
-    return new GameState(gameData.gameID(), gameData.gameName(), gameData.whiteUsername(), gameData.blackUsername(), gameData.game());
+    ChessGame game = gameData.game();
+    if (game.getBoard().getBoard().isEmpty()) {
+      game.initializeBoard();
+    }
+    return new GameState(gameData.gameID(), gameData.gameName(), gameData.whiteUsername(), gameData.blackUsername(), game);
   }
 
   public void clear() throws ClientException {

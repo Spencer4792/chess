@@ -1,18 +1,18 @@
 
 ›
-java:S1192D"SDefine a constant instead of duplicating this literal "Error: bad request" 5 times.(ˆÁá¨úÿÿÿÿ8ÇìÖñ’2J$98ff40c2-0394-401b-869c-97d2e68099d9
+java:S1192D"SDefine a constant instead of duplicating this literal "Error: bad request" 5 times.(ˆÁá¨úÿÿÿÿ8ÇìÖñ’2J$944373b8-8b02-4a8b-8850-a9f1ac6bea0d
 
-java:S1192&"FDefine a constant instead of duplicating this literal "/game" 3 times.(˜Ó€•şÿÿÿÿ8ìè«ñ’2J$222af717-6a4d-4ff1-b4f1-3f8e9cc67189
+java:S1192&"FDefine a constant instead of duplicating this literal "/game" 3 times.(˜Ó€•şÿÿÿÿ8ìè«ñ’2J$bfce0115-bf38-4d2a-a8ee-02d0f086b504
 ‘
-java:S11927"NDefine a constant instead of duplicating this literal "Authorization" 3 times.(§¨éú8½¸ò’2J$fd5cb95b-3643-4f94-8250-0ed6a60f002c
+java:S11927"NDefine a constant instead of duplicating this literal "Authorization" 3 times.(§¨éú8½¸ò’2J$871dbc26-0e12-431b-ab12-6dd2c01bd961
 •
-java:S1192_"MDefine a constant instead of duplicating this literal "unauthorized" 4 times.(¹ò«¯úÿÿÿÿ8šÿ¸ñ’2J$2f3d8cd2-26ce-48b8-a5e5-5f166821a27c
+java:S1192_"MDefine a constant instead of duplicating this literal "unauthorized" 4 times.(¹ò«¯úÿÿÿÿ8šÿ¸ñ’2J$52078323-12fa-4c13-b01c-8f0280669d1d
 –
-java:S1192:"TDefine a constant instead of duplicating this literal "Error: unauthorized" 6 times.(©ªìb8šÿ¸ñ’2J$8fd2f73c-af19-471e-88a3-39bd0c089012
+java:S1192:"TDefine a constant instead of duplicating this literal "Error: unauthorized" 6 times.(©ªìb8šÿ¸ñ’2J$c19edbad-2763-4207-a771-9943ad8602dc
 
-java:S1192O"HDefine a constant instead of duplicating this literal "Error: " 6 times.(éÈú–øÿÿÿÿ8ÈìÖñ’2J$a9176cff-2a5b-423e-91bf-5e07d3fdbe94
-
-java:S11863"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(„“ˆ48âÑ™“2
-l	java:S106"+Replace this use of System.err by a logger.(ş»¬8ùè«ñ’2J$e4df5734-67f8-4658-a3e9-7421b002d542
+java:S1192O"HDefine a constant instead of duplicating this literal "Error: " 6 times.(éÈú–øÿÿÿÿ8ÈìÖñ’2J$95f0eced-abf4-4f53-8483-c44be6bf690c
+Ã
+java:S11863"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(„“ˆ48âÑ™“2J$903dd625-7959-4bf8-b653-1ba0ef82dae8
+l	java:S106"+Replace this use of System.err by a logger.(ş»¬8ùè«ñ’2J$4a022e54-de75-4a17-9a1d-ce7c18e1bebf
 ¹
-java:S11303"wRemove the declaration of thrown exception 'dataaccess.DataAccessException', as it cannot be thrown from method's body.(„“ˆ48¥ÿ¸ñ’2J$ef22f619-8a7d-4e9f-b1cf-ac1f952ea412
+java:S11303"wRemove the declaration of thrown exception 'dataaccess.DataAccessException', as it cannot be thrown from method's body.(„“ˆ48¥ÿ¸ñ’2J$78ef49f8-e388-468f-91c5-46731ae95951

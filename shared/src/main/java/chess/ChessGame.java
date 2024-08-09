@@ -17,7 +17,7 @@ public class ChessGame implements Serializable {
         initializeBoard();
     }
 
-    private void initializeBoard() {
+    public void initializeBoard() {
         // Set up pawns
         for (int i = 1; i <= 8; i++) {
             board.addPiece(new ChessPosition(2, i), new ChessPiece(TeamColor.WHITE, ChessPiece.PieceType.PAWN));
@@ -227,7 +227,7 @@ public class ChessGame implements Serializable {
     }
 
     public ChessBoard getBoard() {
-        return board;
+        return this.board;
     }
 
     public ChessMove getLastMove() {
