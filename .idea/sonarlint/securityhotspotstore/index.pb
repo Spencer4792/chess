@@ -104,3 +104,5 @@ b
 2shared/src/main/java/shared/ChessTypeAdapters.java,3/6/36363728d7237766bd0d2f70baa92b6368d66b54
 a
 1server/src/main/java/server/WebSocketHandler.java,f/6/f6544db842cacba35e93916e7c7c45a133596f91
+>
+client/pom.xml,0/4/041f522da4f7523dfafc230a092f5af2a53c5e8e
