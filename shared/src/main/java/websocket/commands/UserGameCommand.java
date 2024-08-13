@@ -1,12 +1,13 @@
 package websocket.commands;
 
-import java.util.Objects;
+import chess.ChessMove;
+import com.google.gson.Gson;
 
 public class UserGameCommand {
     private final CommandType commandType;
     private final String authToken;
     private final Integer gameID;
-    private String move;  // Add this field for storing move data
+    private String move;
 
     public UserGameCommand(CommandType commandType, String authToken, Integer gameID) {
         this.commandType = commandType;
@@ -41,18 +42,10 @@ public class UserGameCommand {
         this.move = move;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        UserGameCommand that = (UserGameCommand) o;
-        return getCommandType() == that.getCommandType() &&
-                Objects.equals(getAuthToken(), that.getAuthToken()) &&
-                Objects.equals(getGameID(), that.getGameID());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getCommandType(), getAuthToken(), getGameID());
+    public ChessMove getChessMove() {
+        if (move == null) {
+            return null;
+        }
+        return new Gson().fromJson(move, ChessMove.class);
     }
 }
