@@ -12,9 +12,11 @@ import model.GameData;
 import java.io.IOException;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.logging.Logger;
 
 @WebSocket
 public class WebSocketHandler {
+  private static final Logger LOGGER = Logger.getLogger(WebSocketHandler.class.getName());
   private static final Map<Integer, Map<Session, String>> gameSessions = new ConcurrentHashMap<>();
   private final GameService gameService;
   private final Gson gson;
@@ -25,12 +27,13 @@ public class WebSocketHandler {
   }
 
   @OnWebSocketConnect
-  public void onConnect(Session session) throws Exception {
-    // Connection established
+  public void onConnect(Session session) {
+    LOGGER.info("WebSocket connection opened: " + session.getRemoteAddress().getAddress());
   }
 
   @OnWebSocketClose
   public void onClose(Session session, int statusCode, String reason) {
+    LOGGER.info("WebSocket connection closed: " + session.getRemoteAddress().getAddress());
     for (Map.Entry<Integer, Map<Session, String>> entry : gameSessions.entrySet()) {
       if (entry.getValue().containsKey(session)) {
         String authToken = entry.getValue().remove(session);
@@ -40,23 +43,44 @@ public class WebSocketHandler {
     }
   }
 
-  @OnWebSocketMessage
-  public void onMessage(Session session, String message) throws Exception {
-    UserGameCommand command = gson.fromJson(message, UserGameCommand.class);
+  @OnWebSocketError
+  public void onError(Session session, Throwable error) {
+    LOGGER.severe("WebSocket error: " + error.getMessage());
+    try {
+      sendErrorMessage(session, "Internal server error");
+    } catch (IOException e) {
+      LOGGER.severe("Failed to send error message: " + e.getMessage());
+    }
+  }
 
-    switch (command.getCommandType()) {
-      case CONNECT:
-        handleConnect(session, command);
-        break;
-      case MAKE_MOVE:
-        handleMakeMove(session, command);
-        break;
-      case LEAVE:
-        handleLeave(session, command);
-        break;
-      case RESIGN:
-        handleResign(session, command);
-        break;
+  @OnWebSocketMessage
+  public void onMessage(Session session, String message) {
+    try {
+      UserGameCommand command = gson.fromJson(message, UserGameCommand.class);
+
+      switch (command.getCommandType()) {
+        case CONNECT:
+          handleConnect(session, command);
+          break;
+        case MAKE_MOVE:
+          handleMakeMove(session, command);
+          break;
+        case LEAVE:
+          handleLeave(session, command);
+          break;
+        case RESIGN:
+          handleResign(session, command);
+          break;
+        default:
+          sendErrorMessage(session, "Unknown command type");
+      }
+    } catch (Exception e) {
+      LOGGER.severe("Error processing message: " + e.getMessage());
+      try {
+        sendErrorMessage(session, "Error processing message: " + e.getMessage());
+      } catch (IOException ioException) {
+        LOGGER.severe("Failed to send error message: " + ioException.getMessage());
+      }
     }
   }
 
@@ -70,10 +94,11 @@ public class WebSocketHandler {
         sendGameState(session, authToken, gameId);
         notifyOtherPlayers(gameId, session, authToken + " has joined the game.");
       } else {
-        sendErrorMessage(session, "Error: invalid game ID or unauthorized");
+        sendErrorMessage(session, "Invalid game ID or unauthorized");
       }
     } catch (Exception e) {
-      sendErrorMessage(session, "Error: " + e.getMessage());
+      LOGGER.severe("Error in handleConnect: " + e.getMessage());
+      sendErrorMessage(session, "Error connecting to game: " + e.getMessage());
     }
   }
 
@@ -87,7 +112,8 @@ public class WebSocketHandler {
       sendGameStateToAll(gameId);
       notifyOtherPlayers(gameId, session, authToken + " made a move.");
     } catch (Exception e) {
-      sendErrorMessage(session, "Error: " + e.getMessage());
+      LOGGER.severe("Error in handleMakeMove: " + e.getMessage());
+      sendErrorMessage(session, "Error making move: " + e.getMessage());
     }
   }
 
@@ -95,8 +121,13 @@ public class WebSocketHandler {
     int gameId = command.getGameID();
     String authToken = command.getAuthToken();
 
-    gameSessions.get(gameId).remove(session);
-    notifyOtherPlayers(gameId, session, authToken + " has left the game.");
+    try {
+      gameSessions.get(gameId).remove(session);
+      notifyOtherPlayers(gameId, session, authToken + " has left the game.");
+    } catch (Exception e) {
+      LOGGER.severe("Error in handleLeave: " + e.getMessage());
+      sendErrorMessage(session, "Error leaving game: " + e.getMessage());
+    }
   }
 
   private void handleResign(Session session, UserGameCommand command) throws Exception {
@@ -108,13 +139,18 @@ public class WebSocketHandler {
       notifyAllPlayers(gameId, authToken + " has resigned from the game.");
       sendGameStateToAll(gameId);
     } catch (Exception e) {
-      sendErrorMessage(session, "Error: " + e.getMessage());
+      LOGGER.severe("Error in handleResign: " + e.getMessage());
+      sendErrorMessage(session, "Error resigning game: " + e.getMessage());
     }
   }
 
-  private void sendGameStateToAll(int gameId) throws Exception {
+  private void sendGameStateToAll(int gameId) {
     for (Map.Entry<Session, String> entry : gameSessions.get(gameId).entrySet()) {
-      sendGameState(entry.getKey(), entry.getValue(), gameId);
+      try {
+        sendGameState(entry.getKey(), entry.getValue(), gameId);
+      } catch (Exception e) {
+        LOGGER.severe("Error sending game state: " + e.getMessage());
+      }
     }
   }
 
@@ -125,7 +161,8 @@ public class WebSocketHandler {
       message.setGame(gameData.game());
       session.getRemote().sendString(gson.toJson(message));
     } catch (Exception e) {
-      sendErrorMessage(session, "Error: " + e.getMessage());
+      LOGGER.severe("Error sending game state: " + e.getMessage());
+      sendErrorMessage(session, "Error loading game state: " + e.getMessage());
     }
   }
 
@@ -141,7 +178,7 @@ public class WebSocketHandler {
           try {
             session.getRemote().sendString(jsonMessage);
           } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.severe("Error notifying player: " + e.getMessage());
           }
         }
       }
@@ -159,7 +196,7 @@ public class WebSocketHandler {
         try {
           session.getRemote().sendString(jsonMessage);
         } catch (IOException e) {
-          e.printStackTrace();
+          LOGGER.severe("Error notifying player: " + e.getMessage());
         }
       }
     }
