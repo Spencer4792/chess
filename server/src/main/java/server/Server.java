@@ -12,11 +12,13 @@ public class Server {
     private final UserService userService;
     private final GameService gameService;
     private final Gson gson = new Gson();
+    private final WebSocketHandler webSocketHandler;
 
     public Server() {
         DataAccess dataAccess = new MySqlDataAccess();
         userService = new UserService(dataAccess);
         gameService = new GameService(dataAccess);
+        webSocketHandler = new WebSocketHandler(gameService);
     }
 
     public int run(int desiredPort) {
@@ -39,8 +41,8 @@ public class Server {
         Spark.post("/game", this::createGame);
         Spark.put("/game", this::joinGame);
         Spark.delete("/db", this::clear);
-        Spark.get("/game/:id", this::getGameState);
-        Spark.put("/game/:id/move", this::makeMove);
+
+        Spark.webSocket("/ws", webSocketHandler);
 
         Spark.exception(DataAccessException.class, this::exceptionHandler);
 
