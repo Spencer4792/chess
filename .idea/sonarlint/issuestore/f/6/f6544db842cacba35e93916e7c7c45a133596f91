@@ -1,8 +1,8 @@
 
-b	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(¦ÂÄÖ8§ƒä”2
-b	java:S112^"FDefine and throw a dedicated exception instead of using a generic one.(Í­İÈ8¨ƒä”2
-g	java:S112y"FDefine and throw a dedicated exception instead of using a generic one.(Üáªüÿÿÿÿ8¨ƒä”2
+b	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(¦ÂÄÖ8…ÿšä”2
+b	java:S112^"FDefine and throw a dedicated exception instead of using a generic one.(Í­İÈ8…ÿšä”2
+g	java:S112y"FDefine and throw a dedicated exception instead of using a generic one.(Üáªüÿÿÿÿ8…ÿšä”2
 e
-java:S1192L"HDefine a constant instead of duplicating this literal "Error: " 4 times.(ü³ì‰8¨ƒä”2
+java:S1192L"HDefine a constant instead of duplicating this literal "Error: " 4 times.(ü³ì‰8†ÿšä”2
 ‰
-java:S1130^"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(Í­İÈ8Äƒä”2
+java:S1130^"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(Í­İÈ8—ÿšä”2
