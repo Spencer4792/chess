@@ -102,3 +102,5 @@ W
 'client/src/main/java/ui/GamePlayUI.java,8/1/815a8834562dd853366f434dbb332c95565f362e
 b
 2shared/src/main/java/shared/ChessTypeAdapters.java,3/6/36363728d7237766bd0d2f70baa92b6368d66b54
+a
+1server/src/main/java/server/WebSocketHandler.java,f/6/f6544db842cacba35e93916e7c7c45a133596f91
