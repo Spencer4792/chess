@@ -103,10 +103,6 @@ public class GameService {
     dataAccess.updateGame(game);
   }
 
-  public void setGameOver(boolean isGameOver) {
-    this.isGameOver = isGameOver;
-  }
-
   public void makeMove(String authToken, int gameId, ChessMove move) throws DataAccessException {
     AuthData auth = dataAccess.getAuth(authToken);
     if (auth == null) {
