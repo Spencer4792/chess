@@ -136,8 +136,15 @@ public class WebSocketHandler {
 
     try {
       gameService.resignGame(authToken, gameId);
-      notifyAllPlayers(gameId, authToken + " has resigned from the game.");
-      sendGameStateToAll(gameId);
+      ServerMessage message = new ServerMessage(ServerMessage.ServerMessageType.LOAD_GAME);
+      GameData gameData = gameService.getGameState(authToken, gameId);
+      message.setGame(gameData.game());
+      message.setMessage(authToken + " has resigned from the game.");
+      String jsonMessage = gson.toJson(message);
+
+      for (Session playerSession : gameSessions.get(gameId).keySet()) {
+        playerSession.getRemote().sendString(jsonMessage);
+      }
     } catch (Exception e) {
       LOGGER.severe("Error in handleResign: " + e.getMessage());
       sendErrorMessage(session, "Error resigning game: " + e.getMessage());
