@@ -7,6 +7,7 @@ import org.eclipse.jetty.websocket.api.annotations.*;
 import service.GameService;
 import websocket.commands.UserGameCommand;
 import websocket.messages.ServerMessage;
+import model.GameData;
 
 import java.io.IOException;
 import java.util.Map;
@@ -66,7 +67,7 @@ public class WebSocketHandler {
       gameSessions.computeIfAbsent(gameId, k -> new ConcurrentHashMap<>()).put(session, authToken);
 
       // Send the current game state to the connected client
-      sendGameState(session, gameId);
+      sendGameState(session, authToken, gameId);
 
       // Notify other players about the new connection
       notifyPlayers(gameId, authToken + " has joined the game.");
@@ -106,16 +107,16 @@ public class WebSocketHandler {
     sendGameState(gameId);
   }
 
-  private void sendGameState(Session session, int gameId) throws Exception {
-    String authToken = gameSessions.get(gameId).get(session);
-    ServerMessage message = new ServerMessage(ServerMessage.ServerMessageType.LOAD_GAME);
-    message.setGame(gameService.getGameState(authToken, gameId));
-    session.getRemote().sendString(gson.toJson(message));
+  private void sendGameState(int gameId) throws Exception {
+    for (Map.Entry<Session, String> entry : gameSessions.get(gameId).entrySet()) {
+      sendGameState(entry.getKey(), entry.getValue(), gameId);
+    }
   }
 
-  private void sendGameState(Session session, int gameId) throws Exception {
+  private void sendGameState(Session session, String authToken, int gameId) throws Exception {
     ServerMessage message = new ServerMessage(ServerMessage.ServerMessageType.LOAD_GAME);
-    message.setGame(gameService.getGameState(gameId));
+    GameData gameData = gameService.getGameState(authToken, gameId);
+    message.setGame(gameData.game());
     session.getRemote().sendString(gson.toJson(message));
   }
 
