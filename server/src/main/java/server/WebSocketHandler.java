@@ -2,6 +2,7 @@ package server;
 
 import chess.*;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import org.eclipse.jetty.websocket.api.Session;
 import org.eclipse.jetty.websocket.api.annotations.*;
 import service.GameService;
@@ -56,7 +57,16 @@ public class WebSocketHandler {
   @OnWebSocketMessage
   public void onMessage(Session session, String message) {
     try {
-      UserGameCommand command = gson.fromJson(message, UserGameCommand.class);
+      JsonObject jsonCommand = gson.fromJson(message, JsonObject.class);
+      UserGameCommand.CommandType commandType = UserGameCommand.CommandType.valueOf(jsonCommand.get("commandType").getAsString());
+      String authToken = jsonCommand.get("authToken").getAsString();
+      Integer gameID = jsonCommand.get("gameID").getAsInt();
+
+      UserGameCommand command = new UserGameCommand(commandType, authToken, gameID);
+
+      if (jsonCommand.has("move")) {
+        command.setMove(jsonCommand.get("move").toString());
+      }
 
       switch (command.getCommandType()) {
         case CONNECT:
@@ -106,6 +116,11 @@ public class WebSocketHandler {
     int gameId = command.getGameID();
     String authToken = command.getAuthToken();
     ChessMove move = command.getChessMove();
+
+    if (move == null) {
+      sendErrorMessage(session, "Invalid move data");
+      return;
+    }
 
     try {
       gameService.makeMove(authToken, gameId, move);
@@ -187,23 +202,6 @@ public class WebSocketHandler {
           } catch (IOException e) {
             LOGGER.severe("Error notifying player: " + e.getMessage());
           }
-        }
-      }
-    }
-  }
-
-  private void notifyAllPlayers(int gameId, String notificationMessage) {
-    ServerMessage message = new ServerMessage(ServerMessage.ServerMessageType.NOTIFICATION);
-    message.setMessage(notificationMessage);
-    String jsonMessage = gson.toJson(message);
-
-    Map<Session, String> sessions = gameSessions.get(gameId);
-    if (sessions != null) {
-      for (Session session : sessions.keySet()) {
-        try {
-          session.getRemote().sendString(jsonMessage);
-        } catch (IOException e) {
-          LOGGER.severe("Error notifying player: " + e.getMessage());
         }
       }
     }

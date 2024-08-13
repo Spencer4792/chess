@@ -91,12 +91,12 @@ public class GameService {
 
     String username = auth.username();
     if (playerColor == ChessGame.TeamColor.WHITE) {
-      if (game.whiteUsername() != null) {
+      if (game.whiteUsername() != null && !game.whiteUsername().isEmpty()) {
         throw new DataAccessException("Error: already taken");
       }
       game = new GameData(game.gameID(), username, game.blackUsername(), game.gameName(), game.game());
     } else if (playerColor == ChessGame.TeamColor.BLACK) {
-      if (game.blackUsername() != null) {
+      if (game.blackUsername() != null && !game.blackUsername().isEmpty()) {
         throw new DataAccessException("Error: already taken");
       }
       game = new GameData(game.gameID(), game.whiteUsername(), username, game.gameName(), game.game());

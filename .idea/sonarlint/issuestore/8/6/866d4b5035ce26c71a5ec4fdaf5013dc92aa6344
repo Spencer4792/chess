@@ -1,6 +1,8 @@
 
-	java:S112k"FDefine and throw a dedicated exception instead of using a generic one.(ƒş¡ğûÿÿÿÿ8ÃµøÎ”2J$64a5cebb-8fcd-4571-ac85-fc41238ff61f
-	java:S112g"FDefine and throw a dedicated exception instead of using a generic one.(ì¡†­ÿÿÿÿÿ8ÃµøÎ”2J$8831c226-aa4d-420b-9f41-9ddd2f25cd66
-r	java:S106 "+Replace this use of System.out by a logger.(•îåãûÿÿÿÿ8ÎµøÎ”2J$3a07336e-37be-4549-9884-ba3dda616138
-m	java:S1068"+Replace this use of System.out by a logger.(ºÿì‚8ÏµøÎ”2J$ca577dc1-e79d-4889-a885-de8aa39d5ab1
-r	java:S106b"+Replace this use of System.out by a logger.(·¨î¨ÿÿÿÿÿ8ÔµøÎ”2J$cc69d095-8f88-4013-95a9-e117b3caca5c
+	java:S112k"FDefine and throw a dedicated exception instead of using a generic one.(ƒş¡ğûÿÿÿÿ8ÃµøÎ”2J$9cb9b12b-c6b7-430e-9b4f-042ca67337a7
+	java:S112g"FDefine and throw a dedicated exception instead of using a generic one.(ì¡†­ÿÿÿÿÿ8ÃµøÎ”2J$bd0c0bf6-aa76-4770-8c8c-ddb53b571fd0
+r	java:S106 "+Replace this use of System.out by a logger.(•îåãûÿÿÿÿ8ÎµøÎ”2J$bd5e067a-bfb3-44a3-8e95-b094fa1a5237
+m	java:S1068"+Replace this use of System.out by a logger.(ºÿì‚8ÏµøÎ”2J$01f25aa0-bf28-4088-b6ae-1f8d6e395a77
+r	java:S106b"+Replace this use of System.out by a logger.(·¨î¨ÿÿÿÿÿ8ÔµøÎ”2J$3ae0a41e-9f45-45ad-8517-98f854fbdf82
+M
+java:S1128"+Remove this unused import 'model.AuthData'.(î‡„Ãÿÿÿÿÿ8ŸÊ×ä”2
