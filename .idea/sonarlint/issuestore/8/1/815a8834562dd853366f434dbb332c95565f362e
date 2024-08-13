@@ -1,8 +1,9 @@
 
-}
-java:S1141$"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8Š¦¦ã”2J$74c47b5a-9fa6-4f64-b9b1-766cf0e5d40d
-r	java:S106"+Replace this use of System.out by a logger.(†Ê³óùÿÿÿÿ8‘¦¦ã”2J$06e886ad-6403-4f33-9722-c7012b238b1c
-r	java:S106)"+Replace this use of System.out by a logger.(•‚À½ûÿÿÿÿ8’¦¦ã”2J$daa51a08-5813-4e16-aab5-cab52d2cb2a9
-r	java:S106-"+Replace this use of System.out by a logger.(¢‘ìíüÿÿÿÿ8’¦¦ã”2J$26438c25-3f62-4e45-a1bb-156f662a2ec3
-r	java:S106J"+Replace this use of System.out by a logger.(®è’œøÿÿÿÿ8–¦¦ã”2J$c1553bdb-211b-465d-901d-20adc261ef65
-r	java:S106L"+Replace this use of System.out by a logger.(ßÇƒüÿÿÿÿ8–¦¦ã”2J$f3e68f74-2c80-40ae-811a-610c6aeafca0
+W
+java:S1141$"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8Ü¶Àã”2
+L	java:S106"+Replace this use of System.out by a logger.(†Ê³óùÿÿÿÿ8ç¶Àã”2
+L	java:S106)"+Replace this use of System.out by a logger.(•‚À½ûÿÿÿÿ8é¶Àã”2
+L	java:S106-"+Replace this use of System.out by a logger.(¢‘ìíüÿÿÿÿ8é¶Àã”2
+L	java:S1064"+Replace this use of System.out by a logger.(®è’œøÿÿÿÿ8ì¶Àã”2
+L	java:S1066"+Replace this use of System.out by a logger.(ßÇƒüÿÿÿÿ8ì¶Àã”2
+L	java:S1068"+Replace this use of System.out by a logger.(Ìàšÿÿÿÿÿ8ì¶Àã”2

@@ -25,6 +25,9 @@ public class Server {
         Spark.port(desiredPort);
         Spark.staticFiles.location("web");
 
+        // Add WebSocket handler before any other routes
+        Spark.webSocket("/ws", webSocketHandler);
+
         try {
             DatabaseManager.createDatabase();
             DatabaseManager.createTables();
@@ -34,6 +37,7 @@ public class Server {
             return -1;
         }
 
+        // Define routes after WebSocket
         Spark.post("/user", this::register);
         Spark.post("/session", this::login);
         Spark.delete("/session", this::logout);
@@ -41,8 +45,6 @@ public class Server {
         Spark.post("/game", this::createGame);
         Spark.put("/game", this::joinGame);
         Spark.delete("/db", this::clear);
-
-        Spark.webSocket("/ws", webSocketHandler);
 
         Spark.exception(DataAccessException.class, this::exceptionHandler);
 

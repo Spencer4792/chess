@@ -35,7 +35,7 @@ public class GamePlayUI {
         }
         try {
           ChessMove move = parseMove(input);
-          client.makeMove(gameId, move);
+          makeMove(move);
           gameState = client.getGameState(gameId); // Refresh game state after move
         } catch (Exception e) {
           System.out.println(SET_TEXT_COLOR_RED + "Error: " + e.getMessage() + RESET_TEXT_COLOR);
@@ -45,6 +45,18 @@ public class GamePlayUI {
       System.out.println(SET_TEXT_COLOR_RED + "Error getting game state: " + e.getMessage() + RESET_TEXT_COLOR);
     }
   }
+
+  private void makeMove(ChessMove move) {
+    try {
+      client.makeMove(gameId, move);
+      System.out.println(SET_TEXT_COLOR_GREEN + "Move made successfully!" + RESET_TEXT_COLOR);
+    } catch (ClientException e) {
+      System.out.println(SET_TEXT_COLOR_RED + "Error making move: " + e.getMessage() + RESET_TEXT_COLOR);
+    } catch (Exception e) {
+      System.out.println(SET_TEXT_COLOR_RED + "Unexpected error: " + e.getMessage() + RESET_TEXT_COLOR);
+    }
+  }
+
   private void displayBoard(GameState gameState) {
     ChessboardUI.displayChessboard(gameState);
   }
@@ -66,14 +78,5 @@ public class GamePlayUI {
     int col = pos.charAt(0) - 'a' + 1;
     int row = Character.getNumericValue(pos.charAt(1));
     return new ChessPosition(row, col);
-  }
-
-  private void makeMove(ChessMove move) {
-    try {
-      client.makeMove(gameId, move);
-      System.out.println(SET_TEXT_COLOR_GREEN + "Move made successfully!" + RESET_TEXT_COLOR);
-    } catch (ClientException e) {
-      System.out.println(SET_TEXT_COLOR_RED + "Error making move: " + e.getMessage() + RESET_TEXT_COLOR);
-    }
   }
 }
