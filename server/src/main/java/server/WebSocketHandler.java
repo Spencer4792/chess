@@ -106,10 +106,11 @@ public class WebSocketHandler {
     sendGameState(gameId);
   }
 
-  private void sendGameState(int gameId) throws Exception {
-    for (Session session : gameSessions.get(gameId).keySet()) {
-      sendGameState(session, gameId);
-    }
+  private void sendGameState(Session session, int gameId) throws Exception {
+    String authToken = gameSessions.get(gameId).get(session);
+    ServerMessage message = new ServerMessage(ServerMessage.ServerMessageType.LOAD_GAME);
+    message.setGame(gameService.getGameState(authToken, gameId));
+    session.getRemote().sendString(gson.toJson(message));
   }
 
   private void sendGameState(Session session, int gameId) throws Exception {
