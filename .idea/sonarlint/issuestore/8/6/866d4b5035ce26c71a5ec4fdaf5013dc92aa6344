@@ -1,4 +1,6 @@
 
-r	java:S106"+Replace this use of System.out by a logger.(•îåãûÿÿÿÿ8ÛÑÃñ’2J$3da7e0d9-0a98-4f31-b44c-740adf9b93a5
-s
-java:S1128"+Remove this unused import 'model.AuthData'.(î‡„Ãÿÿÿÿÿ8Ì«õï’2J$0770316a-b957-4d3a-a29d-ceae5f84c4e2
+g	java:S112k"FDefine and throw a dedicated exception instead of using a generic one.(ƒş¡ğûÿÿÿÿ8ÃµøÎ”2
+g	java:S112g"FDefine and throw a dedicated exception instead of using a generic one.(ì¡†­ÿÿÿÿÿ8ÃµøÎ”2
+L	java:S106 "+Replace this use of System.out by a logger.(•îåãûÿÿÿÿ8ÎµøÎ”2
+G	java:S1068"+Replace this use of System.out by a logger.(ºÿì‚8ÏµøÎ”2
+L	java:S106b"+Replace this use of System.out by a logger.(·¨î¨ÿÿÿÿÿ8ÔµøÎ”2
