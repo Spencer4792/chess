@@ -10,6 +10,7 @@ public class ChessGame implements Serializable {
     private ChessBoard board;
     private TeamColor teamTurn;
     private ChessMove lastMove;
+    private boolean isGameOver;
 
     public ChessGame() {
         this.board = new ChessBoard();
@@ -98,12 +99,21 @@ public class ChessGame implements Serializable {
         return validMoves;
     }
 
-    public void setGameOver(boolean isGameOver) {
-        this.isGameOver = isGameOver;
+    public boolean isGameOver() {
+        return isGameOver || isInCheckmate(TeamColor.WHITE) ||
+                isInCheckmate(TeamColor.BLACK) || isInStalemate(TeamColor.WHITE) ||
+                isInStalemate(TeamColor.BLACK);
+    }
+
+    public void setGameOver(boolean gameOver) {
+        isGameOver = gameOver;
     }
 
     public void makeMove(ChessMove move) throws InvalidMoveException {
         ChessPiece piece = board.getPiece(move.getStartPosition());
+        if (isGameOver()) {
+            throw new InvalidMoveException("The game is already over.");
+        }
         if (piece == null) {
             throw new InvalidMoveException("No piece at start position.");
         }
@@ -112,6 +122,9 @@ public class ChessGame implements Serializable {
         }
         if (!validMoves(move.getStartPosition()).contains(move)) {
             throw new InvalidMoveException("Invalid move.");
+        }
+        if (isInCheckmate(TeamColor.WHITE) || isInCheckmate(TeamColor.BLACK) || isInStalemate(TeamColor.WHITE) || isInStalemate(TeamColor.BLACK)) {
+            setGameOver(true);
         }
 
         // Handle en passant
