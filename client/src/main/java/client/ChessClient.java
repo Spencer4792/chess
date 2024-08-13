@@ -125,9 +125,11 @@ public class ChessClient {
   }
 
   private void handleLoadGame(ServerMessage message) {
-    GameState gameState = message.getGame();
-    postloginUI.updateGameState(gameState);
+    chess.ChessGame chessGame = message.getGame();
+    // Convert ChessGame to GameState or update UI directly with ChessGame
+    postloginUI.updateGameState(new GameState(chessGame)); // Assuming GameState has a constructor that takes ChessGame
   }
+
 
   private void handleNotification(ServerMessage message) {
     postloginUI.showNotification(message.getMessage());

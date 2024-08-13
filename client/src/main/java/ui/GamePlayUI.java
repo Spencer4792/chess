@@ -35,17 +35,16 @@ public class GamePlayUI {
         }
         try {
           ChessMove move = parseMove(input);
-          makeMove(move);
+          client.makeMove(gameId, move);
           gameState = client.getGameState(gameId); // Refresh game state after move
         } catch (Exception e) {
           System.out.println(SET_TEXT_COLOR_RED + "Error: " + e.getMessage() + RESET_TEXT_COLOR);
         }
       }
-    } catch (ClientException e) {
+    } catch (Exception e) {
       System.out.println(SET_TEXT_COLOR_RED + "Error getting game state: " + e.getMessage() + RESET_TEXT_COLOR);
     }
   }
-
   private void displayBoard(GameState gameState) {
     ChessboardUI.displayChessboard(gameState);
   }

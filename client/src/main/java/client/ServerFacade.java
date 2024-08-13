@@ -85,6 +85,9 @@ public class ServerFacade {
     }
     return new GameState(gameData.gameID(), gameData.gameName(), gameData.whiteUsername(), gameData.blackUsername(), game);
   }
+  public String getServerUrl() {
+    return serverUrl;
+  }
 
   public void clear() throws ClientException {
     var path = "/db";

@@ -17,6 +17,14 @@ public class GameState {
     this.game = game;
   }
 
+  public GameState(ChessGame game) {
+    this.gameId = 0;
+    this.gameName = "";
+    this.whiteUsername = "";
+    this.blackUsername = "";
+    this.game = game;
+  }
+
   public int getGameId() { return gameId; }
   public String getGameName() { return gameName; }
   public String getWhiteUsername() { return whiteUsername; }
