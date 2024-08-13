@@ -5,6 +5,8 @@ import client.ClientException;
 import model.GameData;
 import model.GameState;
 import chess.ChessGame;
+import chess.ChessMove;
+import chess.ChessPosition;
 
 import java.util.Collection;
 import java.util.Scanner;
@@ -14,6 +16,7 @@ import static ui.EscapeSequences.*;
 public class PostloginUI {
   private final ChessClient client;
   private final Scanner scanner;
+  private GameState currentGameState;
 
   public PostloginUI(ChessClient client) {
     this.client = client;
@@ -145,10 +148,84 @@ public class PostloginUI {
       GameData selectedGame = gamesArray[gameNumber - 1];
       client.getServer().joinGame(client.getAuthToken(), selectedGame.gameID(), color);
       System.out.println(SET_TEXT_COLOR_GREEN + "Joined game successfully!" + RESET_TEXT_COLOR);
-      new GamePlayUI(client, selectedGame.gameID()).start();
+      client.joinGame(selectedGame.gameID());
+      playGame(selectedGame.gameID());
     } catch (Exception e) {
       System.out.println(SET_TEXT_COLOR_RED + "Failed to join game: " + e.getMessage() + RESET_TEXT_COLOR);
     }
+  }
+
+  private void playGame(int gameId) {
+    while (true) {
+      displayBoard();
+      System.out.println("Enter your move (e.g., e2 e4), 'resign', or 'leave':");
+      String input = scanner.nextLine().trim().toLowerCase();
+
+      if (input.equals("resign")) {
+        try {
+          client.resignGame(gameId);
+          System.out.println(SET_TEXT_COLOR_YELLOW + "You have resigned from the game." + RESET_TEXT_COLOR);
+          break;
+        } catch (Exception e) {
+          System.out.println(SET_TEXT_COLOR_RED + "Failed to resign: " + e.getMessage() + RESET_TEXT_COLOR);
+        }
+      } else if (input.equals("leave")) {
+        try {
+          client.leaveGame(gameId);
+          System.out.println(SET_TEXT_COLOR_YELLOW + "You have left the game." + RESET_TEXT_COLOR);
+          break;
+        } catch (Exception e) {
+          System.out.println(SET_TEXT_COLOR_RED + "Failed to leave game: " + e.getMessage() + RESET_TEXT_COLOR);
+        }
+      } else {
+        try {
+          ChessMove move = parseMove(input);
+          client.makeMove(gameId, move);
+        } catch (Exception e) {
+          System.out.println(SET_TEXT_COLOR_RED + "Invalid move: " + e.getMessage() + RESET_TEXT_COLOR);
+        }
+      }
+    }
+  }
+
+  private void displayBoard() {
+    if (currentGameState != null) {
+      ChessboardUI.displayChessboard(currentGameState);
+    } else {
+      System.out.println(SET_TEXT_COLOR_YELLOW + "Waiting for game state..." + RESET_TEXT_COLOR);
+    }
+  }
+
+  private ChessMove parseMove(String input) {
+    String[] parts = input.split("\\s+");
+    if (parts.length != 2) {
+      throw new IllegalArgumentException("Invalid move format. Use 'e2 e4' format.");
+    }
+    ChessPosition start = parsePosition(parts[0]);
+    ChessPosition end = parsePosition(parts[1]);
+    return new ChessMove(start, end, null); // Assuming no promotion for simplicity
+  }
+
+  private ChessPosition parsePosition(String pos) {
+    if (pos.length() != 2) {
+      throw new IllegalArgumentException("Invalid position format. Use 'e2' format.");
+    }
+    int col = pos.charAt(0) - 'a' + 1;
+    int row = Character.getNumericValue(pos.charAt(1));
+    return new ChessPosition(row, col);
+  }
+
+  public void updateGameState(GameState gameState) {
+    this.currentGameState = gameState;
+    displayBoard();
+  }
+
+  public void showNotification(String message) {
+    System.out.println(SET_TEXT_COLOR_GREEN + "Notification: " + message + RESET_TEXT_COLOR);
+  }
+
+  public void showError(String errorMessage) {
+    System.out.println(SET_TEXT_COLOR_RED + "Error: " + errorMessage + RESET_TEXT_COLOR);
   }
 
   private void observeGame() {
