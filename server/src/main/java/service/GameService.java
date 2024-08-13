@@ -15,6 +15,44 @@ public class GameService {
     this.dataAccess = dataAccess;
   }
 
+  public boolean isValidGame(int gameId) throws DataAccessException {
+    return dataAccess.getGame(gameId) != null;
+  }
+
+  public boolean isAuthorized(String authToken) throws DataAccessException {
+    return dataAccess.getAuth(authToken) != null;
+  }
+
+  public void resignGame(String authToken, int gameId) throws DataAccessException {
+    AuthData auth = dataAccess.getAuth(authToken);
+    if (auth == null) {
+      throw new DataAccessException("unauthorized");
+    }
+
+    GameData game = dataAccess.getGame(gameId);
+    if (game == null) {
+      throw new DataAccessException("game not found");
+    }
+
+    String username = auth.username();
+    if (!username.equals(game.whiteUsername()) && !username.equals(game.blackUsername())) {
+      throw new DataAccessException("not a player in this game");
+    }
+
+    ChessGame chessGame = game.game();
+    chessGame.setGameOver(true);
+
+    GameData updatedGame = new GameData(
+            game.gameID(),
+            game.whiteUsername(),
+            game.blackUsername(),
+            game.gameName(),
+            chessGame
+    );
+
+    dataAccess.updateGame(updatedGame);
+  }
+
   public Collection<GameData> listGames(String authToken) throws DataAccessException {
     if (dataAccess.getAuth(authToken) == null) {
       throw new DataAccessException("Error: unauthorized");
@@ -65,25 +103,29 @@ public class GameService {
     dataAccess.updateGame(game);
   }
 
+  public void setGameOver(boolean isGameOver) {
+    this.isGameOver = isGameOver;
+  }
+
   public void makeMove(String authToken, int gameId, ChessMove move) throws DataAccessException {
+    AuthData auth = dataAccess.getAuth(authToken);
+    if (auth == null) {
+      throw new DataAccessException("unauthorized");
+    }
+
+    GameData game = dataAccess.getGame(gameId);
+    if (game == null) {
+      throw new DataAccessException("game not found");
+    }
+
+    ChessGame chessGame = game.game();
+    String currentPlayer = chessGame.getTeamTurn() == ChessGame.TeamColor.WHITE ? game.whiteUsername() : game.blackUsername();
+
+    if (!currentPlayer.equals(auth.username())) {
+      throw new DataAccessException("not your turn");
+    }
+
     try {
-      AuthData auth = dataAccess.getAuth(authToken);
-      if (auth == null) {
-        throw new DataAccessException("unauthorized");
-      }
-
-      GameData game = dataAccess.getGame(gameId);
-      if (game == null) {
-        throw new DataAccessException("game not found");
-      }
-
-      ChessGame chessGame = game.game();
-      String currentPlayer = chessGame.getTeamTurn() == ChessGame.TeamColor.WHITE ? game.whiteUsername() : game.blackUsername();
-
-      if (!currentPlayer.equals(auth.username())) {
-        throw new DataAccessException("not your turn");
-      }
-
       chessGame.makeMove(move);
 
       GameData updatedGame = new GameData(
