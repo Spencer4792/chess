@@ -26,20 +26,24 @@ public class GameService {
   public void resignGame(String authToken, int gameId) throws DataAccessException {
     AuthData auth = dataAccess.getAuth(authToken);
     if (auth == null) {
-      throw new DataAccessException("unauthorized");
+      throw new DataAccessException("Error: unauthorized");
     }
 
     GameData game = dataAccess.getGame(gameId);
     if (game == null) {
-      throw new DataAccessException("game not found");
+      throw new DataAccessException("Error: game not found");
     }
 
     String username = auth.username();
     if (!username.equals(game.whiteUsername()) && !username.equals(game.blackUsername())) {
-      throw new DataAccessException("not a player in this game");
+      throw new DataAccessException("Error: not a player in this game");
     }
 
     ChessGame chessGame = game.game();
+    if (chessGame.isGameOver()) {
+      throw new DataAccessException("Error: game is already over");
+    }
+
     chessGame.setGameOver(true);
 
     GameData updatedGame = new GameData(
@@ -106,19 +110,23 @@ public class GameService {
   public void makeMove(String authToken, int gameId, ChessMove move) throws DataAccessException {
     AuthData auth = dataAccess.getAuth(authToken);
     if (auth == null) {
-      throw new DataAccessException("unauthorized");
+      throw new DataAccessException("Error: unauthorized");
     }
 
     GameData game = dataAccess.getGame(gameId);
     if (game == null) {
-      throw new DataAccessException("game not found");
+      throw new DataAccessException("Error: game not found");
     }
 
     ChessGame chessGame = game.game();
     String currentPlayer = chessGame.getTeamTurn() == ChessGame.TeamColor.WHITE ? game.whiteUsername() : game.blackUsername();
 
     if (!currentPlayer.equals(auth.username())) {
-      throw new DataAccessException("not your turn");
+      throw new DataAccessException("Error: not your turn");
+    }
+
+    if (chessGame.isGameOver()) {
+      throw new DataAccessException("Error: game is already over");
     }
 
     try {
@@ -134,19 +142,19 @@ public class GameService {
 
       dataAccess.updateGame(updatedGame);
     } catch (InvalidMoveException e) {
-      throw new DataAccessException("invalid move: " + e.getMessage());
+      throw new DataAccessException("Error: invalid move - " + e.getMessage());
     }
   }
 
   public GameData getGameState(String authToken, int gameId) throws DataAccessException {
     AuthData auth = dataAccess.getAuth(authToken);
     if (auth == null) {
-      throw new DataAccessException("unauthorized");
+      throw new DataAccessException("Error: unauthorized");
     }
 
     GameData game = dataAccess.getGame(gameId);
     if (game == null) {
-      throw new DataAccessException("game not found");
+      throw new DataAccessException("Error: game not found");
     }
 
     return game;

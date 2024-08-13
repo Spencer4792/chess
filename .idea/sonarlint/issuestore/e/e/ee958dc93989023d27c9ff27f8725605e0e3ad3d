@@ -1,13 +1,11 @@
 
-›
-java:S1192D"SDefine a constant instead of duplicating this literal "Error: bad request" 3 times.(«ˆºµúÿÿÿÿ8 Ï”2J$bbf20bbb-39cb-4393-b1fe-d20701b420da
-—
-java:S1192""ODefine a constant instead of duplicating this literal "game not found" 3 times.(æ•ƒøÿÿÿÿ8£úÏ”2J$9e087fa1-b4a9-4e75-b152-874aaa46cdae
-•
-java:S1192"MDefine a constant instead of duplicating this literal "unauthorized" 3 times.(€–·Øşÿÿÿÿ8£úÏ”2J$bf8a142b-dc23-4c40-8053-b5f30e67aad5
-–
-java:S1192:"TDefine a constant instead of duplicating this literal "Error: unauthorized" 3 times.(©ªìb8¡Ï”2J$56f9dbee-7c3e-4f41-8077-5440f01924dd
-g
-java:S2676F"Use the original value instead.(®µÊÿÿÿÿÿ8¬Ï”2J$0303c9f7-a591-460c-93a1-46b91ef0e5e6
-~
-java:S6880Y"6Replace the chain of if/else with a switch expression.(ºÓøıÿÿÿÿ8´Ï”2J$85514a49-bc35-458b-840c-069114497f98
+u
+java:S1192H"SDefine a constant instead of duplicating this literal "Error: bad request" 3 times.(«ˆºµúÿÿÿÿ8çİíã”2
+x
+java:S1192""VDefine a constant instead of duplicating this literal "Error: game not found" 3 times.(€—õıÿÿÿÿ8çİíã”2
+p
+java:S1192"TDefine a constant instead of duplicating this literal "Error: unauthorized" 6 times.(©ªìb8çİíã”2
+A
+java:S2676J"Use the original value instead.(®µÊÿÿÿÿÿ8úİíã”2
+X
+java:S6880]"6Replace the chain of if/else with a switch expression.(ºÓøıÿÿÿÿ8€Şíã”2

@@ -1,6 +1,6 @@
 
-ˆ	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(¦ÂÄÖ8§ÚÎ”2J$97c93f0d-8772-4d0d-a719-42b890d69a90
-	java:S112t"FDefine and throw a dedicated exception instead of using a generic one.(Üáªüÿÿÿÿ8İ¦ã”2J$9ecdcd74-0ec5-4c1f-b2ab-e58e0e33497d
-ˆ	java:S112{"FDefine and throw a dedicated exception instead of using a generic one.(øºÎ8«ò•ã”2J$fab99082-de49-45ea-8d0e-0ecd6b33e33a
-v
-java:S1172e".Remove this unused method parameter "session".(’Ã¥ûÿÿÿÿ8¿ÚÎ”2J$f16cdf00-44cd-4864-a94c-1c7a9b1e9045
+b	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(¦ÂÄÖ8Î±İã”2
+b	java:S112Z"FDefine and throw a dedicated exception instead of using a generic one.(Í­İÈ8Î±İã”2
+g	java:S112u"FDefine and throw a dedicated exception instead of using a generic one.(Üáªüÿÿÿÿ8Î±İã”2
+‰
+java:S1130Z"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(Í­İÈ8à±İã”2

@@ -31,9 +31,12 @@ public class WebSocketHandler {
 
   @OnWebSocketClose
   public void onClose(Session session, int statusCode, String reason) {
-    // Remove the session from all games
-    for (Map<Session, String> sessions : gameSessions.values()) {
-      sessions.remove(session);
+    for (Map.Entry<Integer, Map<Session, String>> entry : gameSessions.entrySet()) {
+      if (entry.getValue().containsKey(session)) {
+        String authToken = entry.getValue().remove(session);
+        notifyPlayers(entry.getKey(), authToken + " has left the game.");
+        break;
+      }
     }
   }
 
@@ -61,15 +64,9 @@ public class WebSocketHandler {
     int gameId = command.getGameID();
     String authToken = command.getAuthToken();
 
-    // Validate the authToken and gameId
     if (gameService.isValidGame(gameId) && gameService.isAuthorized(authToken)) {
-      // Add the session to the game
       gameSessions.computeIfAbsent(gameId, k -> new ConcurrentHashMap<>()).put(session, authToken);
-
-      // Send the current game state to the connected client
       sendGameState(session, authToken, gameId);
-
-      // Notify other players about the new connection
       notifyPlayers(gameId, authToken + " has joined the game.");
     } else {
       sendErrorMessage(session, "Invalid game ID or authorization.");
@@ -83,7 +80,7 @@ public class WebSocketHandler {
 
     try {
       gameService.makeMove(authToken, gameId, move);
-      sendGameState(gameId);
+      sendGameStateToAll(gameId);
       notifyPlayers(gameId, authToken + " made a move.");
     } catch (Exception e) {
       sendErrorMessage(session, "Invalid move: " + e.getMessage());
@@ -102,12 +99,16 @@ public class WebSocketHandler {
     int gameId = command.getGameID();
     String authToken = command.getAuthToken();
 
-    gameService.resignGame(authToken, gameId);
-    notifyPlayers(gameId, authToken + " has resigned from the game.");
-    sendGameState(gameId);
+    try {
+      gameService.resignGame(authToken, gameId);
+      notifyPlayers(gameId, authToken + " has resigned from the game.");
+      sendGameStateToAll(gameId);
+    } catch (Exception e) {
+      sendErrorMessage(session, "Unable to resign: " + e.getMessage());
+    }
   }
 
-  private void sendGameState(int gameId) throws Exception {
+  private void sendGameStateToAll(int gameId) throws Exception {
     for (Map.Entry<Session, String> entry : gameSessions.get(gameId).entrySet()) {
       sendGameState(entry.getKey(), entry.getValue(), gameId);
     }
@@ -120,13 +121,17 @@ public class WebSocketHandler {
     session.getRemote().sendString(gson.toJson(message));
   }
 
-  private void notifyPlayers(int gameId, String notificationMessage) throws Exception {
+  private void notifyPlayers(int gameId, String notificationMessage) {
     ServerMessage message = new ServerMessage(ServerMessage.ServerMessageType.NOTIFICATION);
     message.setMessage(notificationMessage);
     String jsonMessage = gson.toJson(message);
 
     for (Session session : gameSessions.get(gameId).keySet()) {
-      session.getRemote().sendString(jsonMessage);
+      try {
+        session.getRemote().sendString(jsonMessage);
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
     }
   }
 
