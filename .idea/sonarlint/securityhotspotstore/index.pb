@@ -114,3 +114,11 @@ d
 4server/src/test/java/passoff/server/TestFactory.java,f/1/f17bfe7598740b202a9c5b15dbbfbefe62f23921
 g
 7server/src/test/java/passoff/server/WebSocketTests.java,a/2/a289ce880b9b814b771ad551c85542d0cccba3a8
+f
+6shared/src/test/java/passoff/chess/ChessMoveTests.java,d/0/d0976cffcef29072b835886c43fd62174459be03
+g
+7shared/src/test/java/passoff/chess/ChessBoardTests.java,7/0/704add9b7257f7adc3fb4fb5f33f76b7c8820901
+j
+:shared/src/test/java/passoff/chess/ChessPositionTests.java,0/c/0cdc26a7fcc196ec68a5ed8d48a21c75493b79ef
+q
+Ashared/src/test/java/passoff/chess/extracredit/CastlingTests.java,d/0/d0e9e756230ba9d1a54e832f6d7ad0a43a707b39

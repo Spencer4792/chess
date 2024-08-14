@@ -1,23 +1,29 @@
 
-
-java:S11925"FDefine a constant instead of duplicating this literal "/game" 3 times.(ê´ã£şÿÿÿÿ8ŞŠ®Ç“2J$7de96391-e1d9-4abd-8980-eace796de21e
+c
+java:S2259B"FA "NullPointerException" could be thrown; "response" is nullable here.(‹öì³8Œë‹ó”2
+b
+java:S2259;"FA "NullPointerException" could be thrown; "response" is nullable here.(ë±ÉY8Œë‹ó”2
+h
+java:S2259S"FA "NullPointerException" could be thrown; "gameData" is nullable here.(ñáóÀüÿÿÿÿ8Œë‹ó”2
+h
+java:S11929"FDefine a constant instead of duplicating this literal "/game" 3 times.(ê´ã£şÿÿÿÿ8ë‹ó”2
 Š
-java:S1192 "FDefine a constant instead of duplicating this literal "board" 4 times.(•Í—í8œ®ŠÇ“2J$22bfe215-b98d-429f-be9b-a2adb9fb04a4
-‰
-java:S1075$"ARefactor your code to get this URI from a customizable parameter.(”É÷ùÿÿÿÿ8¤®ŠÇ“2J$ec52fd94-c021-40ef-938b-0e80f69595b7
-ƒ
-java:S1075*"ARefactor your code to get this URI from a customizable parameter.(ÛÌJ8¥®ŠÇ“2J$795a4874-3da6-4788-a38c-eb6ce7159edd
-ƒ
-java:S10750"ARefactor your code to get this URI from a customizable parameter.(ÛÌJ8¥®ŠÇ“2J$d36dbc5a-0a91-4021-add2-5ed8d717d51b
-‰
-java:S10755"ARefactor your code to get this URI from a customizable parameter.(ê´ã£şÿÿÿÿ8§®ŠÇ“2J$58b4b952-4088-442a-909b-08044bae5ffe
-‰
-java:S1075?"ARefactor your code to get this URI from a customizable parameter.(ê´ã£şÿÿÿÿ8íŠ®Ç“2J$c65f33e8-9be3-4da7-8b6b-bcf74281dcb3
-‰
-java:S1075H"ARefactor your code to get this URI from a customizable parameter.(ê´ã£şÿÿÿÿ8îŠ®Ç“2J$164c8116-d2b1-440c-99a6-39232ba292f4
-‰
-java:S1075]"ARefactor your code to get this URI from a customizable parameter.(¥íËÎÿÿÿÿÿ8ª®ŠÇ“2J$7d520967-3ada-4ba7-91fe-bca609e85cd5
-¢
-java:S2142ƒ"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(”ı¾8­®ŠÇ“2J$876b248e-d1a3-4749-9b66-1484d3ab853d
-“
-java:S6218•"POverride equals, hashCode and toString to consider array's content in the method(ÂÅ•X8²®ŠÇ“2J$b96980e2-e488-4562-9fbc-d79cc87f001e
+java:S1192“"FDefine a constant instead of duplicating this literal "board" 4 times.(•Í—í8œ®ŠÇ“2J$c8d3168b-e5f7-42a5-8685-fc7f15daa079
+c
+java:S1075("ARefactor your code to get this URI from a customizable parameter.(”É÷ùÿÿÿÿ8—ë‹ó”2
+]
+java:S1075."ARefactor your code to get this URI from a customizable parameter.(ÛÌJ8˜ë‹ó”2
+]
+java:S10754"ARefactor your code to get this URI from a customizable parameter.(ÛÌJ8™ë‹ó”2
+c
+java:S10759"ARefactor your code to get this URI from a customizable parameter.(ê´ã£şÿÿÿÿ8™ë‹ó”2
+c
+java:S1075?"ARefactor your code to get this URI from a customizable parameter.(ê´ã£şÿÿÿÿ8šë‹ó”2
+c
+java:S1075F"ARefactor your code to get this URI from a customizable parameter.(ê´ã£şÿÿÿÿ8šë‹ó”2
+c
+java:S1075["ARefactor your code to get this URI from a customizable parameter.(¥íËÎÿÿÿÿÿ8ë‹ó”2
+{
+java:S2142"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(”ı¾8Ÿë‹ó”2
+m
+java:S6218ˆ"POverride equals, hashCode and toString to consider array's content in the method(ÂÅ•X8¢ë‹ó”2

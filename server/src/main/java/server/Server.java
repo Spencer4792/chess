@@ -25,8 +25,7 @@ public class Server {
         Spark.port(desiredPort);
         Spark.staticFiles.location("web");
 
-        // Add WebSocket handler before any other routes
-        Spark.webSocket("/ws", webSocketHandler);
+        Spark.webSocket("/ws", new WebSocketHandler(gameService));
 
         try {
             DatabaseManager.createDatabase();

@@ -32,6 +32,10 @@ public class ServerFacade {
             .create();
   }
 
+  public String getServerUrl() {
+    return serverUrl;
+  }
+
   public AuthData register(String username, String password, String email) throws ClientException {
     var path = "/user";
     var request = new RegisterRequest(username, password, email);
@@ -55,16 +59,10 @@ public class ServerFacade {
     return Arrays.asList(response.games());
   }
 
-  public void makeMove(String authToken, int gameId, ChessMove move) throws ClientException {
-    var path = "/game/" + gameId + "/move";
-    makeRequest("PUT", path, move, null, authToken);
-  }
   public int createGame(String authToken, String gameName) throws ClientException {
     var path = "/game";
     var request = new CreateGameRequest(gameName);
     var response = makeRequest("POST", path, request, CreateGameResponse.class, authToken);
-    // After creating the game, fetch its state to ensure it's properly initialized
-    getGameState(authToken, response.gameID());
     return response.gameID();
   }
 
@@ -72,8 +70,11 @@ public class ServerFacade {
     var path = "/game";
     var request = new JoinGameRequest(playerColor, gameID);
     makeRequest("PUT", path, request, null, authToken);
-    // After joining the game, fetch its state to ensure it's properly initialized
-    getGameState(authToken, gameID);
+  }
+
+  public void makeMove(String authToken, int gameId, ChessMove move) throws ClientException {
+    var path = "/game/" + gameId + "/move";
+    makeRequest("PUT", path, move, null, authToken);
   }
 
   public GameState getGameState(String authToken, int gameId) throws ClientException {
@@ -84,9 +85,6 @@ public class ServerFacade {
       game.initializeBoard();
     }
     return new GameState(gameData.gameID(), gameData.gameName(), gameData.whiteUsername(), gameData.blackUsername(), game);
-  }
-  public String getServerUrl() {
-    return serverUrl;
   }
 
   public void clear() throws ClientException {
@@ -119,26 +117,15 @@ public class ServerFacade {
               HttpResponse.BodyHandlers.ofString());
 
       if (response.statusCode() >= 300) {
-        throw new ClientException(extractErrorMessage(response.body()));
+        throw new ClientException("Error: " + response.body());
       }
 
       if (responseClass != null) {
         return gson.fromJson(response.body(), responseClass);
       }
       return null;
-    } catch (ClientException e) {
-      throw e;
     } catch (Exception e) {
       throw new ClientException(e.getMessage());
-    }
-  }
-
-  private String extractErrorMessage(String errorBody) {
-    try {
-      JsonObject jsonObject = JsonParser.parseString(errorBody).getAsJsonObject();
-      return jsonObject.get("message").getAsString().replace("Error: ", "");
-    } catch (Exception e) {
-      return errorBody.replace("Error: ", "");
     }
   }
 

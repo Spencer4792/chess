@@ -1,9 +1,9 @@
 
-s
-java:S1066„"/Merge this if statement with the enclosing one.(Èù8î‚İâ”2J$8be4e05f-0c58-423c-82dc-8dad2f4ce95e
+M
+java:S1066„"/Merge this if statement with the enclosing one.(Èù8Âïöò”2
 m
-java:S1948"*Make "lastMove" transient or serializable.(Ûø¡ç8ö‚İâ”2J$78155c3e-3613-455b-af51-1124f806551a
-n
-java:S1168U"+Return an empty collection instead of null.(¥¹ï8€ƒİâ”2J$579e8ee8-fe80-46ba-83d1-feafddd7e6e2
-š
-java:S3776p"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(¥ïÊûÿÿÿÿ8„ƒİâ”2J$21e75a33-9ce7-4347-961e-7c06068c53d1
+java:S1948"*Make "lastMove" transient or serializable.(Ûø¡ç8š¬ğò”2J$737e862b-908b-4abc-9a15-e940f4eca399
+H
+java:S1168U"+Return an empty collection instead of null.(¥¹ï8×ïöò”2
+t
+java:S3776p"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(¥ïÊûÿÿÿÿ8Úïöò”2
