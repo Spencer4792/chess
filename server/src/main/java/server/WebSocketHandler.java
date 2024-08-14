@@ -109,6 +109,12 @@ public class WebSocketHandler {
     ChessMove move = command.getChessMove();
 
     try {
+      GameData gameData = gameService.getGameState(authToken, gameId);
+      if (gameData.game().isGameOver()) {
+        sendErrorMessage(session, "Error: Cannot make a move. The game is already over.");
+        return;
+      }
+
       gameService.makeMove(authToken, gameId, move);
       notifyOtherPlayers(gameId, session, authToken + " made a move.");
       sendGameStateToAll(gameId);
