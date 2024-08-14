@@ -1,24 +1,24 @@
 
 ›
-java:S1192G"SDefine a constant instead of duplicating this literal "Error: bad request" 5 times.(ˆÁá¨úÿÿÿÿ8ÇìÖñ’2J$ab4a74bb-ede9-450a-be5a-18f824b425f0
+java:S1192G"SDefine a constant instead of duplicating this literal "Error: bad request" 5 times.(ˆÁá¨úÿÿÿÿ8ÇìÖñ’2J$2dc4eb7e-f853-40e9-9103-ea696e5b9925
 ‘
-java:S1192:"NDefine a constant instead of duplicating this literal "Authorization" 3 times.(§¨éú8½¸ò’2J$6c1ec477-c0ac-4639-86d1-2017a269f458
+java:S1192:"NDefine a constant instead of duplicating this literal "Authorization" 3 times.(§¨éú8½¸ò’2J$343172b1-d931-46b9-8d68-38f97ff04dee
 •
-java:S1192b"MDefine a constant instead of duplicating this literal "unauthorized" 4 times.(¹ò«¯úÿÿÿÿ8šÿ¸ñ’2J$ae1a1c1d-947e-4707-9e3e-0f8b99772dc1
+java:S1192b"MDefine a constant instead of duplicating this literal "unauthorized" 4 times.(¹ò«¯úÿÿÿÿ8šÿ¸ñ’2J$212ea810-e0a4-4ec9-9108-18d335290ffe
 
-java:S1192+"FDefine a constant instead of duplicating this literal "/game" 3 times.(˜Ó€•şÿÿÿÿ8ÄŒÆã”2J$42c2c3e1-30c6-4536-a448-5f1f170df701
+java:S1192+"FDefine a constant instead of duplicating this literal "/game" 3 times.(˜Ó€•şÿÿÿÿ8ÄŒÆã”2J$cd6b084e-a978-45f8-af54-f2094b5c3426
 –
-java:S1192="TDefine a constant instead of duplicating this literal "Error: unauthorized" 6 times.(©ªìb8šÿ¸ñ’2J$3ff81e4b-eb37-4350-87c2-887083c40e23
+java:S1192="TDefine a constant instead of duplicating this literal "Error: unauthorized" 6 times.(©ªìb8šÿ¸ñ’2J$821b277e-6c63-4e12-81ab-20057bf05c70
 
-java:S1192R"HDefine a constant instead of duplicating this literal "Error: " 6 times.(éÈú–øÿÿÿÿ8ÈìÖñ’2J$e1c41e09-ef89-4298-8782-16376fb7eb30
+java:S1192R"HDefine a constant instead of duplicating this literal "Error: " 6 times.(éÈú–øÿÿÿÿ8ÈìÖñ’2J$85082e36-a60a-47ff-ae75-ade5163645a3
 Ã
-java:S11866"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(„“ˆ48âÑ™“2J$1897170a-ef81-4f0b-9c8e-1eb0cb8e897d
+java:S11866"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(„“ˆ48âÑ™“2J$ed4a2188-f023-4cf7-a586-b3b3b67416e9
 z
-java:S1144»"1Remove this unused private "getGameState" method.(Ùªğ–øÿÿÿÿ8ø—ëÎ”2J$5ebc5649-6638-4e4a-87eb-b57c14c01571
+java:S1144»"1Remove this unused private "getGameState" method.(Ùªğ–øÿÿÿÿ8ø—ëÎ”2J$08545a03-9c4d-4519-8a52-b88085fc1894
 q
-java:S1144È"-Remove this unused private "makeMove" method.(ğø¬‰8ø—ëÎ”2J$cc278fbe-9630-4c5c-b850-08833a4267ec
-l	java:S106#"+Replace this use of System.err by a logger.(ş»¬8ÌŒÆã”2J$5fcde12d-9b1c-4b61-b301-a6fcd3ddbee8
+java:S1144È"-Remove this unused private "makeMove" method.(ğø¬‰8ø—ëÎ”2J$c32ad00c-28df-425a-b87b-b4f545e07d3e
+l	java:S106#"+Replace this use of System.err by a logger.(ş»¬8ÌŒÆã”2J$d93d5b74-59de-4209-8be1-bb08ab5decfe
 ¹
-java:S11306"wRemove the declaration of thrown exception 'dataaccess.DataAccessException', as it cannot be thrown from method's body.(„“ˆ48¥ÿ¸ñ’2J$4be73ad3-e464-4611-a72b-ceafc34594cb
-Q
-java:S1068"4Remove this unused "webSocketHandler" private field.(ŒØñÃ8Å´ó”2
+java:S11306"wRemove the declaration of thrown exception 'dataaccess.DataAccessException', as it cannot be thrown from method's body.(„“ˆ48¥ÿ¸ñ’2J$6f9c3dcc-3979-48ea-af38-a8ddc588ad3d
+w
+java:S1068"4Remove this unused "webSocketHandler" private field.(ŒØñÃ8Å´ó”2J$c24ac530-3f01-4910-92b4-7fc4efa3e2e3

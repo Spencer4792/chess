@@ -139,7 +139,6 @@ public class WebSocketHandler {
     try {
       gameService.resignGame(authToken, gameId);
       notifyAllPlayers(gameId, authToken + " has resigned from the game.");
-      // Remove sendGameStateToAll(gameId) from here
     } catch (Exception e) {
       LOGGER.severe("Error in handleResign: " + e.getMessage());
       sendErrorMessage(session, "Error resigning game: " + e.getMessage());

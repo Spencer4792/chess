@@ -1,11 +1,11 @@
 
 w
-java:S1141!"5Extract this nested try block into a separate method.(·ë¹d8¢Ô±‘2J$0adbb804-a28f-4308-a7bb-3607c666a022
+java:S1141!"5Extract this nested try block into a separate method.(·ë¹d8¢Ô±‘2J$a8450542-9d6f-438e-95a2-bc4c680096ba
 ’
-java:S1192Õ"IDefine a constant instead of duplicating this literal "lastMove" 4 times.(±œ¥Æùÿÿÿÿ8¨Ô±‘2J$1a582821-6018-4a7b-9c49-3646819124c4
+java:S1192Õ"IDefine a constant instead of duplicating this literal "lastMove" 4 times.(±œ¥Æùÿÿÿÿ8¨Ô±‘2J$bfa12da7-b3f5-40e1-a498-d776ecb2119d
 “
-java:S1192´"ODefine a constant instead of duplicating this literal "promotionPiece" 3 times.(¢§ÓÕ8¨Ô±‘2J$35325bc6-d1f0-4699-8994-0398398a6e3a
+java:S1192´"ODefine a constant instead of duplicating this literal "promotionPiece" 3 times.(¢§ÓÕ8¨Ô±‘2J$2d8a14f0-5c19-4da5-addf-553ea14c544b
 ‰
-java:S1192Ó"FDefine a constant instead of duplicating this literal "board" 4 times.(§Äà[8©Ô±‘2J$f5e6fe17-20e4-4c9e-a106-91e6d23b974b
+java:S1192Ó"FDefine a constant instead of duplicating this literal "board" 4 times.(§Äà[8©Ô±‘2J$a971e226-2c26-4f3a-b2d7-0beb5bfa6512
 b
-java:S6905?"Don't use the query "SELECT *".(¨Ã¼8ÊÔ±‘2J$f844baac-74c4-4757-b51d-0088d70fb415
+java:S6905?"Don't use the query "SELECT *".(¨Ã¼8ÊÔ±‘2J$8de722d3-e125-448a-9dd0-0a703ca53f62
