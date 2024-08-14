@@ -86,14 +86,12 @@ public class WebSocketHandler {
   }
 
   private void handleConnect(Session session, UserGameCommand command) throws Exception {
-    int gameId = command.getGameID();
-    String authToken = command.getAuthToken();
-
     try {
-      if (gameService.isValidGame(gameId) && gameService.isAuthorized(authToken)) {
-        gameSessions.computeIfAbsent(gameId, k -> new ConcurrentHashMap<>()).put(session, authToken);
-        notifyOtherPlayers(gameId, session, authToken + " has joined the game.");
-        sendGameState(session, authToken, gameId);
+      if (gameService.isValidGame(command.getGameID()) && gameService.isAuthorized(command.getAuthToken())) {
+        gameSessions.computeIfAbsent(command.getGameID(), k -> new ConcurrentHashMap<>()).put(session, command.getAuthToken());
+        String username = gameService.getUsernameFromAuthToken(command.getAuthToken());
+        notifyOtherPlayers(command.getGameID(), session, username + " has joined the game.");
+        sendGameState(session, command.getAuthToken(), command.getGameID());
       } else {
         sendErrorMessage(session, "Invalid game ID or unauthorized");
       }
@@ -104,20 +102,28 @@ public class WebSocketHandler {
   }
 
   private void handleMakeMove(Session session, UserGameCommand command) throws Exception {
-    int gameId = command.getGameID();
-    String authToken = command.getAuthToken();
-    ChessMove move = command.getChessMove();
-
     try {
-      GameData gameData = gameService.getGameState(authToken, gameId);
-      if (gameData.game().isGameOver()) {
-        sendErrorMessage(session, "Error: Cannot make a move. The game is already over.");
-        return;
+      ChessMove move = command.getChessMove();
+      if (move == null) {
+        throw new IllegalArgumentException("Move is missing from the command");
       }
+      gameService.makeMove(command.getAuthToken(), command.getGameID(), move);
+      String username = gameService.getUsernameFromAuthToken(command.getAuthToken());
+      notifyOtherPlayers(command.getGameID(), session, username + " made a move: " + formatMove(move));
+      sendGameStateToAll(command.getGameID());
 
-      gameService.makeMove(authToken, gameId, move);
-      notifyOtherPlayers(gameId, session, authToken + " made a move.");
-      sendGameStateToAll(gameId);
+      // Check for check, checkmate, or stalemate
+      GameData gameData = gameService.getGameState(command.getAuthToken(), command.getGameID());
+      ChessGame chessGame = gameData.game();
+      if (chessGame.isInCheck(chessGame.getTeamTurn())) {
+        notifyAllPlayers(command.getGameID(), "Check!");
+      }
+      if (chessGame.isInCheckmate(chessGame.getTeamTurn())) {
+        notifyAllPlayers(command.getGameID(), "Checkmate! Game over.");
+      }
+      if (chessGame.isInStalemate(chessGame.getTeamTurn())) {
+        notifyAllPlayers(command.getGameID(), "Stalemate! Game over.");
+      }
     } catch (Exception e) {
       LOGGER.severe("Error in handleMakeMove: " + e.getMessage());
       sendErrorMessage(session, "Error making move: " + e.getMessage());
@@ -125,20 +131,22 @@ public class WebSocketHandler {
   }
 
   private void handleLeave(Session session, UserGameCommand command) throws Exception {
-    int gameId = command.getGameID();
-    String authToken = command.getAuthToken();
-
-    gameSessions.get(gameId).remove(session);
-    notifyOtherPlayers(gameId, session, authToken + " has left the game.");
+    try {
+      gameService.leaveGame(command.getAuthToken(), command.getGameID());
+      String username = gameService.getUsernameFromAuthToken(command.getAuthToken());
+      gameSessions.get(command.getGameID()).remove(session);
+      notifyOtherPlayers(command.getGameID(), session, username + " has left the game.");
+    } catch (Exception e) {
+      LOGGER.severe("Error in handleLeave: " + e.getMessage());
+      sendErrorMessage(session, "Error leaving game: " + e.getMessage());
+    }
   }
 
   private void handleResign(Session session, UserGameCommand command) throws Exception {
-    int gameId = command.getGameID();
-    String authToken = command.getAuthToken();
-
     try {
-      gameService.resignGame(authToken, gameId);
-      notifyAllPlayers(gameId, authToken + " has resigned from the game.");
+      gameService.resignGame(command.getAuthToken(), command.getGameID());
+      String username = gameService.getUsernameFromAuthToken(command.getAuthToken());
+      notifyAllPlayers(command.getGameID(), username + " has resigned from the game.");
     } catch (Exception e) {
       LOGGER.severe("Error in handleResign: " + e.getMessage());
       sendErrorMessage(session, "Error resigning game: " + e.getMessage());
@@ -202,5 +210,9 @@ public class WebSocketHandler {
     ServerMessage message = new ServerMessage(ServerMessage.ServerMessageType.ERROR);
     message.setErrorMessage(errorMessage);
     session.getRemote().sendString(gson.toJson(message));
+  }
+
+  private String formatMove(ChessMove move) {
+    return String.format("%s to %s", move.getStartPosition(), move.getEndPosition());
   }
 }

@@ -159,4 +159,33 @@ public class GameService {
 
     return game;
   }
+
+  public void leaveGame(String authToken, int gameId) throws DataAccessException {
+    AuthData auth = dataAccess.getAuth(authToken);
+    if (auth == null) {
+      throw new DataAccessException("Error: unauthorized");
+    }
+
+    GameData game = dataAccess.getGame(gameId);
+    if (game == null) {
+      throw new DataAccessException("Error: game not found");
+    }
+
+    String username = auth.username();
+    if (username.equals(game.whiteUsername())) {
+      game = new GameData(game.gameID(), null, game.blackUsername(), game.gameName(), game.game());
+    } else if (username.equals(game.blackUsername())) {
+      game = new GameData(game.gameID(), game.whiteUsername(), null, game.gameName(), game.game());
+    }
+
+    dataAccess.updateGame(game);
+  }
+
+  public String getUsernameFromAuthToken(String authToken) throws DataAccessException {
+    AuthData authData = dataAccess.getAuth(authToken);
+    if (authData == null) {
+      throw new DataAccessException("Error: unauthorized");
+    }
+    return authData.username();
+  }
 }
