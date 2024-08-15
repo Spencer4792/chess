@@ -3,7 +3,6 @@ package chess;
 import java.util.HashMap;
 import java.util.Map;
 import java.io.Serializable;
-import java.io.IOException;
 
 public class ChessBoard implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -54,8 +53,12 @@ public class ChessBoard implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         ChessBoard that = (ChessBoard) o;
         return board.equals(that.board);
     }
@@ -79,13 +82,5 @@ public class ChessBoard implements Serializable {
             clonedBoard.addPiece(entry.getKey(), entry.getValue());
         }
         return clonedBoard;
-    }
-
-    private void writeObject(java.io.ObjectOutputStream out) throws IOException {
-        out.defaultWriteObject();
-    }
-
-    private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
-        in.defaultReadObject();
     }
 }

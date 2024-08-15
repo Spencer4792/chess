@@ -100,8 +100,6 @@ Y
 ,client/src/main/java/ui/EscapeSequences.java,b/6/b6823e781e53d487887c1ba9760d63892cdd044c
 W
 'client/src/main/java/ui/GamePlayUI.java,8/1/815a8834562dd853366f434dbb332c95565f362e
-b
-2shared/src/main/java/shared/ChessTypeAdapters.java,3/6/36363728d7237766bd0d2f70baa92b6368d66b54
 a
 1server/src/main/java/server/WebSocketHandler.java,f/6/f6544db842cacba35e93916e7c7c45a133596f91
 >
@@ -120,11 +118,7 @@ g
 7shared/src/test/java/passoff/chess/ChessBoardTests.java,7/0/704add9b7257f7adc3fb4fb5f33f76b7c8820901
 j
 :shared/src/test/java/passoff/chess/ChessPositionTests.java,0/c/0cdc26a7fcc196ec68a5ed8d48a21c75493b79ef
-q
-Ashared/src/test/java/passoff/chess/extracredit/CastlingTests.java,d/0/d0e9e756230ba9d1a54e832f6d7ad0a43a707b39
-_
-/server/src/main/java/handler/ResignHandler.java,9/e/9e41cdeda964820344b95affd17752f9a35cddd0
-h
-8server/src/main/java/handler/MoveAfterResignHandler.java,a/9/a9d8c740ca3299fbd5c06c09c4809b6c83b347ed
-Z
-*shared/src/main/java/shared/GsonUtils.java,e/2/e2673ae68894d61072846c9068e273ac2da0e804
+^
+.shared/src/main/java/shared/ChessAdapters.java,2/8/2866ebacea44a47a92e81d6c075dae46b40021c2
+T
+$client/src/main/java/ui/UIUtils.java,3/b/3bb1af28be570b3226ecccea862d9f8d238b29d2

@@ -19,51 +19,7 @@ public class ChessGame implements Serializable {
     }
 
     public void initializeBoard() {
-        // Set up pawns
-        for (int i = 1; i <= 8; i++) {
-            board.addPiece(new ChessPosition(2, i), new ChessPiece(TeamColor.WHITE, ChessPiece.PieceType.PAWN));
-            board.addPiece(new ChessPosition(7, i), new ChessPiece(TeamColor.BLACK, ChessPiece.PieceType.PAWN));
-        }
-
-        // Set up other pieces
-        board.addPiece(new ChessPosition(1, 1), new ChessPiece(TeamColor.WHITE, ChessPiece.PieceType.ROOK));
-        board.addPiece(new ChessPosition(1, 8), new ChessPiece(TeamColor.WHITE, ChessPiece.PieceType.ROOK));
-        board.addPiece(new ChessPosition(8, 1), new ChessPiece(TeamColor.BLACK, ChessPiece.PieceType.ROOK));
-        board.addPiece(new ChessPosition(8, 8), new ChessPiece(TeamColor.BLACK, ChessPiece.PieceType.ROOK));
-
-        board.addPiece(new ChessPosition(1, 2), new ChessPiece(TeamColor.WHITE, ChessPiece.PieceType.KNIGHT));
-        board.addPiece(new ChessPosition(1, 7), new ChessPiece(TeamColor.WHITE, ChessPiece.PieceType.KNIGHT));
-        board.addPiece(new ChessPosition(8, 2), new ChessPiece(TeamColor.BLACK, ChessPiece.PieceType.KNIGHT));
-        board.addPiece(new ChessPosition(8, 7), new ChessPiece(TeamColor.BLACK, ChessPiece.PieceType.KNIGHT));
-
-        board.addPiece(new ChessPosition(1, 3), new ChessPiece(TeamColor.WHITE, ChessPiece.PieceType.BISHOP));
-        board.addPiece(new ChessPosition(1, 6), new ChessPiece(TeamColor.WHITE, ChessPiece.PieceType.BISHOP));
-        board.addPiece(new ChessPosition(8, 3), new ChessPiece(TeamColor.BLACK, ChessPiece.PieceType.BISHOP));
-        board.addPiece(new ChessPosition(8, 6), new ChessPiece(TeamColor.BLACK, ChessPiece.PieceType.BISHOP));
-
-        board.addPiece(new ChessPosition(1, 4), new ChessPiece(TeamColor.WHITE, ChessPiece.PieceType.QUEEN));
-        board.addPiece(new ChessPosition(8, 4), new ChessPiece(TeamColor.BLACK, ChessPiece.PieceType.QUEEN));
-
-        board.addPiece(new ChessPosition(1, 5), new ChessPiece(TeamColor.WHITE, ChessPiece.PieceType.KING));
-        board.addPiece(new ChessPosition(8, 5), new ChessPiece(TeamColor.BLACK, ChessPiece.PieceType.KING));
-    }
-
-    public String debugBoardState() {
-        StringBuilder state = new StringBuilder();
-        for (int row = 8; row >= 1; row--) {
-            for (int col = 1; col <= 8; col++) {
-                ChessPiece piece = board.getPiece(new ChessPosition(row, col));
-                if (piece == null) {
-                    state.append("-- ");
-                } else {
-                    state.append(piece.getTeamColor().toString().charAt(0))
-                            .append(piece.getPieceType().toString().charAt(0))
-                            .append(" ");
-                }
-            }
-            state.append("\n");
-        }
-        return state.toString();
+        board.resetBoard();
     }
 
     public TeamColor getTeamTurn() {

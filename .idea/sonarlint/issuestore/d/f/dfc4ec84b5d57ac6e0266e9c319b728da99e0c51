@@ -1,5 +1,7 @@
 
-–
-java:S2975L"SRemove this "clone" implementation; use a copy constructor or copy factory instead.(æñò8è»“ó’2J$7bf46640-471b-4ec3-a85d-3bc647915234
-‹
-java:S1182L"HUse super.clone() to create and seed the cloned instance to be returned.(æñò8é»“ó’2J$adc21488-d58b-451f-b863-808b3eb20f57
+D
+java:S1948	"'Make "board" transient or serializable.(¨†Îé8©æ³œ•2
+p
+java:S2975O"SRemove this "clone" implementation; use a copy constructor or copy factory instead.(æñò8Áæ³œ•2
+e
+java:S1182O"HUse super.clone() to create and seed the cloned instance to be returned.(æñò8Ãæ³œ•2

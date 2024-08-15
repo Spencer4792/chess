@@ -49,8 +49,12 @@ public class ServerMessage {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         ServerMessage that = (ServerMessage) o;
         return getServerMessageType() == that.getServerMessageType() &&
                 Objects.equals(message, that.message) &&
