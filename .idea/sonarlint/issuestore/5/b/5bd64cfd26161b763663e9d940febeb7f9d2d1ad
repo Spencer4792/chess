@@ -1,29 +1,33 @@
 
-
-java:S2259S"FA "NullPointerException" could be thrown; "gameData" is nullable here.(ñáóÀüÿÿÿÿ8Œë‹ó”2J$3c4b9aa3-c017-4d57-ad6e-00e34601eab4
 ‰
-java:S2259B"FA "NullPointerException" could be thrown; "response" is nullable here.(‹öì³8Œë‹ó”2J$510bf776-ca39-49f6-bce7-aafcdbf3a2b3
+java:S2259B"FA "NullPointerException" could be thrown; "response" is nullable here.(‹öì³8Œë‹ó”2J$0dbbd25a-dd46-47be-8d9f-f69150463b2a
+
+java:S2259S"FA "NullPointerException" could be thrown; "gameData" is nullable here.(ñáóÀüÿÿÿÿ8Œë‹ó”2J$47bee045-57d4-4dd8-b85a-ff4c458370c7
 ˆ
-java:S2259;"FA "NullPointerException" could be thrown; "response" is nullable here.(ë±ÉY8Œë‹ó”2J$435d1e5a-6b69-4f0f-b518-f0d46a636232
+java:S2259;"FA "NullPointerException" could be thrown; "response" is nullable here.(ë±ÉY8Œë‹ó”2J$440d962f-7432-4225-9279-82ff4479989b
+l
+java:S1192«"IDefine a constant instead of duplicating this literal "lastMove" 4 times.(±œ¥Æùÿÿÿÿ8ã¨ˆ›•2
 
-java:S11929"FDefine a constant instead of duplicating this literal "/game" 3 times.(ê´ã£şÿÿÿÿ8ë‹ó”2J$5b191c9b-d84f-45d2-9862-945e3ad38d4b
+java:S11929"FDefine a constant instead of duplicating this literal "/game" 3 times.(ê´ã£şÿÿÿÿ8ë‹ó”2J$b887e84e-012c-4eb2-9308-04319f00ecde
+n
+java:S1192¬"KDefine a constant instead of duplicating this literal "isGameOver" 3 times.(Ïƒ™£úÿÿÿÿ8ã¨ˆ›•2
 Š
-java:S1192“"FDefine a constant instead of duplicating this literal "board" 4 times.(•Í—í8œ®ŠÇ“2J$d378aa42-4ff8-42ed-8256-d718d9969728
+java:S1192“"FDefine a constant instead of duplicating this literal "board" 4 times.(•Í—í8œ®ŠÇ“2J$3b481b29-5333-480e-baaf-388790aa5167
 ‰
-java:S1075("ARefactor your code to get this URI from a customizable parameter.(”É÷ùÿÿÿÿ8—ë‹ó”2J$24975ac7-17aa-4027-8f5c-ccf1521206c0
+java:S1075("ARefactor your code to get this URI from a customizable parameter.(”É÷ùÿÿÿÿ8—ë‹ó”2J$00b822f6-fbde-4a65-9e2e-49f1e3e4b06a
 ƒ
-java:S1075."ARefactor your code to get this URI from a customizable parameter.(ÛÌJ8˜ë‹ó”2J$7e8b88b2-a0a4-4db3-ad14-493c04999f8a
+java:S1075."ARefactor your code to get this URI from a customizable parameter.(ÛÌJ8˜ë‹ó”2J$58d3fd4f-296f-438d-9bd2-9decc2a3d204
 ƒ
-java:S10754"ARefactor your code to get this URI from a customizable parameter.(ÛÌJ8™ë‹ó”2J$4a51a62c-c91b-407b-b315-e39db9915f48
+java:S10754"ARefactor your code to get this URI from a customizable parameter.(ÛÌJ8™ë‹ó”2J$7c52984e-72af-4443-8798-0c802daa9e0b
 ‰
-java:S10759"ARefactor your code to get this URI from a customizable parameter.(ê´ã£şÿÿÿÿ8™ë‹ó”2J$d83685b1-7ecc-4ee9-be70-410c07876e35
+java:S10759"ARefactor your code to get this URI from a customizable parameter.(ê´ã£şÿÿÿÿ8™ë‹ó”2J$53752c9c-a4d4-499a-a991-27a386fa1f20
 ‰
-java:S1075?"ARefactor your code to get this URI from a customizable parameter.(ê´ã£şÿÿÿÿ8šë‹ó”2J$ecf9743c-f2d2-4e85-a32c-7b9d3709fa58
+java:S1075?"ARefactor your code to get this URI from a customizable parameter.(ê´ã£şÿÿÿÿ8šë‹ó”2J$70ea5694-4f4d-49e7-80b6-49f052c950ca
 ‰
-java:S1075F"ARefactor your code to get this URI from a customizable parameter.(ê´ã£şÿÿÿÿ8šë‹ó”2J$c359fe7b-fbc3-47bd-a05a-6578964a6a89
+java:S1075F"ARefactor your code to get this URI from a customizable parameter.(ê´ã£şÿÿÿÿ8šë‹ó”2J$4a6b0bd9-6065-485d-a575-bba501e69cb2
 ‰
-java:S1075["ARefactor your code to get this URI from a customizable parameter.(¥íËÎÿÿÿÿÿ8ë‹ó”2J$3f6230f8-f831-4639-8641-3872da383600
+java:S1075["ARefactor your code to get this URI from a customizable parameter.(¥íËÎÿÿÿÿÿ8ë‹ó”2J$f87fa5d0-17c3-4c00-8338-8d49dc1c3745
 ¡
-java:S2142"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(”ı¾8Ÿë‹ó”2J$51d78a16-884a-4c83-b80b-2230b6ff8d58
+java:S2142"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(”ı¾8Ÿë‹ó”2J$d51c8ee5-68cc-42f8-9075-a3fc8bac6382
 “
-java:S6218ˆ"POverride equals, hashCode and toString to consider array's content in the method(ÂÅ•X8¢ë‹ó”2J$9f549541-ca27-4380-8bf1-dcf0f36a14e5
+java:S6218ˆ"POverride equals, hashCode and toString to consider array's content in the method(ÂÅ•X8¢ë‹ó”2J$91d29e01-a5fc-4987-80b9-bd8b9d9a384a

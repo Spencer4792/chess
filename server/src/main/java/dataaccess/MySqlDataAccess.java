@@ -211,6 +211,7 @@ public class MySqlDataAccess implements DataAccess {
       jsonObject.add("board", context.serialize(src.getBoard()));
       jsonObject.addProperty("teamTurn", src.getTeamTurn().toString());
       jsonObject.add("lastMove", context.serialize(src.getLastMove()));
+      jsonObject.addProperty("isGameOver", src.isGameOver());
       return jsonObject;
     }
 
@@ -223,6 +224,9 @@ public class MySqlDataAccess implements DataAccess {
       if (jsonObject.has("lastMove") && !jsonObject.get("lastMove").isJsonNull()) {
         ChessMove lastMove = context.deserialize(jsonObject.get("lastMove"), ChessMove.class);
         game.setLastMove(lastMove);
+      }
+      if (jsonObject.has("isGameOver")) {
+        game.setGameOver(jsonObject.get("isGameOver").getAsBoolean());
       }
       return game;
     }
