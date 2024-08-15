@@ -122,3 +122,5 @@ j
 .shared/src/main/java/shared/ChessAdapters.java,2/8/2866ebacea44a47a92e81d6c075dae46b40021c2
 T
 $client/src/main/java/ui/UIUtils.java,3/b/3bb1af28be570b3226ecccea862d9f8d238b29d2
+b
+2shared/src/main/java/shared/ChessJsonAdapters.java,a/a/aa73129210103cfad680f958b2128e59683cce68

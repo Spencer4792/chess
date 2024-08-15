@@ -8,7 +8,7 @@ public class UserGameCommand {
     private final String authToken;
     private final Integer gameID;
     private String move;
-    private static final Gson gson = new Gson();
+    private static final Gson GSON = new Gson();
 
     public UserGameCommand(CommandType commandType, String authToken, Integer gameID) {
         this.commandType = commandType;
@@ -43,6 +43,6 @@ public class UserGameCommand {
         if (move == null) {
             return null;
         }
-        return gson.fromJson(move, ChessMove.class);
+        return GSON.fromJson(move, ChessMove.class);
     }
 }

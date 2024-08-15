@@ -20,31 +20,6 @@ public class GamePlayUI {
     this.gameId = gameId;
   }
 
-  public void start() {
-    try {
-      GameState gameState = client.getGameState(gameId);
-      if (gameState.getGame().getBoard().getBoard().isEmpty()) {
-        gameState.getGame().initializeBoard();
-      }
-      while (true) {
-        displayBoard(gameState);
-        System.out.print("Enter your move (e.g., e2 e4) or 'quit' to exit: ");
-        String input = scanner.nextLine().toLowerCase();
-        if (input.equals("quit")) {
-          break;
-        }
-        try {
-          ChessMove move = parseMove(input);
-          makeMove(move);
-          gameState = client.getGameState(gameId); // Refresh game state after move
-        } catch (Exception e) {
-          System.out.println(SET_TEXT_COLOR_RED + "Error: " + e.getMessage() + RESET_TEXT_COLOR);
-        }
-      }
-    } catch (Exception e) {
-      System.out.println(SET_TEXT_COLOR_RED + "Error getting game state: " + e.getMessage() + RESET_TEXT_COLOR);
-    }
-  }
 
   private void makeMove(ChessMove move) {
     try {

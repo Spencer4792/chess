@@ -1,11 +1,11 @@
 
-ˆ	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(¦ÂÄÖ8 ĞŒ•2J$4a90b862-2e0d-4dee-959b-b55cb882db84
-ˆ	java:S112$"FDefine and throw a dedicated exception instead of using a generic one.(Š§ã8 ĞŒ•2J$1c271c90-2e55-47fb-b7c3-8c09011f474c
-ˆ	java:S112h"FDefine and throw a dedicated exception instead of using a generic one.(ËŠ“ß8 ĞŒ•2J$9aeaba83-b522-47fd-8ff8-56ee42c29622
-‰	java:S112‰"FDefine and throw a dedicated exception instead of using a generic one.(Í­İÈ8 ĞŒ•2J$94c9b163-0aa6-4d09-8a65-fea130608963
-	java:S112•"FDefine and throw a dedicated exception instead of using a generic one.(’Ã¥ûÿÿÿÿ8 ĞŒ•2J$55e8abb7-766a-4d65-b391-27a67e2f8052
-	java:S112°"FDefine and throw a dedicated exception instead of using a generic one.(Üáªüÿÿÿÿ8 ĞŒ•2J$d2e9ea5a-13c3-4315-8994-41a044bfc7f7
+ˆ	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(¦ÂÄÖ8 ĞŒ•2J$41520705-11c3-4e93-8cf3-8057b93a9046
+ˆ	java:S112$"FDefine and throw a dedicated exception instead of using a generic one.(Š§ã8 ĞŒ•2J$0c6c9152-2f53-43fd-bb9c-3d3c5b407180
+ˆ	java:S112h"FDefine and throw a dedicated exception instead of using a generic one.(ËŠ“ß8 ĞŒ•2J$23f401d5-212b-42fc-9587-333eb75b3baa
+‰	java:S112‰"FDefine and throw a dedicated exception instead of using a generic one.(Í­İÈ8 ĞŒ•2J$8f979c87-474e-4f05-a0a4-3743e165ec04
+	java:S112•"FDefine and throw a dedicated exception instead of using a generic one.(’Ã¥ûÿÿÿÿ8´Û»•2J$3a502fbe-d441-49a9-81cf-1b06259bbae5
+	java:S112°"FDefine and throw a dedicated exception instead of using a generic one.(Üáªüÿÿÿÿ8¿îŞ»•2J$f3750310-fdab-4ddb-87cd-7591a1d19a0d
 ‹
-java:S1192T"HDefine a constant instead of duplicating this literal "Error: " 5 times.(ü³ì‰8¡ĞŒ•2J$2b7f385b-4f8d-4fd1-bb66-21729a929d34
+java:S1192T"HDefine a constant instead of duplicating this literal "Error: " 5 times.(ü³ì‰8¡ĞŒ•2J$fed34ef0-eedd-4cc2-93cf-0d517db3a825
 ¯
-java:S1130"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(¦ÂÄÖ8«ĞŒ•2J$f94419e9-5623-47ef-b211-2babe976244a
+java:S1130"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(¦ÂÄÖ8«ĞŒ•2J$1f26756e-507b-4ff0-914c-88bddef147a0

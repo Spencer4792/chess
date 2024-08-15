@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 @WebSocket
 public class WebSocketHandler {
   private static final Logger LOGGER = Logger.getLogger(WebSocketHandler.class.getName());
-  private static final Map<Integer, Map<Session, String>> gameSessions = new ConcurrentHashMap<>();
+  private static final Map<Integer, Map<Session, String>> GAME_SESSIONS = new ConcurrentHashMap<>();
   private final GameService gameService;
   private final Gson gson;
 
@@ -35,7 +35,7 @@ public class WebSocketHandler {
   @OnWebSocketClose
   public void onClose(Session session, int statusCode, String reason) throws Exception {
     LOGGER.info("WebSocket connection closed: " + session.getRemoteAddress().getAddress());
-    for (Map.Entry<Integer, Map<Session, String>> entry : gameSessions.entrySet()) {
+    for (Map.Entry<Integer, Map<Session, String>> entry : GAME_SESSIONS.entrySet()) {
       if (entry.getValue().containsKey(session)) {
         String authToken = entry.getValue().remove(session);
         notifyOtherPlayers(entry.getKey(), session, gameService.getUsernameFromAuthToken(authToken) + " has left the game.");
@@ -88,7 +88,7 @@ public class WebSocketHandler {
   private void handleConnect(Session session, UserGameCommand command) throws Exception {
     try {
       if (gameService.isValidGame(command.getGameID()) && gameService.isAuthorized(command.getAuthToken())) {
-        gameSessions.computeIfAbsent(command.getGameID(), k -> new ConcurrentHashMap<>()).put(session, command.getAuthToken());
+        GAME_SESSIONS.computeIfAbsent(command.getGameID(), k -> new ConcurrentHashMap<>()).put(session, command.getAuthToken());
         String username = gameService.getUsernameFromAuthToken(command.getAuthToken());
         notifyOtherPlayers(command.getGameID(), session, username + " has joined the game.");
         sendGameState(session, command.getAuthToken(), command.getGameID());
@@ -138,7 +138,7 @@ public class WebSocketHandler {
     try {
       gameService.leaveGame(command.getAuthToken(), command.getGameID());
       String username = gameService.getUsernameFromAuthToken(command.getAuthToken());
-      gameSessions.get(command.getGameID()).remove(session);
+      GAME_SESSIONS.get(command.getGameID()).remove(session);
       notifyOtherPlayers(command.getGameID(), session, username + " has left the game.");
     } catch (Exception e) {
       LOGGER.severe("Error in handleLeave: " + e.getMessage());
@@ -164,7 +164,7 @@ public class WebSocketHandler {
   }
 
   private void sendGameStateToAll(int gameId) {
-    for (Map.Entry<Session, String> entry : gameSessions.get(gameId).entrySet()) {
+    for (Map.Entry<Session, String> entry : GAME_SESSIONS.get(gameId).entrySet()) {
       try {
         sendGameState(entry.getKey(), entry.getValue(), gameId);
       } catch (Exception e) {
@@ -185,7 +185,7 @@ public class WebSocketHandler {
     message.setMessage(notificationMessage);
     String jsonMessage = gson.toJson(message);
 
-    Map<Session, String> sessions = gameSessions.get(gameId);
+    Map<Session, String> sessions = GAME_SESSIONS.get(gameId);
     if (sessions != null) {
       for (Session session : sessions.keySet()) {
         if (session != excludeSession) {
@@ -204,7 +204,7 @@ public class WebSocketHandler {
     message.setMessage(notificationMessage);
     String jsonMessage = gson.toJson(message);
 
-    Map<Session, String> sessions = gameSessions.get(gameId);
+    Map<Session, String> sessions = GAME_SESSIONS.get(gameId);
     if (sessions != null) {
       for (Session session : sessions.keySet()) {
         try {

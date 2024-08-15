@@ -1,9 +1,12 @@
 
-}
-java:S1141$"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8Ü¶Àã”2J$f36ce6bb-314a-4f1c-b278-552e0050bb10
-r	java:S106"+Replace this use of System.out by a logger.(†Ê³óùÿÿÿÿ8ç¶Àã”2J$05d0a7ac-efd9-49fc-99a4-f64b5b5b66a4
-r	java:S106)"+Replace this use of System.out by a logger.(•‚À½ûÿÿÿÿ8é¶Àã”2J$153c9183-8a86-4275-89f2-3f4dfbff09b1
-r	java:S106-"+Replace this use of System.out by a logger.(¢‘ìíüÿÿÿÿ8é¶Àã”2J$a6eb5c5e-a971-49ce-b475-bc5bbf5ebd4f
-r	java:S1064"+Replace this use of System.out by a logger.(®è’œøÿÿÿÿ8ì¶Àã”2J$6d5a4052-7b22-47f8-b503-eb1a2d81bc04
-r	java:S1066"+Replace this use of System.out by a logger.(ßÇƒüÿÿÿÿ8ì¶Àã”2J$4b1e1a30-9970-47fc-9e1b-58ed7253f8ca
-r	java:S1068"+Replace this use of System.out by a logger.(Ìàšÿÿÿÿÿ8ì¶Àã”2J$61f65ec2-2279-4682-b1aa-35f4fa386da8
+O
+java:S1144"-Remove this unused private "makeMove" method.(ôéûÀşÿÿÿÿ8°Ëê»•2
+N
+java:S1144#"1Remove this unused private "displayBoard" method.(¡£—ï8±Ëê»•2
+J
+java:S1144'".Remove this unused private "parseMove" method.(úí¡W8±Ëê»•2
+r	java:S106"+Replace this use of System.out by a logger.(®è’œøÿÿÿÿ8ÄÇé»•2J$c22c6981-64ac-4504-941d-931550762b32
+r	java:S106"+Replace this use of System.out by a logger.(ßÇƒüÿÿÿÿ8ÅÇé»•2J$8bdd9676-e6fa-4794-939a-2a93cc7e5467
+r	java:S106"+Replace this use of System.out by a logger.(Ìàšÿÿÿÿÿ8ÅÇé»•2J$436179c0-ae56-4aa4-9cb0-125774b3423b
+H
+java:S1068"+Remove this unused "scanner" private field.(‚´®8¾Ëê»•2
