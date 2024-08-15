@@ -1,33 +1,33 @@
 
-‰
-java:S2259B"FA "NullPointerException" could be thrown; "response" is nullable here.(‹öì³8Œë‹ó”2J$0dbbd25a-dd46-47be-8d9f-f69150463b2a
-
-java:S2259S"FA "NullPointerException" could be thrown; "gameData" is nullable here.(ñáóÀüÿÿÿÿ8Œë‹ó”2J$47bee045-57d4-4dd8-b85a-ff4c458370c7
 ˆ
-java:S2259;"FA "NullPointerException" could be thrown; "response" is nullable here.(ë±ÉY8Œë‹ó”2J$440d962f-7432-4225-9279-82ff4479989b
-l
-java:S1192«"IDefine a constant instead of duplicating this literal "lastMove" 4 times.(±œ¥Æùÿÿÿÿ8ã¨ˆ›•2
+java:S2259;"FA "NullPointerException" could be thrown; "response" is nullable here.(ë±ÉY8Œë‹ó”2J$758c734a-150c-417e-9198-9b95c2c80631
 
-java:S11929"FDefine a constant instead of duplicating this literal "/game" 3 times.(ê´ã£şÿÿÿÿ8ë‹ó”2J$b887e84e-012c-4eb2-9308-04319f00ecde
-n
-java:S1192¬"KDefine a constant instead of duplicating this literal "isGameOver" 3 times.(Ïƒ™£úÿÿÿÿ8ã¨ˆ›•2
+java:S2259S"FA "NullPointerException" could be thrown; "gameData" is nullable here.(ñáóÀüÿÿÿÿ8Œë‹ó”2J$3f0d461c-0650-44f0-9e33-a5732ba88e0b
+‰
+java:S2259B"FA "NullPointerException" could be thrown; "response" is nullable here.(‹öì³8Œë‹ó”2J$567e9ec0-542e-4914-a200-46a1f26b46df
+’
+java:S1192«"IDefine a constant instead of duplicating this literal "lastMove" 4 times.(±œ¥Æùÿÿÿÿ8ã¨ˆ›•2J$3cfc9853-4914-4a43-92d8-77e0b151f0d7
+
+java:S11929"FDefine a constant instead of duplicating this literal "/game" 3 times.(ê´ã£şÿÿÿÿ8ë‹ó”2J$0dfb25a9-351e-4081-bddd-32126b76c4f1
+”
+java:S1192¬"KDefine a constant instead of duplicating this literal "isGameOver" 3 times.(Ïƒ™£úÿÿÿÿ8ã¨ˆ›•2J$ffc1a44e-2e65-4e79-89fa-7fd50cecbeaf
 Š
-java:S1192“"FDefine a constant instead of duplicating this literal "board" 4 times.(•Í—í8œ®ŠÇ“2J$3b481b29-5333-480e-baaf-388790aa5167
+java:S1192“"FDefine a constant instead of duplicating this literal "board" 4 times.(•Í—í8œ®ŠÇ“2J$e0701d4f-f1df-4352-8e90-c37efe48616a
 ‰
-java:S1075("ARefactor your code to get this URI from a customizable parameter.(”É÷ùÿÿÿÿ8—ë‹ó”2J$00b822f6-fbde-4a65-9e2e-49f1e3e4b06a
+java:S1075("ARefactor your code to get this URI from a customizable parameter.(”É÷ùÿÿÿÿ8—ë‹ó”2J$37547b11-5e26-4db2-9440-1725d0eeb8cf
 ƒ
-java:S1075."ARefactor your code to get this URI from a customizable parameter.(ÛÌJ8˜ë‹ó”2J$58d3fd4f-296f-438d-9bd2-9decc2a3d204
+java:S1075."ARefactor your code to get this URI from a customizable parameter.(ÛÌJ8˜ë‹ó”2J$936c0368-f9cc-470e-9ccc-012682fbdbbd
 ƒ
-java:S10754"ARefactor your code to get this URI from a customizable parameter.(ÛÌJ8™ë‹ó”2J$7c52984e-72af-4443-8798-0c802daa9e0b
+java:S10754"ARefactor your code to get this URI from a customizable parameter.(ÛÌJ8™ë‹ó”2J$89a513df-28e1-4b8b-b977-2c7da6dd9ad2
 ‰
-java:S10759"ARefactor your code to get this URI from a customizable parameter.(ê´ã£şÿÿÿÿ8™ë‹ó”2J$53752c9c-a4d4-499a-a991-27a386fa1f20
+java:S10759"ARefactor your code to get this URI from a customizable parameter.(ê´ã£şÿÿÿÿ8™ë‹ó”2J$59fb2588-4356-4da3-b732-a011acad6d85
 ‰
-java:S1075?"ARefactor your code to get this URI from a customizable parameter.(ê´ã£şÿÿÿÿ8šë‹ó”2J$70ea5694-4f4d-49e7-80b6-49f052c950ca
+java:S1075?"ARefactor your code to get this URI from a customizable parameter.(ê´ã£şÿÿÿÿ8šë‹ó”2J$5c62a438-6907-4f12-94fc-c854295d82fc
 ‰
-java:S1075F"ARefactor your code to get this URI from a customizable parameter.(ê´ã£şÿÿÿÿ8šë‹ó”2J$4a6b0bd9-6065-485d-a575-bba501e69cb2
+java:S1075F"ARefactor your code to get this URI from a customizable parameter.(ê´ã£şÿÿÿÿ8šë‹ó”2J$9d4eaf10-933c-46cd-9cc9-d78e30284e4c
 ‰
-java:S1075["ARefactor your code to get this URI from a customizable parameter.(¥íËÎÿÿÿÿÿ8ë‹ó”2J$f87fa5d0-17c3-4c00-8338-8d49dc1c3745
+java:S1075["ARefactor your code to get this URI from a customizable parameter.(¥íËÎÿÿÿÿÿ8ë‹ó”2J$d53c8111-8d79-4efb-8391-c5e94a17760d
 ¡
-java:S2142"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(”ı¾8Ÿë‹ó”2J$d51c8ee5-68cc-42f8-9075-a3fc8bac6382
+java:S2142"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(”ı¾8Ÿë‹ó”2J$2813eeec-db3d-44fd-ac42-5c3693a0b969
 “
-java:S6218ˆ"POverride equals, hashCode and toString to consider array's content in the method(ÂÅ•X8¢ë‹ó”2J$91d29e01-a5fc-4987-80b9-bd8b9d9a384a
+java:S6218ˆ"POverride equals, hashCode and toString to consider array's content in the method(ÂÅ•X8¢ë‹ó”2J$373f413c-34b9-4fc6-ab33-e9fcd4559aba
